@@ -1,0 +1,111 @@
+
+/* LAYOUT */
+
+#tile-area{
+	width: 100%;
+	height: 80%;
+	background-color:  #FAF0D1;
+    overflow: hidden;
+}
+
+#bottom-area{
+	width: 100%;
+	height: 20%;
+}
+
+.puzzle-row{
+	width: 100%;
+	height: 10%;
+    white-space: nowrap;
+}
+
+#tiles[skew-x='1']{
+    margin-left: -5%;
+}
+
+#tiles[skew-y='1']{
+    margin-top: -5%;
+}
+
+.puzzle-tile{
+	height: 100%;
+	width: 8.33%;
+	display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+#tiles{
+	height: 100%;
+	width: 100%;
+}
+
+.puzzle-tile[tile-type='background']{
+	
+	background-color: transparent;
+}
+
+
+/* BOARD */
+
+.puzzle-tile.even[tile-type='board']{
+	background-color: #DDD;
+}
+
+.puzzle-tile.odd[tile-type='board']{
+	background-color: #CCC;
+}
+
+.inner{
+    
+    position: absolute;
+    top: 0; 
+    right: 0;
+    bottom: 0;
+    left: 0;    
+}
+
+.icon{
+    
+    position: absolute;
+    top: 10%; 
+    right: 10%; 
+    bottom: 10%; 
+    left: 10%;   
+}
+
+/* ICE */
+
+.puzzle-tile[tile-type='ice']{
+	
+}
+
+.puzzle-tile[tile-type='ice'] .inner{
+    
+    cursor: pointer;
+	background-color: #6E4AFF;
+}
+
+.puzzle-tile[tile-type='ice'] .inner:hover{
+    
+	background-color: #21D;
+}
+
+
+/* LIGHTNING */
+
+.puzzle-tile[tile-type='lightning']{
+	
+}
+
+.puzzle-tile[tile-type='lightning'] div{
+    
+    cursor: pointer;
+	background-color: #FFFF61;
+}
+
+.puzzle-tile[tile-type='lightning'] .inner:hover{
+    
+	background-color: #CC0;
+}
+
