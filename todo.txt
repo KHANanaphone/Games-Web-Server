@@ -1,0 +1,25 @@
+1/26/2015
++ get domain running
++ get forever running
+
+1/27/2015
++ Level select screen shape
++ Try out greensock
++ Make grid 
+
+1/28/2015
++ Level selection
++ Fade transition between game/level select
+- SVG graphics test for ice/lightning 
+=====================
+Other:
+- Nice looking index page
+- Fill out linkedin
+
+Puzzlo:
+- "Finished level" tile
+- Level unlocking
+- Saving/loading
+
+Bugs: 
+- Shifting on fadeout/fadein for some reason

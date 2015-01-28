@@ -1,134 +1,139 @@
 var PuzzleScene = {
-	$tiles : null,
-	scene : null,
-	board : null,
-	shots : {
-		left : null,
-		right : null,
-		top : null,
-		botttom : null
-	}
+    $tiles: null,
+    scene: null,
+    board: null,
+    shots: {
+        left: null,
+        right: null,
+        top: null,
+        botttom: null
+    }
 };
 
 PuzzleScene.Init = function() {
 
-	PuzzleScene.scene = $('#puzzle-scene').hide().load('scenes/puzzle.html', function() {
+    PuzzleScene.scene = $('#puzzle-scene').hide().load('scenes/puzzle.html', function() {
 
-		var $board = $('#tiles');
-		PuzzleScene.$tiles = [];
+        var $board = $('#tiles');
+        PuzzleScene.$tiles = [];
 
-		for (var i = 0; i < 11; i++) {
+        for (var i = 0; i < 11; i++) {
 
-			var $row = $('<div class="puzzle-row"></div>');
-			$board.append($row);
-			PuzzleScene.$tiles[i] = [];
+            var $row = $('<div class="puzzle-row"></div>');
+            $board.append($row);
+            PuzzleScene.$tiles[i] = [];
 
-			for (var j = 0; j < 13; j++) {
+            for (var j = 0; j < 13; j++) {
 
-				var $tile = $('<div class="puzzle-tile"><div class="inner"><div class="icon"></div></div></div>');
+                var $tile = $('<div class="puzzle-tile"><div class="inner"><div class="icon"></div></div></div>');
                 $tile.attr('x', j).attr('y', i);
-				$row.append($tile);
-				PuzzleScene.$tiles[i][j] = $tile;
-			}
-		}
-		
-		PuzzleScene.ShowPuzzle(1);
-	});
+                $row.append($tile);
+                PuzzleScene.$tiles[i][j] = $tile;
+            }
+        }
+
+        //PuzzleScene.ShowPuzzle(1);
+    });
 };
 
 PuzzleScene.ShowPuzzle = function(id) {
-	
-	var puzzle = new PuzzleDefinition(id);
 
-	var startX = Math.round((12 - puzzle.width) / 2);
-	var startY = Math.round((10 - puzzle.height) / 2);
-	var width = puzzle.width;
-	var height = puzzle.height;
+    var puzzle = new PuzzleDefinition(id);
 
-	PuzzleScene.ResetTiles();
-	
-	setIces();
-	setLightnings();
-	setBoard();
+    var startX = Math.round((12 - puzzle.width) / 2);
+    var startY = Math.round((10 - puzzle.height) / 2);
+    var width = puzzle.width;
+    var height = puzzle.height;
+
+    PuzzleScene.ResetTiles();
+
+    setIces();
+    setLightnings();
+    setBoard();
 
     setSkew(puzzle.width, puzzle.height);
-    
-	PuzzleScene.scene.show();
 
-	function setLightnings() {
+    $('#menu-scene').fadeOut();
+    $('#puzzle-scene').fadeIn();
 
-		PuzzleScene.shots.top = [];
-		PuzzleScene.shots.bottom = [];
+    function setLightnings() {
 
-		for (var i = 0; i < puzzle.width; i++) {
+        PuzzleScene.shots.top = [];
+        PuzzleScene.shots.bottom = [];
 
-			var tile = new Lightning(PuzzleScene.$tiles[startY - 1][startX + i]);
-			PuzzleScene.shots.top.push(tile);
+        for (var i = 0; i < puzzle.width; i++) {
 
-			var tile2 = new Lightning(PuzzleScene.$tiles[startY + height][startX + i]);
-			PuzzleScene.shots.bottom.push(tile2);
-		}
-	};
-	
-	function setIces(){
-		
-		PuzzleScene.shots.left = [];
-		PuzzleScene.shots.right = [];
+            var tile = new Lightning(PuzzleScene.$tiles[startY - 1][startX + i]);
+            PuzzleScene.shots.top.push(tile);
 
-		for (var i = 0; i < puzzle.height; i++) {
+            var tile2 = new Lightning(PuzzleScene.$tiles[startY + height][startX + i]);
+            PuzzleScene.shots.bottom.push(tile2);
+        }
+    };
 
-			var tile = new Ice(PuzzleScene.$tiles[startY + i][startX - 1]);
-			PuzzleScene.shots.left.push(tile);
+    function setIces() {
 
-			var tile2 = new Ice(PuzzleScene.$tiles[startY + i][startX + width]);
-			PuzzleScene.shots.right.push(tile2);
-		}
-	};
+        PuzzleScene.shots.left = [];
+        PuzzleScene.shots.right = [];
 
-	function setBoard() {
+        for (var i = 0; i < puzzle.height; i++) {
 
-		PuzzleScene.board = [];
-		
-		for (var i = 0; i < puzzle.width; i++){	
-			
-			PuzzleScene.board[i] = [];
-				
-			for (var j = 0; j < puzzle.height; j++){
-				
-				var tile = new Tile(puzzle.contents[i][j], PuzzleScene.$tiles[startY + j][startX + i], i, j);
-				PuzzleScene.board[i].push(tile);
-			}
-		}
-	};
+            var tile = new Ice(PuzzleScene.$tiles[startY + i][startX - 1]);
+            PuzzleScene.shots.left.push(tile);
 
-    function setSkew(x, y){
-        
+            var tile2 = new Ice(PuzzleScene.$tiles[startY + i][startX + width]);
+            PuzzleScene.shots.right.push(tile2);
+        }
+    };
+
+    function setBoard() {
+
+        PuzzleScene.board = [];
+
+        for (var i = 0; i < puzzle.width; i++) {
+
+            PuzzleScene.board[i] = [];
+
+            for (var j = 0; j < puzzle.height; j++) {
+
+                var tile = new Tile(puzzle.contents[i][j], PuzzleScene.$tiles[startY + j][startX + i], i, j);
+                PuzzleScene.board[i].push(tile);
+            }
+        }
+    };
+
+    function setSkew(x, y) {
+
         var $tiles = $('#tiles');
-        
-        if(x % 2 == 0)
+
+        if (x % 2 == 0)
             $tiles.attr('skew-x', 0);
         else
             $tiles.attr('skew-x', 1);
-        
-        if(y % 2 == 0)
+
+        if (y % 2 == 0)
             $tiles.attr('skew-y', 0);
         else
             $tiles.attr('skew-y', 1);
     }
-}; 
+};
 
-PuzzleScene.ResetTiles = function(){
-	
-	for(var i = 0; i < PuzzleScene.$tiles.length; i++){
-		
-		var row = PuzzleScene.$tiles[i];
-		
-		for(var j = 0; j < row.length; j++){
-			
-			var $tile = row[j];
-                        
-			$tile.attr('tile-type', 'background');
+PuzzleScene.ResetTiles = function() {
+
+    for (var i = 0; i < PuzzleScene.$tiles.length; i++) {
+
+        var row = PuzzleScene.$tiles[i];
+
+        for (var j = 0; j < row.length; j++) {
+
+            var $tile = row[j];
+
+            $tile.attr('tile-type', 'background');
             $tile.find('.icon').empty();
-		}
-	}
+        }
+    }
+};
+
+PuzzleScene.RetryClicked = function() {
+
 };
