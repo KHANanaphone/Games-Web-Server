@@ -6,18 +6,27 @@
 <div id="bottom-area">
     <div id="bottom-buttons">
         <button class="btn btn-default" onclick="MenuScene.Show()">Level Select</button> 
-        <button class="btn btn-default" onclick="PuzzleScele.RetryClicked()">Retry</button>
+        <button class="btn btn-default" onclick="PuzzleScene.RetryClicked()">Retry</button>
+        <div id="moves-left-section">
+            Moves Left: <span id="moves-left-value"></span>
+        </div>
     </div>
 </div>
 
 <div class="hidden">
     
-    <svg class="lightning-icon">
-        <polygon fill=yellow stroke-width=2 points="0,10 20,10 10,0">
+    <svg class="lightning-icon" viewBox="0 0 17 21">
+        <polygon points="4,4 4,8 8,12 12,8 12,4 8,8"/>
+        <polygon points="4,8 4,12 8,16 12,12 12,8 8,12"/>
     </svg>
     
-    <svg class="ice-icon">
-        <polygon fill=blue stroke-width=2 points="0,10 20,10 10,0">
+    <svg class="ice-icon" viewBox="0 0 21 17">
+        <polygon points="4,4 8,4 12,8 8,12 4,12 8,8"/>
+        <polygon points="8,4 12,4 16,8 12,12 8,12 12,8"/>
     </svg>
         
+    <svg class="diamond-icon" viewBox="0 0 200 200">
+        <polygon points="0,100 100,0 200,100 100,200"></polygon>
+        <text text-anchor="middle" x="100" y="135" font-size="100"></text>
+    </svg>
 </div>

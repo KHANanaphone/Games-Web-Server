@@ -10,16 +10,40 @@
 1/28/2015
 + Level selection
 + Fade transition between game/level select
-- SVG graphics test for ice/lightning 
++ Graphics for ice & lightning
+++ Fix the centering
+
+1/30/2015
++ Read the puzzle data
++ Draw diamonds w/ health + value
+
+2/1/2015
++ Reorg
++ Ice & lightning clicking
++ # of shots left (logic)
++ Retrying
+
+2/2/2015
++ Timer
++ Stop clicking until timer is done
+- Ice & lightning animation
+- Retrying must stop all animation
+- Ice & Lightning logic
+- Puzzle solving
 =====================
 Other:
 - Nice looking index page
 - Fill out linkedin
+- Fix my voice messaging / voice message
 
 Puzzlo:
 - "Finished level" tile
 - Level unlocking
 - Saving/loading
+- nicer looking shot counter
 
 Bugs: 
 - Shifting on fadeout/fadein for some reason
+
+Style:
+- Animations

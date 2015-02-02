@@ -9,19 +9,30 @@
 }
 
 #bottom-area{
+    position: relative;
 	width: 100%;
 	height: 20%;
 }
 
 #bottom-area #bottom-buttons{
     position: absolute;
-    bottom: 1%;
+    bottom: 6%;
     left: 1%;
+    width: 98%;
 }
 
 #bottom-area #bottom-buttons .btn{
-    font-size: 2vh;
+    font-size: 3vh;
+    height: 6vh;
     padding: 1vh 2vh;
+}
+
+#bottom-area #moves-left-section{
+    
+    display: inline-block;
+    font-size: 3vh;
+    vertical-align: middle;
+    padding-left: 2vh;
 }
 
 .puzzle-row{
@@ -83,40 +94,83 @@
     right: 10%; 
     bottom: 10%; 
     left: 10%;   
+    text-align: center;
 }
 
 /* ICE */
 
-.puzzle-tile[tile-type='ice']{
-	
+.puzzle-tile[tile-type='ice'][ready='0']{
+	opacity: 0.2;
 }
 
 .puzzle-tile[tile-type='ice'] .inner{
     
     cursor: pointer;
-	background-color: #6E4AFF;
+    background-color: rgb(250, 250, 255);
+    
+    -webkit-transition: background-color 0.4s; /* For Safari 3.1 to 6.0 */
+    transition: background-color 0.4s;
 }
 
-.puzzle-tile[tile-type='ice'] .inner:hover{
+.puzzle-tile[tile-type='ice'] polygon{
     
-	background-color: #21D;
+    stroke-width: 1;
+    stroke: blue;
+    fill: rgb(198, 241, 247);
+}
+
+
+.puzzle-tile[tile-type='ice'][ready='1'] .inner:hover{
+    
+    background-color: blue;
 }
 
 
 /* LIGHTNING */
 
-.puzzle-tile[tile-type='lightning']{
-	
+.puzzle-tile[tile-type='lightning'][ready='0']{
+	opacity: 0.2;
 }
 
-.puzzle-tile[tile-type='lightning'] div{
+.puzzle-tile[tile-type='lightning'] .inner{
     
     cursor: pointer;
-	background-color: #FFFF61;
+	background-color: #FFFFC0;
+    
+    -webkit-transition: background-color 0.4s; /* For Safari 3.1 to 6.0 */
+    transition: background-color 0.4s;
 }
 
 .puzzle-tile[tile-type='lightning'] .inner:hover{
     
-	background-color: #CC0;
+	background-color: rgb(145, 139, 66)
 }
 
+.puzzle-tile[tile-type='lightning'] polygon{
+    
+    stroke-width: 1;
+    stroke: rgb(145, 139, 66);
+    fill: rgb(245, 255, 0);
+}
+
+/* DIAMONDS */
+
+.puzzle-tile .icon[tile-type='diamond'] text{
+    fill: white;
+}
+
+.puzzle-tile .icon[tile-type='diamond'][tile-subtype='normal'] .diamond-icon polygon{
+    fill: black;
+}
+
+.puzzle-tile .icon[tile-type='diamond'][tile-subtype='ice'] .diamond-icon polygon{
+    fill: #00F;
+}
+
+.puzzle-tile .icon[tile-type='diamond'][tile-subtype='lit'] .diamond-icon polygon{
+    fill: #F3D539;
+}
+
+.puzzle-tile .icon[tile-type='diamond'][tile-subtype='fire'] .diamond-icon polygon{
+    fill: #F00
+}

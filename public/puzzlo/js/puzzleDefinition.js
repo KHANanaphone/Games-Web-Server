@@ -1,5 +1,13 @@
 function PuzzleDefinition(id){
 	
-	if(id == 1)
+    this.id = id;
+    
+	if(id == 11)
 		this.Puzzle1();
+    
+    this.Setup = function(){
+    
+        this.movesLeft = this.maxMoves;
+        this.contents = this.initialContents.slice();  
+    }
 }
