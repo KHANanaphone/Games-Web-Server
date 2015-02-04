@@ -37,6 +37,8 @@ Ice.prototype.SetupClicking = function(){
             return;
         else if(Timer.running)
             return;
+        else if(PuzzleScene.solved)
+            return;
         
         $tile.attr('ready', 0);
         IceLogic.ShootIce(self);

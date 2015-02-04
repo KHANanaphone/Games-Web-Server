@@ -1,176 +1,275 @@
 
 /* LAYOUT */
 
-#tile-area{
-	width: 100%;
-	height: 80%;
-	background-color:  #FAF0D1;
+#tile-area {
+
+    width: 100%;
+
+    height: 80%;
+
+    background-color: #FAF0D1;
+
     overflow: hidden;
+
 }
 
-#bottom-area{
+#bottom-area {
+
     position: relative;
-	width: 100%;
-	height: 20%;
+
+    width: 100%;
+
+    height: 20%;
+
+    border-top: 1px solid #888;
 }
 
-#bottom-area #bottom-buttons{
-    position: absolute;
-    bottom: 6%;
-    left: 1%;
-    width: 98%;
-}
-
-#bottom-area #bottom-buttons .btn{
-    font-size: 3vh;
-    height: 6vh;
-    padding: 1vh 2vh;
-}
-
-#bottom-area #moves-left-section{
+#bottom-success .btn{
     
-    display: inline-block;
+    font-size: 3.5vh;
+    height: 6vh;
+    padding: 0vh 2vh;
+}
+
+#bottom-area #bottom-buttons {
+
+    position: absolute;
+
+    bottom: 6%;
+
+    left: 1%;
+
+    width: 98%;
+
+}
+
+#bottom-area #bottom-buttons .btn {
+
     font-size: 3vh;
+
+    height: 6vh;
+
+    padding: 1vh 2vh;
+
+}
+
+#bottom-area #moves-left-section {
+
+    display: inline-block;
+
+    font-size: 3vh;
+
     vertical-align: middle;
+
     padding-left: 2vh;
+
 }
 
-.puzzle-row{
-	width: 100%;
-	height: 10%;
+#bottom-text{
+    
+    padding: 2%;
+    font-size: 3.5vh;
+    text-align: center;
+}
+
+.puzzle-row {
+
+    width: 100%;
+
+    height: 10%;
+
     white-space: nowrap;
+
 }
 
-#tiles[skew-x='1']{
+#tiles[skew-x='1'] {
+
     margin-left: -5%;
+
 }
 
-#tiles[skew-y='1']{
+#tiles[skew-y='1'] {
+
     margin-top: -5%;
+
 }
 
-.puzzle-tile{
-	height: 100%;
-	width: 8.33%;
-	display: inline-block;
+.puzzle-tile {
+
+    height: 100%;
+
+    width: 8.33%;
+
+    display: inline-block;
+
     vertical-align: top;
+
     position: relative;
+
 }
 
-#tiles{
-	height: 100%;
-	width: 100%;
+#tiles {
+
+    height: 100%;
+
+    width: 100%;
+
 }
 
-.puzzle-tile[tile-type='background']{
-	
-	background-color: transparent;
-}
+.puzzle-tile[tile-type='background'] {
 
+    background-color: transparent;
+
+}
 
 /* BOARD */
 
-.puzzle-tile.even[tile-type='board']{
-	background-color: #DDD;
+.puzzle-tile.even[tile-type='board'] {
+
+    background-color: #DDD;
+
 }
 
-.puzzle-tile.odd[tile-type='board']{
-	background-color: #CCC;
+.puzzle-tile.odd[tile-type='board'] {
+
+    background-color: #CCC;
+
 }
 
-.inner{
-    
+.inner {
+
     position: absolute;
-    top: 0; 
+
+    top: 0;
+
     right: 0;
+
     bottom: 0;
-    left: 0;    
+
+    left: 0;
+
 }
 
-.icon{
-    
+.icon {
+
     position: absolute;
-    top: 10%; 
-    right: 10%; 
-    bottom: 10%; 
-    left: 10%;   
+
+    top: 10%;
+
+    right: 10%;
+
+    bottom: 10%;
+
+    left: 10%;
+
     text-align: center;
+
 }
 
 /* ICE */
 
-.puzzle-tile[tile-type='ice'][ready='0']{
-	opacity: 0.2;
+.puzzle-tile[tile-type='ice'][ready='0'] {
+
+    opacity: 0.2;
+
 }
 
-.puzzle-tile[tile-type='ice'] .inner{
-    
+.puzzle-tile[tile-type='ice'] .inner {
+
     cursor: pointer;
-    background-color: rgb(250, 250, 255);
-    
-    -webkit-transition: background-color 0.4s; /* For Safari 3.1 to 6.0 */
+
+    /*    background-color: rgb(250, 250, 255);*/
+
+    -webkit-transition: background-color 0.4s;
+
+    /* For Safari 3.1 to 6.0 */
+
     transition: background-color 0.4s;
+
 }
 
-.puzzle-tile[tile-type='ice'] polygon{
-    
+.puzzle-tile[tile-type='ice'] polygon {
+
     stroke-width: 1;
+
     stroke: blue;
+
     fill: rgb(198, 241, 247);
+
 }
 
+.puzzle-tile[tile-type='ice'][ready='1'] .inner:hover {
 
-.puzzle-tile[tile-type='ice'][ready='1'] .inner:hover{
-    
     background-color: blue;
-}
 
+}
 
 /* LIGHTNING */
 
-.puzzle-tile[tile-type='lightning'][ready='0']{
-	opacity: 0.2;
+.puzzle-tile[tile-type='lightning'][ready='0'] {
+
+    opacity: 0.2;
+
 }
 
-.puzzle-tile[tile-type='lightning'] .inner{
-    
+.puzzle-tile[tile-type='lightning'] .inner {
+
     cursor: pointer;
-	background-color: #FFFFC0;
-    
-    -webkit-transition: background-color 0.4s; /* For Safari 3.1 to 6.0 */
+
+    /*	background-color: #FFFFC0;*/
+
+    -webkit-transition: background-color 0.4s;
+
+    /* For Safari 3.1 to 6.0 */
+
     transition: background-color 0.4s;
+
 }
 
-.puzzle-tile[tile-type='lightning'] .inner:hover{
-    
-	background-color: rgb(145, 139, 66)
+.puzzle-tile[tile-type='lightning'] .inner:hover {
+
+    background-color: rgb(145, 139, 66)
+
 }
 
-.puzzle-tile[tile-type='lightning'] polygon{
-    
+.puzzle-tile[tile-type='lightning'] polygon {
+
     stroke-width: 1;
+
     stroke: rgb(145, 139, 66);
+
     fill: rgb(245, 255, 0);
+
 }
 
 /* DIAMONDS */
 
-.puzzle-tile .icon[tile-type='diamond'] text{
+.puzzle-tile .icon[tile-type='diamond'] text {
+
     fill: white;
+
 }
 
-.puzzle-tile .icon[tile-type='diamond'][tile-subtype='normal'] .diamond-icon polygon{
+.puzzle-tile .icon[tile-type='diamond'][tile-subtype='normal'] .diamond-icon polygon {
+
     fill: black;
+
 }
 
-.puzzle-tile .icon[tile-type='diamond'][tile-subtype='ice'] .diamond-icon polygon{
+.puzzle-tile .icon[tile-type='diamond'][tile-subtype='ice'] .diamond-icon polygon {
+
     fill: #00F;
+
 }
 
-.puzzle-tile .icon[tile-type='diamond'][tile-subtype='lit'] .diamond-icon polygon{
+.puzzle-tile .icon[tile-type='diamond'][tile-subtype='lit'] .diamond-icon polygon {
+
     fill: #F3D539;
+
 }
 
-.puzzle-tile .icon[tile-type='diamond'][tile-subtype='fire'] .diamond-icon polygon{
+.puzzle-tile .icon[tile-type='diamond'][tile-subtype='fire'] .diamond-icon polygon {
+
     fill: #F00
+
 }

@@ -35,4 +35,5 @@ IceLogic.Step = function(){
     
     //else do action to tile
     var tile = PuzzleScene.board[$tile.attr('board-y')][$tile.attr('board-x')];
+    this.finished = tile.ApplyIce();
 }

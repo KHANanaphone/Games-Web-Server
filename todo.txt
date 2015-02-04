@@ -26,10 +26,19 @@
 2/2/2015
 + Timer
 + Stop clicking until timer is done
-- Ice & lightning animation
-- Retrying must stop all animation
-- Ice & Lightning logic
-- Puzzle solving
+
+2/3/2015
++ Ice & Lightning logic
++ Ice & lightning animation
+
++ Retrying
+++ stop the timer
+++ reset the puzzle
+
++ Puzzle solving
+++ check for solution
+++ solved puzzle "ok!" button
+++ lock inputs after puzzle solve
 =====================
 Other:
 - Nice looking index page
@@ -39,6 +48,7 @@ Other:
 Puzzlo:
 - "Finished level" tile
 - Level unlocking
+- label/description for levels
 - Saving/loading
 - nicer looking shot counter
 
