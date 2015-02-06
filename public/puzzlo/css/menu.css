@@ -52,6 +52,14 @@
     cursor: pointer;
 }
 
+.level-tile.complete{
+    
+    -webkit-transition: background-color 0.4s; /* For Safari 3.1 to 6.0 */
+    transition: background-color 0.4s;
+    background-color: green;
+    cursor: pointer;
+}
+
 .level-tile.ready:hover{
     background-color: #DD88FF;
 }

@@ -39,6 +39,12 @@
 ++ check for solution
 ++ solved puzzle "ok!" button
 ++ lock inputs after puzzle solve
+
+2/5/2015
+- "Finished level" tile
+- Level unlocking
+- label/description for levels
+- Saving/loading
 =====================
 Other:
 - Nice looking index page
@@ -46,10 +52,7 @@ Other:
 - Fix my voice messaging / voice message
 
 Puzzlo:
-- "Finished level" tile
-- Level unlocking
-- label/description for levels
-- Saving/loading
+- item bar
 - nicer looking shot counter
 
 Bugs: 

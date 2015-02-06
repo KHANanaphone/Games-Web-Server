@@ -43,9 +43,10 @@ PuzzleScene.ShowPuzzle = function(id) {
     $('#bottom-buttons .btn').prop('disabled', false);
     $('#bottom-description').show();
     $('#bottom-success').hide();
-    
+
     var puzzle = new PuzzleDefinition(id);
 
+    PuzzleScene.puzzleId = id;
     PuzzleScene.ResetTiles();
     PuzzleScene.SetupBoard(puzzle);
     PuzzleScene.SetupPuzzle(puzzle);
@@ -201,19 +202,19 @@ PuzzleScene.UpdateMovesLeft = function() {
     $('#moves-left-value').text(PuzzleScene.puzzle.movesLeft);
 }
 
-PuzzleScene.SolutionCheck = function(){
-    
+PuzzleScene.SolutionCheck = function() {
+
     var board = PuzzleScene.board;
-    
-    for(var i = 0; i < board.length; i++){
-        
-        for(var j = 0; j < board[i].length; j++){
-            
-            if(board[i][j].type == 'diamond' && board[i][j].value > 0)
+
+    for (var i = 0; i < board.length; i++) {
+
+        for (var j = 0; j < board[i].length; j++) {
+
+            if (board[i][j].type == 'diamond' && board[i][j].value > 0)
                 return;
         }
     }
-    
+
     PuzzleScene.solved = true;
     $('#bottom-buttons .btn').prop('disabled', true);
     $('#bottom-description').hide();

@@ -59,11 +59,36 @@ MenuScene.Show = function() {
     $('#puzzle-scene').fadeOut();
 };
 
-MenuScene.UnlockTile = function($tile, animate) {
+MenuScene.Solved = function(id) {
+
+    MenuScene.Show();
+    
+    setTimeout(function(){
+        
+        var x = Math.round(id / 10);
+        var y = id % 10;
+
+        var $tile = MenuScene.$levelTiles[8 - x][8 - y];
+        
+        solvAnimComplete($tile);
+
+        function solvAnimComplete($tile) {
+
+            $tile.removeClass('ready').addClass('complete').css('background-color', '');
+            MenuScene.CheckForUnlockableTiles();
+        }
+    }, 800);
+}
+
+MenuScene.CheckForUnlockableTiles = function() {
+
+}
+
+MenuScene.UnlockTile = function($tile, animate, callback) {
 
     if (!animate) {
 
-        MenuScene.ChangeTileClass($tile, 'ready');
+        $tile.addClass('ready').css('background-color', '');
         return;
     }
 
@@ -82,11 +107,14 @@ MenuScene.UnlockTile = function($tile, animate) {
         }
     });
 
-    t1.eventCallback('onComplete', MenuScene.ChangeTileClass, [$tile]);
+    t1.eventCallback('onComplete', animComplete, [$tile, callback]);
     t1.play();
-}
 
-MenuScene.ChangeTileClass = function($tile) {
+    function animComplete($tile, callback) {
 
-    $tile.addClass('ready').css('background-color', '');
+        $tile.addClass('ready').css('background-color', '');
+
+        if (callback)
+            callback();
+    }
 }
