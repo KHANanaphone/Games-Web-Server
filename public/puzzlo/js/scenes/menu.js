@@ -1,11 +1,23 @@
-var MenuScene = {};
+var MenuScene = {
+    solved: null
+};
 
 MenuScene.Init = function() {
 
+    MenuScene.solved = [];
+    
+    for(var i = 0; i < 8; i++){
+        
+        MenuScene.solved[i] = [];
+        
+        for(var j = 0; j < 8; j++)
+            MenuScene.solved[i][j] = 0;
+    }
+    
     MenuScene.$scene = $('#menu-scene').hide().load('scenes/menu.html', function() {
 
         var dia = $('#diamond-bg').eq(0);
-        //TweenMax.to(dia, 30, {css: {rotation: 360}, ease: Linear.easeNone}).repeat(-1);
+//        TweenMax.to(dia, 30, {css: {rotation: 360}, ease: Linear.easeNone}).repeat(-1);
 
         initializeGrid();
         MenuScene.Show();
@@ -42,7 +54,7 @@ MenuScene.Init = function() {
 
     function tileClick() {
 
-        if ($(this).hasClass('ready')) {
+        if ($(this).hasClass('ready')|| $(this).hasClass('completed')) {
 
             var x = $(this).data('x');
             var y = $(this).data('y');
@@ -65,56 +77,43 @@ MenuScene.Solved = function(id) {
     
     setTimeout(function(){
         
-        var x = Math.round(id / 10);
-        var y = id % 10;
-
-        var $tile = MenuScene.$levelTiles[8 - x][8 - y];
+        var x = 8 - Math.round(id / 10);
+        var y = 8 - (id % 10);
         
-        solvAnimComplete($tile);
+        MenuScene.solved[x][y] = 1;
 
-        function solvAnimComplete($tile) {
-
-            $tile.removeClass('ready').addClass('complete').css('background-color', '');
-            MenuScene.CheckForUnlockableTiles();
-        }
-    }, 800);
+        var $tile = MenuScene.$levelTiles[x][y];
+        $tile.removeClass('ready').addClass('complete');
+        MenuScene.CheckForUnlockableTiles();
+        
+    }, 500);
 }
 
 MenuScene.CheckForUnlockableTiles = function() {
 
+    for(var i = 0; i < 8; i++){
+        for(var j = 0; j < 8; j++){
+            
+            if(MenuScene.solved[i][j] == 1)
+                continue;
+            
+            
+            //check x
+            if(
+                (i == 7 || MenuScene.solved[i + 1][j] == 1) &&
+                (j == 7 || MenuScene.solved[i][j + 1] == 1)
+            )
+                unlock(i, j);
+        }
+    }
+    
+    function unlock(x, y){
+        
+        MenuScene.UnlockTile(MenuScene.$levelTiles[x][y]);
+    }
 }
 
 MenuScene.UnlockTile = function($tile, animate, callback) {
 
-    if (!animate) {
-
-        $tile.addClass('ready').css('background-color', '');
-        return;
-    }
-
-    var t1 = new TimelineLite();
-    var tile = $tile.eq(0);
-
-    t1.to(tile, 0.6, {
-        css: {
-            backgroundColor: 'cyan'
-        }
-    });
-
-    t1.to(tile, 1.2, {
-        css: {
-            backgroundColor: 'white'
-        }
-    });
-
-    t1.eventCallback('onComplete', animComplete, [$tile, callback]);
-    t1.play();
-
-    function animComplete($tile, callback) {
-
-        $tile.addClass('ready').css('background-color', '');
-
-        if (callback)
-            callback();
-    }
+    $tile.addClass('ready');
 }

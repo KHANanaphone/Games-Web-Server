@@ -56,10 +56,11 @@
     
     -webkit-transition: background-color 0.4s; /* For Safari 3.1 to 6.0 */
     transition: background-color 0.4s;
-    background-color: green;
+    background-color: rgb(19, 218, 35);
     cursor: pointer;
 }
 
-.level-tile.ready:hover{
+.level-tile.ready:hover,
+.level-tile.complete:hover{
     background-color: #DD88FF;
 }

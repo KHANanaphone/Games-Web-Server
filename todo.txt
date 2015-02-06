@@ -41,10 +41,9 @@
 ++ lock inputs after puzzle solve
 
 2/5/2015
-- "Finished level" tile
-- Level unlocking
-- label/description for levels
-- Saving/loading
++ "Finished level" tile
++ Level unlocking
++ completed puzzles still need to be selectable
 =====================
 Other:
 - Nice looking index page
@@ -52,6 +51,11 @@ Other:
 - Fix my voice messaging / voice message
 
 Puzzlo:
+- Menu Scene
+-- Stagger animations for unlocking
+
+- label/description for levels
+- Saving/loading
 - item bar
 - nicer looking shot counter
 
