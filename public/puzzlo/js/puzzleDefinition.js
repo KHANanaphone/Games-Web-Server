@@ -1,6 +1,7 @@
 function PuzzleDefinition(id){
 	
     this.id = id;
+    this.items = []
     
 	if(id == 11)
 		this.Puzzle1();

@@ -49,8 +49,15 @@ Fr3scaCan't
 
 2/6/2015
 + label/description for levels
-- Saving/loading
 + item bar
+
+2/7/2015
++ Item bar displaying, basic diamond item
++ Click on board to deploy item
+
+- solution has to look at item tiles
+- 'Colors' tutorial level
+- 'Items' tutorial level
 =====================
 Other:
 - Nice looking index page
@@ -58,7 +65,8 @@ Other:
 - Fix my voice messaging / voice message
 
 Puzzlo:
-- Item bar functionality, basic diamond item
+
+- Saving/loading
 
 - Menu Scene
 -- Stagger animations for unlocking

@@ -1,5 +1,6 @@
 var PuzzleScene = {
     $tiles: null,
+    itemTiles: null,
     scene: null,
     board: null,
     puzzle: null,
@@ -32,11 +33,14 @@ PuzzleScene.Init = function() {
                 PuzzleScene.$tiles[i][j] = $tile;
             }
         }
-        
-        for (var x = 0; x < 8; x++){
-            
-            var $clone = $('.hidden .item-box').clone();
+
+        PuzzleScene.itemTiles = [];
+
+        for (var x = 0; x < 8; x++) {
+
+            var $clone = $('.hidden .item-tile').clone();
             $('#bottom-item-row').append($clone);
+            PuzzleScene.itemTiles[x] = new Tile($clone);
         }
 
         //PuzzleScene.ShowPuzzle(1);
@@ -50,9 +54,9 @@ PuzzleScene.ShowPuzzle = function(id) {
     $('#btn-success').hide();
 
     var puzzle = new PuzzleDefinition(id);
-    
+
     $('#text-area').text(puzzle.description);
-    
+
     PuzzleScene.puzzleId = id;
     PuzzleScene.ResetTiles();
     PuzzleScene.SetupBoard(puzzle);
@@ -132,7 +136,11 @@ PuzzleScene.SetupBoard = function(puzzle) {
 
             for (var j = 0; j < puzzle.height; j++) {
 
-                var tile = new Tile(PuzzleScene.$tiles[startY + i][startX + j], j, i);
+                var tile = new Tile(PuzzleScene.$tiles[startY + i][startX + j], {
+                    isBoardTile: true,
+                    x: j,
+                    y: i
+                });
                 PuzzleScene.board[i].push(tile);
             }
         }
@@ -157,15 +165,18 @@ PuzzleScene.SetupBoard = function(puzzle) {
 
 PuzzleScene.SetupPuzzle = function() {
 
-    PuzzleScene.puzzle.Setup();
+    var puzzle = PuzzleScene.puzzle;
+
+    puzzle.Setup();
     PuzzleScene.UpdateMovesLeft();
 
     setupShots();
     setupBoard();
+    setupItems();
 
     function setupShots() {
 
-        for (var i = 0; i < PuzzleScene.puzzle.width; i++) {
+        for (var i = 0; i < puzzle.width; i++) {
 
             PuzzleScene.shots.top[i].MakeReady();
             PuzzleScene.shots.bottom[i].MakeReady();
@@ -176,11 +187,9 @@ PuzzleScene.SetupPuzzle = function() {
             PuzzleScene.shots.left[i].MakeReady();
             PuzzleScene.shots.right[i].MakeReady();
         }
-    }
+    };
 
     function setupBoard() {
-
-        var puzzle = PuzzleScene.puzzle;
 
         for (var i = 0; i < puzzle.width; i++) {
             for (var j = 0; j < puzzle.height; j++) {
@@ -188,8 +197,58 @@ PuzzleScene.SetupPuzzle = function() {
                 PuzzleScene.board[i][j].SetContents(puzzle.contents[i][j]);
             }
         }
-    }
+    };
 
+    function setupItems() {
+
+        for (var i = 0; i < puzzle.items.length; i++) {
+
+            var item = puzzle.items[i];
+            var tile = PuzzleScene.itemTiles[i];
+
+            tile.SetContents(item);
+        }
+
+        for (; i < 8; i++) {
+
+            var tile = PuzzleScene.itemTiles[i];
+            tile.SetContents(1000);
+        }
+
+        PuzzleScene.NextItem();
+    };
+}
+
+PuzzleScene.NextItem = function() {
+
+    var nextItem = null;
+
+    for (var i = 0; i < PuzzleScene.itemTiles.length; i++) {
+
+        var tile = PuzzleScene.itemTiles[i];
+
+        if(nextItem)
+            tile.$tile.removeClass('next-item');
+        
+        if(tile.type != 'blank'){
+            nextItem = tile;
+            tile.$tile.addClass('next-item');
+        }
+        else{
+            tile.$tile.removeClass('next-item');
+        }
+    }
+    
+    if(nextItem){
+        
+        PuzzleScene.nextItemTile = nextItem;
+        $('.puzzle-tile[tile-type="board"]').addClass('clickable');
+    }
+    else{
+        
+        PuzzleScene.nextItemTile = null;
+        $('.puzzle-tile').removeClass('clickable');
+    }
 }
 
 PuzzleScene.RetryClicked = function() {

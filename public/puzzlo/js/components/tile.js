@@ -12,27 +12,57 @@ subtypes:
 
 */
 
-function Tile($tile, x, y) {
+function Tile($tile, properties) {
+
+    if (!properties)
+        properties = {};
 
     this.$tile = $tile;
-    this.x = x;
-    this.y = y;
+    var self = this;
 
     $tile.attr('tile-type', 'board');
-    $tile.attr('board-x', x);
-    $tile.attr('board-y', y);
 
-    if ((x + y) % 2 == 0) {
-        $tile.addClass('even')
-            .removeClass('odd');
-    } else {
-        $tile.addClass('odd')
-            .removeClass('even');
-    }
+    if (properties.isBoardTile) {
+
+        this.x = properties.x;
+        this.y = properties.y;
+
+        $tile.attr('board-x', this.x);
+        $tile.attr('board-y', this.y);
+
+        if ((this.x + this.y) % 2 == 0) {
+            $tile.addClass('even')
+                .removeClass('odd');
+        } else {
+            $tile.addClass('odd')
+                .removeClass('even');
+        }
+
+        $tile.click(
+            function(){
+                self.Clicked();
+            });
+    };
+}
+
+Tile.prototype.Clicked = function() {
+
+    debugger;
+    var nextItemTile = PuzzleScene.nextItemTile;
+    
+    if(!nextItemTile)
+        return;
+    else if(this.value > 0)
+        return;
+    
+    this.SetContents(nextItemTile.contents);
+    nextItemTile.SetContents(1000);
+    PuzzleScene.NextItem();
 }
 
 Tile.prototype.SetContents = function(contents) {
 
+    this.contents = contents;
     this.type = intToType(Math.round(contents / 100) % 10);
     this.subtype = intToSubtype(Math.round((contents / 10) % 10));
     this.value = Math.round(contents % 10);
@@ -87,17 +117,23 @@ Tile.prototype.DrawContents = function() {
     }
 }
 
-Tile.prototype.FlashBackground = function(color){
-    
+Tile.prototype.FlashBackground = function(color) {
+
     var oldColor = this.$tile.css('background-color');
-    
-    TweenMax.fromTo(this.$tile, Timer.interval / 1000, 
-                    {css: {backgroundColor: color}},
-                    {css: {backgroundColor: oldColor}});
+
+    TweenMax.fromTo(this.$tile, Timer.interval / 1000, {
+        css: {
+            backgroundColor: color
+        }
+    }, {
+        css: {
+            backgroundColor: oldColor
+        }
+    });
 }
 
 //returns whether the lightning gets stopped during the action
-Tile.prototype.ApplyLightning = function() {        
+Tile.prototype.ApplyLightning = function() {
 
     if (this.type == 'diamond' && this.value > 0) {
 
