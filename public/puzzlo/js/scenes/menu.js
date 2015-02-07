@@ -54,7 +54,7 @@ MenuScene.Init = function() {
 
     function tileClick() {
 
-        if ($(this).hasClass('ready')|| $(this).hasClass('completed')) {
+        if ($(this).hasClass('ready')|| $(this).hasClass('complete')) {
 
             var x = $(this).data('x');
             var y = $(this).data('y');

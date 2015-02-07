@@ -32,6 +32,12 @@ PuzzleScene.Init = function() {
                 PuzzleScene.$tiles[i][j] = $tile;
             }
         }
+        
+        for (var x = 0; x < 8; x++){
+            
+            var $clone = $('.hidden .item-box').clone();
+            $('#bottom-item-row').append($clone);
+        }
 
         //PuzzleScene.ShowPuzzle(1);
     });
@@ -41,11 +47,12 @@ PuzzleScene.ShowPuzzle = function(id) {
 
     PuzzleScene.solved = false;
     $('#bottom-buttons .btn').prop('disabled', false);
-    $('#bottom-description').show();
-    $('#bottom-success').hide();
+    $('#btn-success').hide();
 
     var puzzle = new PuzzleDefinition(id);
-
+    
+    $('#text-area').text(puzzle.description);
+    
     PuzzleScene.puzzleId = id;
     PuzzleScene.ResetTiles();
     PuzzleScene.SetupBoard(puzzle);
@@ -216,7 +223,6 @@ PuzzleScene.SolutionCheck = function() {
     }
 
     PuzzleScene.solved = true;
-    $('#bottom-buttons .btn').prop('disabled', true);
-    $('#bottom-description').hide();
-    $('#bottom-success').show();
+    $('#bottom-buttons .btn-default').prop('disabled', true);
+    $('#btn-success').show();
 }

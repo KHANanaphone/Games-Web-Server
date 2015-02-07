@@ -1,16 +1,37 @@
 
 /* LAYOUT */
 
+#text-area{
+    width: 100%;
+    height: 7%;
+    padding-top: 1vh;
+    font-size: 3.5vh;
+    text-align: center;
+}
+
 #tile-area {
 
     width: 100%;
 
-    height: 80%;
+    height: 75%;
 
     background-color: #FAF0D1;
 
     overflow: hidden;
 
+
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #888;
+}
+
+.item-box{
+    
+    display: inline-block;
+    width: 10%;
+    height: 90%;
+    background-color: red;
+    margin-top: 1vh;
+    margin-left: 2.1vh;
 }
 
 #bottom-area {
@@ -19,9 +40,7 @@
 
     width: 100%;
 
-    height: 20%;
-
-    border-top: 1px solid #888;
+    height: 18%;
 }
 
 #bottom-success .btn{
@@ -55,13 +74,16 @@
 
 #bottom-area #moves-left-section {
 
-    display: inline-block;
 
     font-size: 3vh;
 
     vertical-align: middle;
 
     padding-left: 2vh;
+
+    position: absolute;
+    bottom: 0px;
+    right: 2%;
 
 }
 
@@ -70,6 +92,12 @@
     padding: 2%;
     font-size: 3.5vh;
     text-align: center;
+}
+
+#bottom-item-row{
+    height: 50%;
+    width: 100%;
+position: relative;
 }
 
 .puzzle-row {

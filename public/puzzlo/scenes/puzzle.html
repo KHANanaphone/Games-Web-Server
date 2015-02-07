@@ -1,18 +1,19 @@
+<div id="text-area">
+    Aaaa
+</div>
 <div id="tile-area">
     <div id="tiles">
-
     </div>
 </div>
 <div id="bottom-area">
-    <div id="bottom-text">
-        <span id="bottom-description">Aaaa</span>
-        <span id="bottom-success">Success! 
-            <button class="btn btn-success" onclick="MenuScene.Solved(PuzzleScene.puzzleId)">Continue</button>
-        </span>
+    
+    <div id="bottom-item-row">
     </div>
+    
     <div id="bottom-buttons">
         <button class="btn btn-default" onclick="MenuScene.Show()">Level Select</button>
         <button class="btn btn-default" onclick="PuzzleScene.RetryClicked()">Retry</button>
+        <button id="btn-success" class="btn btn-success" onclick="MenuScene.Solved(PuzzleScene.puzzleId)">Continue</button>
         <div id="moves-left-section">
             Moves Left: <span id="moves-left-value"></span>
         </div>
@@ -35,4 +36,7 @@
         <polygon points="0,100 100,0 200,100 100,200"></polygon>
         <text text-anchor="middle" x="100" y="135" font-size="100"></text>
     </svg>
+    
+    <div class="item-box"></div>
+        
 </div>
