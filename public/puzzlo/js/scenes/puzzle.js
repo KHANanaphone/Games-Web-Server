@@ -51,7 +51,7 @@ PuzzleScene.ShowPuzzle = function(id) {
 
     PuzzleScene.solved = false;
     $('#bottom-buttons .btn').prop('disabled', false);
-    $('#btn-success').hide();
+    $('#success-popup').hide();
 
     var puzzle = new PuzzleDefinition(id);
 
@@ -76,8 +76,12 @@ PuzzleScene.ResetTiles = function() {
 
             var $tile = row[j];
 
-            $tile.attr('tile-type', 'background');
-            $tile.find('.icon').empty();
+            $tile
+            .attr('tile-type', 'background')
+            .css('background-color', '')
+            .off('click')
+            .find('.icon')
+            .empty();
         }
     }
 };
@@ -136,7 +140,7 @@ PuzzleScene.SetupBoard = function(puzzle) {
 
             for (var j = 0; j < puzzle.height; j++) {
 
-                var tile = new Tile(PuzzleScene.$tiles[startY + i][startX + j], {
+                var tile = new Tile(PuzzleScene.$tiles[startY + j][startX + i], {
                     isBoardTile: true,
                     x: j,
                     y: i
@@ -188,13 +192,14 @@ PuzzleScene.SetupPuzzle = function() {
             PuzzleScene.shots.right[i].MakeReady();
         }
     };
+    
 
     function setupBoard() {
 
-        for (var i = 0; i < puzzle.width; i++) {
-            for (var j = 0; j < puzzle.height; j++) {
-
-                PuzzleScene.board[i][j].SetContents(puzzle.contents[i][j]);
+        for (var j = 0; j < puzzle.height; j++) {
+            for (var i = 0; i < puzzle.width; i++) {
+                
+                PuzzleScene.board[i][j].SetContents(puzzle.contents[j][i]);
             }
         }
     };
@@ -227,29 +232,27 @@ PuzzleScene.NextItem = function() {
 
         var tile = PuzzleScene.itemTiles[i];
 
-        if(nextItem)
+        if (nextItem)
             tile.$tile.removeClass('next-item');
-        
-        if(tile.type != 'blank'){
+        else if (tile.type != 'blank') {
             nextItem = tile;
             tile.$tile.addClass('next-item');
-        }
-        else{
+        } else {
             tile.$tile.removeClass('next-item');
         }
     }
-    
-    if(nextItem){
-        
+
+    if (nextItem) {
+
         PuzzleScene.nextItemTile = nextItem;
         $('.puzzle-tile[tile-type="board"]').addClass('clickable');
-    }
-    else{
-        
+    } else {
+
         PuzzleScene.nextItemTile = null;
         $('.puzzle-tile').removeClass('clickable');
     }
 }
+
 
 PuzzleScene.RetryClicked = function() {
 
@@ -271,6 +274,7 @@ PuzzleScene.UpdateMovesLeft = function() {
 PuzzleScene.SolutionCheck = function() {
 
     var board = PuzzleScene.board;
+    var items = PuzzleScene.itemTiles;
 
     for (var i = 0; i < board.length; i++) {
 
@@ -281,7 +285,13 @@ PuzzleScene.SolutionCheck = function() {
         }
     }
 
+    for (var i = 0; i < items.length; i++) {
+
+        if (items[i].type == 'diamond' && items[i].value > 0)
+            return;
+    }
+
     PuzzleScene.solved = true;
     $('#bottom-buttons .btn-default').prop('disabled', true);
-    $('#btn-success').show();
+    $('#success-popup').fadeIn();
 }

@@ -57,9 +57,27 @@ http://pastebin.com/yXfQXw8u
 + Click on board to deploy item
 
 2/8/2015
-- solution has to look at item tiles
-- 'Colors' tutorial level
-- 'Items' tutorial level
++ solution has to look at item tiles
++ 'Colors' tutorial level
++ Solved puzzles are flipped
++ Major problem with 4x3
++ 'Items' tutorial level
++ Multiple items are screwed
++ Saving/loading
+
+2/9/2015
++ Header text too big
++ Tweak yellow diamonds
++ "Continue" button sucks
++ Change "moves left" to "shots left"
+? Animation didn't play for item-placed diamond
+
+- level 2-2, items + colors
+
+- Make a plan for the remaining tutorial levels
+
+- disable item placement during an animation
+
 =====================
 Other:
 - Nice looking index page
@@ -67,9 +85,9 @@ Other:
 - Fix my voice messaging / voice message
 
 Puzzlo:
-- "Continue" button sucks
+- css transition conflicts
 
-- Saving/loading
+- Moves should "queue up" if used during another animation
 
 - Menu Scene
 -- Stagger animations for unlocking

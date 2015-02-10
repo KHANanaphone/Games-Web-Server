@@ -1,16 +1,29 @@
-PuzzleDefinition.prototype.Puzzle1 = function() {
+PuzzleDefinition.prototype.Puzzle11 = function() {
 
     this.height = 3;
     this.width = 3;
-    this.maxMoves = 3;
+    this.maxMoves = 2;
 
-    this.description = "Hey";
-
-    this.items = [1101];
+    this.description = "Click the arrows to destroy all the diamonds";
 
     this.initialContents = [
-        [1000, 1000, 1000],
-        [1101, 1101, 1101],
-        [1000, 1000, 1000]
+        [1000, 1101, 1000],
+        [1101, 1102, 1101],
+        [1000, 1101, 1000]
+    ];
+};
+
+PuzzleDefinition.prototype.Puzzle12 = function() {
+
+    this.height = 3;
+    this.width = 3;
+    this.maxMoves = 2;
+
+    this.description = "Diamonds can't be damaged by their own color";
+
+    this.initialContents = [
+        [1000, 1111, 1000],
+        [1000, 1121, 1000],
+        [1000, 1111, 1000]
     ];
 };

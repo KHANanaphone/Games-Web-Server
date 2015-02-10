@@ -39,7 +39,7 @@ function Tile($tile, properties) {
         }
 
         $tile.click(
-            function(){
+            function() {
                 self.Clicked();
             });
     };
@@ -47,14 +47,13 @@ function Tile($tile, properties) {
 
 Tile.prototype.Clicked = function() {
 
-    debugger;
     var nextItemTile = PuzzleScene.nextItemTile;
-    
-    if(!nextItemTile)
+
+    if (!nextItemTile)
         return;
-    else if(this.value > 0)
+    else if (this.value > 0)
         return;
-    
+
     this.SetContents(nextItemTile.contents);
     nextItemTile.SetContents(1000);
     PuzzleScene.NextItem();

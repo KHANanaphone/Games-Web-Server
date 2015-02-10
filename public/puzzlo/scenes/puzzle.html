@@ -14,11 +14,16 @@
     <div id="bottom-buttons">
         <button class="btn btn-default" onclick="MenuScene.Show()">Level Select</button>
         <button class="btn btn-default" onclick="PuzzleScene.RetryClicked()">Retry</button>
-        <button id="btn-success" class="btn btn-success" onclick="MenuScene.Solved(PuzzleScene.puzzleId)">Continue</button>
         <div id="moves-left-section">
-            Moves Left: <span id="moves-left-value"></span>
+            Shots Left: <span id="moves-left-value"></span>
         </div>
     </div>
+</div>
+
+<div id="success-popup">
+    Level Complete!<br/>
+    <button id="btn-success" class="btn btn-success" 
+            onclick="MenuScene.Solved(PuzzleScene.puzzleId)">Continue</button>
 </div>
 
 <div class="hidden">
