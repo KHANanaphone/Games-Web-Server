@@ -77,11 +77,13 @@ PuzzleScene.ResetTiles = function() {
             var $tile = row[j];
 
             $tile
-            .attr('tile-type', 'background')
-            .css('background-color', '')
-            .off('click')
-            .find('.icon')
-            .empty();
+                .attr('tile-type', 'background')
+                .css('background-color', '')
+                .off('click')
+                .find('.icon')
+                .empty();
+            
+            $tile.children().css('background-color', '');
         }
     }
 };
@@ -90,7 +92,7 @@ PuzzleScene.SetupBoard = function(puzzle) {
 
     PuzzleScene.puzzle = puzzle;
 
-    var startX = Math.round((14 - puzzle.width) / 2);
+    var startX = Math.round((12 - puzzle.width) / 2);
     var startY = Math.round((10 - puzzle.height) / 2);
     var width = puzzle.width;
     var height = puzzle.height;
@@ -155,7 +157,7 @@ PuzzleScene.SetupBoard = function(puzzle) {
 
         var $tiles = $('#tiles');
 
-        if (x % 2 == 0)
+        if (x % 2 == 1)
             $tiles.attr('skew-x', 0);
         else
             $tiles.attr('skew-x', 1);
@@ -192,13 +194,13 @@ PuzzleScene.SetupPuzzle = function() {
             PuzzleScene.shots.right[i].MakeReady();
         }
     };
-    
+
 
     function setupBoard() {
 
         for (var j = 0; j < puzzle.height; j++) {
             for (var i = 0; i < puzzle.width; i++) {
-                
+
                 PuzzleScene.board[i][j].SetContents(puzzle.contents[j][i]);
             }
         }

@@ -86,7 +86,21 @@ http://pastebin.com/yXfQXw8u
 + don't unlock a level if it doesn't exist
 
 2/10/2015
-- Make 2-3 and 3-2
++ Make 3-1
+++ draw bombs
+++ implement bombs
+++ implement fire damage
+++ make puzzle
+
++ standardize some stuff
+
++ Make 3-2 (colors/items/red bombs)
++ Make 3-3 (colors/items/blocks/red bombs)
+
+2/11/2015
+
+- Make 2-3 (colors/items/blocks)
+- Tile colors get stuck occasionally
 - Upload to server
 =====================
 Other:
@@ -96,7 +110,6 @@ Other:
 
 Puzzlo:
 - css transition conflicts
--- hover colors get stuck as white sometimes
 
 - Moves should "queue up" if used during another animation
 

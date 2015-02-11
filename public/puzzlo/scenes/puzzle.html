@@ -21,9 +21,9 @@
 </div>
 
 <div id="success-popup">
-    Level Complete!<br/>
-    <button id="btn-success" class="btn btn-success" 
-            onclick="MenuScene.Solved(PuzzleScene.puzzleId)">Continue</button>
+    Level Complete!
+    <br/>
+    <button id="btn-success" class="btn btn-success" onclick="MenuScene.Solved(PuzzleScene.puzzleId)">Continue</button>
 </div>
 
 <div class="hidden">
@@ -42,13 +42,21 @@
         <polygon points="0,100 100,0 200,100 100,200"></polygon>
         <text text-anchor="middle" x="100" y="135" font-size="100"></text>
     </svg>
-    
-    <svg class="solid-block-icon" viewBox="0 0 100 100">
+
+    <svg class="breakable-block-icon" viewBox="0 0 100 100">
         <polygon points="0,0 100,0 100,100 0,100"></polygon>
+        <polygon points="20,20 80,20 80,80 20,80" style="fill:white;"></polygon>
+    </svg>
+
+    <svg class="bomb-icon" viewBox="0 0 200 200">
+        <path d="M100,20 A90,90 0 1,0 180,100 L200,80 L120,0 Z"></path>
+        <text text-anchor="middle" x="90" y="145" font-size="100">B</text>
     </svg>
 
     <div class="item-tile">
-        <div class="icon"></div>
+        <div class="inner">
+            <div class="icon"></div>
+        </div>
     </div>
 
 </div>

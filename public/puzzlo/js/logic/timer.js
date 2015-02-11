@@ -12,7 +12,7 @@ Timer.Run = function() {
 
 Timer.Step = function() {
 
-    var actions = Timer.actions;
+    var actions = Timer.actions.slice();
     var finished = true;
 
     for (var i = 0; i < actions.length; i++) {

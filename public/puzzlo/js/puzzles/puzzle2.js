@@ -32,3 +32,20 @@ PuzzleDefinition.prototype.Puzzle22 = function() {
         [1101, 1000, 1101]
     ];
 };
+
+PuzzleDefinition.prototype.Puzzle23 = function() {
+
+    this.height = 3;
+    this.width = 3;
+    this.maxMoves = 4;
+
+    this.description = "Zippity Zoo";
+
+    this.items = [1121, 1111, 1121, 1111];
+
+    this.initialContents = [
+        [1101, 1101, 1101],
+        [1101, 1000, 1102],
+        [1101, 1000, 1101]
+    ];
+};

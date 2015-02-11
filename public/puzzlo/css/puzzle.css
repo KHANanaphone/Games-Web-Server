@@ -1,25 +1,38 @@
 
 /* LAYOUT */
 
-#success-popup{
-    
+#success-popup {
+
     position: absolute;
+
     z-index: 1000;
+
     top: 40%;
+
     bottom: 40%;
+
     left: 25%;
+
     right: 25%;
+
     background-color: white;
+
     text-align: center;
+
     padding-top: 3.5vh;
+
     font-size: 4vh;
+
     border: 1px solid #CCC;
+
 }
 
-#success-popup .btn{
-    
+#success-popup .btn {
+
     font-size: 3vh;
+
     padding: 1vh 2vh;
+
 }
 
 #text-area {
@@ -314,8 +327,8 @@
 
     cursor: pointer;
 
-
     -webkit-transition: background-color 0.4s;
+
     transition: background-color 0.4s;
 
 }
@@ -336,39 +349,49 @@
 
 }
 
-/* DIAMONDS */
+/* DIAMONDS & BOMBS */
 
-.icon[tile-type='diamond'] text {
+.icon text {
 
     fill: white;
 
 }
 
-.icon[tile-type='diamond'][tile-subtype='normal'] .diamond-icon polygon {
+.icon[tile-subtype='normal'] .diamond-icon polygon {
 
     fill: black;
 
 }
 
-.icon[tile-type='diamond'][tile-subtype='ice'] .diamond-icon polygon {
+.icon[tile-subtype='ice'] .diamond-icon polygon,
+
+.icon[tile-subtype='ice'] .bomb-icon path {
 
     fill: #00F;
 
 }
 
-.icon[tile-type='diamond'][tile-subtype='lit'] .diamond-icon polygon {
+.icon[tile-subtype='lightning'] .diamond-icon polygon,
+
+.icon[tile-subtype='lightning'] .bomb-icon path {
 
     fill: #FFEA00;
+
     stroke: black;
+
 }
 
-.icon[tile-type='diamond'][tile-subtype='lit'] .diamond-icon text {
+.icon[tile-subtype='lightning'] .diamond-icon text,
+
+.icon[tile-subtype='lightning'] .bomb-icon text {
 
     fill: black;
 
 }
 
-.icon[tile-type='diamond'][tile-subtype='fire'] .diamond-icon polygon {
+.icon[tile-subtype='fire'] .diamond-icon polygon,
+
+.icon[tile-subtype='fire'] .bomb-icon path {
 
     fill: #F00
 
@@ -379,20 +402,25 @@
 .icon[tile-type='block'][tile-subtype='normal'] polygon {
 
     fill: black;
+
 }
 
 .icon[tile-type='block'][tile-subtype='ice'] polygon {
 
     fill: #00F;
+
 }
 
 .icon[tile-type='block'][tile-subtype='fire'] polygon {
 
     fill: #F00
+
 }
 
-.icon[tile-type='block'][tile-subtype='lit'] polygon {
+.icon[tile-type='block'][tile-subtype='lightning'] polygon {
 
     fill: #FFEA00;
+
     stroke: black;
+
 }

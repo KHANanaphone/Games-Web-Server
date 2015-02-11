@@ -47,9 +47,9 @@ function Tile($tile, properties) {
 
 Tile.prototype.Clicked = function() {
 
-    if(Timer.running)
+    if (Timer.running)
         return;
-    
+
     var nextItemTile = PuzzleScene.nextItemTile;
 
     if (!nextItemTile)
@@ -79,6 +79,8 @@ Tile.prototype.SetContents = function(contents) {
             return 'diamond';
         else if (a == 2)
             return 'block';
+        else if (a == 3)
+            return 'bomb';
     }
 
     function intToSubtype(b) {
@@ -86,35 +88,37 @@ Tile.prototype.SetContents = function(contents) {
         if (b == 0)
             return 'normal';
         else if (b == 1)
-            return 'blue';
+            return 'ice';
         else if (b == 2)
-            return 'yellow';
+            return 'lightning';
         else if (b == 3)
-            return 'red';
+            return 'fire';
     }
 }
 
 Tile.prototype.DrawContents = function() {
-    
+
     var $inner = this.$tile.find('.inner').css('background-color', '');
     var $icon = this.$tile.find('.icon').empty().attr('tile-type', this.type);
 
     if (this.type == 'diamond')
         drawDiamond(this.value);
-    else if(this.type == 'block')
+    else if (this.type == 'block')
         drawBlock(this.value);
+    else if (this.type == 'bomb')
+        drawBomb();
 
     if (this.subtype == 'normal')
         $icon.attr('tile-subtype', 'normal');
-    if (this.subtype == 'blue')
+    if (this.subtype == 'ice')
         $icon.attr('tile-subtype', 'ice');
-    if (this.subtype == 'yellow')
-        $icon.attr('tile-subtype', 'lit');
-    if (this.subtype == 'red')
+    if (this.subtype == 'lightning')
+        $icon.attr('tile-subtype', 'lightning');
+    if (this.subtype == 'fire')
         $icon.attr('tile-subtype', 'fire');
 
     function drawDiamond(value) {
-        
+
         if (value > 0) {
 
             var $diamond = $('.hidden .diamond-icon').clone();
@@ -122,18 +126,22 @@ Tile.prototype.DrawContents = function() {
             $diamond.find('text').html(value);
         }
     }
-    
-    function drawBlock(value){
-        
-        
-        if(value > 0){        
-            var $block = $('.hidden .solid-block-icon').clone();  
-        }
-        else{
+
+    function drawBlock(value) {
+
+        if (value > 0) {
+            var $block = $('.hidden .breakable-block-icon').clone();
+        } else {
             $inner.css('background-color', 'black');
         }
 
         $icon.append($block);
+    }
+
+    function drawBomb(value) {
+
+        var $bomb = $('.hidden .bomb-icon').clone();
+        $icon.append($bomb);
     }
 }
 
@@ -152,62 +160,9 @@ Tile.prototype.FlashBackground = function(color) {
     });
 }
 
-//returns whether the lightning gets stopped during the action
-Tile.prototype.ApplyLightning = function() {
+Tile.prototype.Clear = function() {
 
-    if (this.type == 'diamond' && this.value > 0) {
-
-        if (this.subtype == 'yellow')
-            return true;
-
-        this.value--;
-        this.DrawContents();
-    }
-    else if(this.type == 'block'){
-        
-        if (this.subtype == 'yellow')
-            return true;
-        
-        if(this.value > 0){
-            this.value = 0;
-            this.type = 'blank';
-            this.FlashBackground('yellow');
-            this.DrawContents();
-        }
-        
-        return true;
-    }
-
-    this.FlashBackground('yellow');
-    return false;
-}
-
-//returns whether the ice gets stopped during the action
-Tile.prototype.ApplyIce = function() {
-
-    if (this.type == 'diamond' && this.value > 0) {
-
-        if (this.subtype == 'blue')
-            return true;
-
-        this.value--;
-        this.DrawContents();
-    }
-    else if(this.type == 'block'){
-        
-        if (this.subtype == 'blue')
-            return true;
-        
-        if(this.value > 0){
-            this.value = 0;
-            this.type = 'blank';
-            this.FlashBackground('blue');
-            this.DrawContents();
-        }
-        
-        return true;
-    }
-
-    this.FlashBackground('blue');
-    return false;
+    this.value = 0;
+    this.type = 'blank';
+    this.DrawContents();
 }
