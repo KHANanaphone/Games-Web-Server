@@ -47,6 +47,9 @@ function Tile($tile, properties) {
 
 Tile.prototype.Clicked = function() {
 
+    if(Timer.running)
+        return;
+    
     var nextItemTile = PuzzleScene.nextItemTile;
 
     if (!nextItemTile)
@@ -74,6 +77,8 @@ Tile.prototype.SetContents = function(contents) {
             return 'blank';
         else if (a == 1)
             return 'diamond';
+        else if (a == 2)
+            return 'block';
     }
 
     function intToSubtype(b) {
@@ -90,14 +95,16 @@ Tile.prototype.SetContents = function(contents) {
 }
 
 Tile.prototype.DrawContents = function() {
-
-    var $icon = this.$tile.find('.icon').attr('tile-type', 'diamond').empty();
+    
+    var $icon = this.$tile.find('.icon').empty().attr('tile-type', this.type);
 
     if (this.type == 'diamond')
         drawDiamond(this.subtype, this.value);
+    else if(this.type == 'block')
+        drawBlock(this.value);
 
     function drawDiamond(subtype, value) {
-
+        
         if (value > 0) {
 
             var $diamond = $('.hidden .diamond-icon').clone();
@@ -113,6 +120,18 @@ Tile.prototype.DrawContents = function() {
             $icon.attr('tile-subtype', 'lit');
         if (subtype == 'red')
             $icon.attr('tile-subtype', 'fire');
+    }
+    
+    function drawBlock(value){
+        
+        if(value > 0){        
+            var $block = $('.hidden .hollow-block-icon').clone();  
+        }
+        else{
+            var $block = $('.hidden .solid-block-icon').clone();  
+        }
+
+        $icon.append($block);
     }
 }
 
@@ -142,6 +161,17 @@ Tile.prototype.ApplyLightning = function() {
         this.value--;
         this.DrawContents();
     }
+    else if(this.type == 'block'){
+        
+        if(this.value > 0){
+            this.value = 0;
+            this.type = 'blank';
+            this.FlashBackground('yellow');
+            this.DrawContents();
+        }
+        
+        return true;
+    }
 
     this.FlashBackground('yellow');
     return false;
@@ -157,6 +187,17 @@ Tile.prototype.ApplyIce = function() {
 
         this.value--;
         this.DrawContents();
+    }
+    else if(this.type == 'block'){
+        
+        if(this.value > 0){
+            this.value = 0;
+            this.type = 'blank';
+            this.FlashBackground('blue');
+            this.DrawContents();
+        }
+        
+        return true;
     }
 
     this.FlashBackground('blue');

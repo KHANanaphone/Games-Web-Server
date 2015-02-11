@@ -381,3 +381,18 @@
     fill: #F00
 
 }
+
+/* BLOCKS */
+
+.solid-block-icon polygon {
+
+    fill: black;
+}
+
+
+.hollow-block-icon polygon {
+    
+    stroke: black;
+    stroke-width: 2px;
+    fill: transparent;
+}

@@ -27,3 +27,18 @@ PuzzleDefinition.prototype.Puzzle12 = function() {
         [1000, 1111, 1000]
     ];
 };
+
+PuzzleDefinition.prototype.Puzzle13 = function() {
+
+    this.height = 3;
+    this.width = 3;
+    this.maxMoves = 2;
+
+    this.description = "Solid blocks can't be broken. Hollow blocks can be.";
+
+    this.initialContents = [
+        [1000, 1000, 1000],
+        [1200, 1101, 1201],
+        [1000, 1000, 1000]
+    ];
+};

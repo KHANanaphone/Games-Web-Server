@@ -126,11 +126,23 @@ MenuScene.CheckForUnlockableTiles = function() {
 
     function unlock(x, y) {
 
-        MenuScene.UnlockTile(MenuScene.$levelTiles[x][y]);
+        try{
+            var puzz = new PuzzleDefinition((8 - x) * 10 + (8 - y)); 
+            MenuScene.UnlockTile(MenuScene.$levelTiles[x][y]); 
+        }  
+        catch(err){
+            console.log('no puzz');
+        }
     }
 }
 
 MenuScene.UnlockTile = function($tile, animate, callback) {
 
     $tile.addClass('ready');
+}
+
+function resetSolvedStatuses(){
+    
+    localStorage.setItem('solved', null);
+    window.reload();
 }

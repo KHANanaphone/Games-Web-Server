@@ -72,12 +72,22 @@ http://pastebin.com/yXfQXw8u
 + Change "moves left" to "shots left"
 ? Animation didn't play for item-placed diamond
 
-- level 2-2, items + colors
++ level 2-2, items + colors
++ Make a plan for the remaining tutorial levels
++ disable item placement during an animation
 
-- Make a plan for the remaining tutorial levels
++ Improve "puzzle definition"ing
 
-- disable item placement during an animation
++ level 1-3
+++ implement blanks
+-- implement breakable blocks
+-- make level
 
++ don't unlock a level if it doesn't exist
+
+- Make 2-3 and 3-2
+
+- Upload to server
 =====================
 Other:
 - Nice looking index page
@@ -86,6 +96,7 @@ Other:
 
 Puzzlo:
 - css transition conflicts
+-- hover colors get stuck as white sometimes
 
 - Moves should "queue up" if used during another animation
 
