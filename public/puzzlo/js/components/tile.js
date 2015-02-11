@@ -96,14 +96,24 @@ Tile.prototype.SetContents = function(contents) {
 
 Tile.prototype.DrawContents = function() {
     
+    var $inner = this.$tile.find('.inner').css('background-color', '');
     var $icon = this.$tile.find('.icon').empty().attr('tile-type', this.type);
 
     if (this.type == 'diamond')
-        drawDiamond(this.subtype, this.value);
+        drawDiamond(this.value);
     else if(this.type == 'block')
         drawBlock(this.value);
 
-    function drawDiamond(subtype, value) {
+    if (this.subtype == 'normal')
+        $icon.attr('tile-subtype', 'normal');
+    if (this.subtype == 'blue')
+        $icon.attr('tile-subtype', 'ice');
+    if (this.subtype == 'yellow')
+        $icon.attr('tile-subtype', 'lit');
+    if (this.subtype == 'red')
+        $icon.attr('tile-subtype', 'fire');
+
+    function drawDiamond(value) {
         
         if (value > 0) {
 
@@ -111,24 +121,16 @@ Tile.prototype.DrawContents = function() {
             $icon.append($diamond);
             $diamond.find('text').html(value);
         }
-
-        if (subtype == 'normal')
-            $icon.attr('tile-subtype', 'normal');
-        if (subtype == 'blue')
-            $icon.attr('tile-subtype', 'ice');
-        if (subtype == 'yellow')
-            $icon.attr('tile-subtype', 'lit');
-        if (subtype == 'red')
-            $icon.attr('tile-subtype', 'fire');
     }
     
     function drawBlock(value){
         
+        
         if(value > 0){        
-            var $block = $('.hidden .hollow-block-icon').clone();  
+            var $block = $('.hidden .solid-block-icon').clone();  
         }
         else{
-            var $block = $('.hidden .solid-block-icon').clone();  
+            $inner.css('background-color', 'black');
         }
 
         $icon.append($block);
@@ -139,7 +141,7 @@ Tile.prototype.FlashBackground = function(color) {
 
     var oldColor = this.$tile.css('background-color');
 
-    TweenMax.fromTo(this.$tile, Timer.interval / 1000, {
+    TweenMax.fromTo(this.$tile, Timer.interval / 500, {
         css: {
             backgroundColor: color
         }
@@ -162,6 +164,9 @@ Tile.prototype.ApplyLightning = function() {
         this.DrawContents();
     }
     else if(this.type == 'block'){
+        
+        if (this.subtype == 'yellow')
+            return true;
         
         if(this.value > 0){
             this.value = 0;
@@ -189,6 +194,9 @@ Tile.prototype.ApplyIce = function() {
         this.DrawContents();
     }
     else if(this.type == 'block'){
+        
+        if (this.subtype == 'blue')
+            return true;
         
         if(this.value > 0){
             this.value = 0;

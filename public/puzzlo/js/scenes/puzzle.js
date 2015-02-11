@@ -25,7 +25,7 @@ PuzzleScene.Init = function() {
             $board.append($row);
             PuzzleScene.$tiles[i] = [];
 
-            for (var j = 0; j < 13; j++) {
+            for (var j = 0; j < 14; j++) {
 
                 var $tile = $('<div class="puzzle-tile"><div class="inner"><div class="icon"></div></div></div>');
                 $tile.attr('x', j).attr('y', i);
@@ -90,7 +90,7 @@ PuzzleScene.SetupBoard = function(puzzle) {
 
     PuzzleScene.puzzle = puzzle;
 
-    var startX = Math.round((12 - puzzle.width) / 2);
+    var startX = Math.round((14 - puzzle.width) / 2);
     var startY = Math.round((10 - puzzle.height) / 2);
     var width = puzzle.width;
     var height = puzzle.height;

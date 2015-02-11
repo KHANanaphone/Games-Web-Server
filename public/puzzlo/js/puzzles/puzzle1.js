@@ -30,15 +30,17 @@ PuzzleDefinition.prototype.Puzzle12 = function() {
 
 PuzzleDefinition.prototype.Puzzle13 = function() {
 
-    this.height = 3;
-    this.width = 3;
-    this.maxMoves = 2;
+    this.height = 5;
+    this.width = 5;
+    this.maxMoves = 5;
 
-    this.description = "Solid blocks can't be broken. Hollow blocks can be.";
+    this.description = "Large blocks can't be broken. Hollow blocks can be.";
 
     this.initialContents = [
-        [1000, 1000, 1000],
-        [1200, 1101, 1201],
-        [1000, 1000, 1000]
+        [1102, 1200, 1000, 1200, 1101],
+        [1102, 1200, 1000, 1200, 1101],
+        [1211, 1200, 1201, 1000, 1121],
+        [1101, 1200, 1101, 1200, 1101],
+        [1101, 1200, 1221, 1200, 1101]
     ];
 };
