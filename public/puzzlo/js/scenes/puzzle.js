@@ -20,12 +20,12 @@ PuzzleScene.Init = function() {
         PuzzleScene.$tiles = [];
 
         for (var i = 0; i < 11; i++) {
-
+            
             var $row = $('<div class="puzzle-row"></div>');
             $board.append($row);
             PuzzleScene.$tiles[i] = [];
 
-            for (var j = 0; j < 14; j++) {
+            for (var j = 0; j < 9; j++) {
 
                 var $tile = $('<div class="puzzle-tile"><div class="inner"><div class="icon"></div></div></div>');
                 $tile.attr('x', j).attr('y', i);
@@ -47,17 +47,18 @@ PuzzleScene.Init = function() {
     });
 };
 
-PuzzleScene.ShowPuzzle = function(id) {
+PuzzleScene.ShowPuzzle = function(x, y) {
 
     PuzzleScene.solved = false;
     $('#bottom-buttons .btn').prop('disabled', false);
     $('#success-popup').hide();
 
-    var puzzle = new PuzzleDefinition(id);
+    var puzzle = new PuzzleDefinition(x,y);
 
     $('#text-area').text(puzzle.description);
 
-    PuzzleScene.puzzleId = id;
+    PuzzleScene.puzzleX = x;
+    PuzzleScene.puzzleY = y;
     PuzzleScene.ResetTiles();
     PuzzleScene.SetupBoard(puzzle);
     PuzzleScene.SetupPuzzle(puzzle);
@@ -92,7 +93,7 @@ PuzzleScene.SetupBoard = function(puzzle) {
 
     PuzzleScene.puzzle = puzzle;
 
-    var startX = Math.round((13 - puzzle.width) / 2);
+    var startX = Math.round((8 - puzzle.width) / 2);
     var startY = Math.round((10 - puzzle.height) / 2);
     var width = puzzle.width;
     var height = puzzle.height;
@@ -107,6 +108,7 @@ PuzzleScene.SetupBoard = function(puzzle) {
         PuzzleScene.shots.top = [];
         PuzzleScene.shots.bottom = [];
 
+        
         for (var i = 0; i < puzzle.width; i++) {
 
             var tile = new Lightning(PuzzleScene.$tiles[startY - 1][startX + i], true);
@@ -157,7 +159,7 @@ PuzzleScene.SetupBoard = function(puzzle) {
 
         var $tiles = $('#tiles');
 
-        if (x % 2 == 1)
+        if (x % 2 == 0)
             $tiles.attr('skew-x', 0);
         else
             $tiles.attr('skew-x', 1);

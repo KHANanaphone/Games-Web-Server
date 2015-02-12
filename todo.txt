@@ -106,6 +106,11 @@ http://pastebin.com/yXfQXw8u
 + shot arrows look bad
 + Do 4-1 (colored bombs)
 
+- aspect ratio needs to be changed (skewed more towards height)
+
+- shot arrows too big, too pointy
+- black ice arrow
+
 - Upload to server
 - check of leif's phone
 

@@ -1,50 +1,56 @@
-PuzzleDefinition.prototype.Puzzle21 = function() {
+PuzzleDefinition.prototype.Puzzle20 = function() {
 
-    this.height = 4;
-    this.width = 3;
-    this.maxMoves = 1;
+    this.height = 5;
+    this.width = 5;
+    this.maxMoves = 2;
 
-    this.description = "Click on an empty space to place an item from the bar below";
+    this.description = "Fire bombs explode diagonally when hit";
 
-    this.items = [1101, 1101];
+    this.items = [1331];
 
     this.initialContents = [
-        [1000, 1101, 1000],
-        [1000, 1000, 1000],
-        [1000, 1000, 1000],
-        [1000, 1101, 1000]
+        [1000, 1000, 1331, 1000, 1000],
+        [1000, 1103, 1000, 1103, 1000],
+        [1331, 1000, 1000, 1000, 1331],
+        [1000, 1103, 1000, 1103, 1000],
+        [1000, 1000, 1331, 1000, 1000]
+    ];
+};
+
+PuzzleDefinition.prototype.Puzzle21 = function() {
+
+    this.height = 5;
+    this.width = 5;
+    this.maxMoves = 2;
+
+    this.description = "Clever description here";
+
+    this.items = [1331, 1331];
+
+    this.initialContents = [
+        [1000, 1000, 1000, 1000, 1000],
+        [1000, 1101, 1101, 1101, 1000],
+        [1000, 1101, 1101, 1101, 1000],
+        [1000, 1101, 1101, 1101, 1000],
+        [1000, 1000, 1000, 1000, 1000]
     ];
 };
 
 PuzzleDefinition.prototype.Puzzle22 = function() {
 
-    this.height = 3;
-    this.width = 3;
+    this.height = 5;
+    this.width = 5;
     this.maxMoves = 4;
 
-    this.description = "Zippity Zoo";
+    this.description = "Clever description here";
 
-    this.items = [1121, 1111, 1121, 1111];
-
-    this.initialContents = [
-        [1101, 1101, 1101],
-        [1101, 1000, 1102],
-        [1101, 1000, 1101]
-    ];
-};
-
-PuzzleDefinition.prototype.Puzzle23 = function() {
-
-    this.height = 4;
-    this.width = 4;
-    this.maxMoves = 4;
-
-    this.description = "Zippity Zoo";
+    this.items = [1200];
 
     this.initialContents = [
-        [1200, 1200, 1111, 1111],
-        [1121, 1121, 1111, 1201],
-        [1121, 1121, 1201, 1111],
-        [1200, 1200, 1111, 1200],
+        [1101, 1000, 1000, 1000, 1000],
+        [1000, 1102, 1200, 1000, 1000],
+        [1200, 1000, 1131, 1000, 1200],
+        [1000, 1000, 1000, 1000, 1000],
+        [1000, 1201, 1121, 1000, 1331]
     ];
 };

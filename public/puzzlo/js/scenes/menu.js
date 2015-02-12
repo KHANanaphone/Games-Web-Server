@@ -24,14 +24,14 @@ MenuScene.Init = function() {
 
         MenuScene.solved = [];        
             
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < 10; i++) {
 
             MenuScene.solved[i] = [];
 
-            for (var j = 0; j < 8; j++){
+            for (var j = 0; j < 10; j++){
                 
                 if(solvedArray)
-                    MenuScene.solved[i][j] = solvedArray[i * 8 + j];
+                    MenuScene.solved[i][j] = solvedArray[i * 10 + j];
                 else
                     MenuScene.solved[i][j] = 0; 
             }
@@ -43,21 +43,29 @@ MenuScene.Init = function() {
         var $grid = $('#diamond-menu');
         MenuScene.$levelTiles = [];
 
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < 10; i++) {
 
             var $row = $('<div class="level-row"></div>');
             $grid.append($row);
 
             MenuScene.$levelTiles[i] = [];
 
-            for (var j = 0; j < 8; j++) {
+            for (var j = 0; j < 10; j++) {
 
                 var $levelTile = $('<div>', {
                     class: 'level-tile'
                 })
-                    .data('x', 8 - i)
-                    .data('y', 8 - j)
+                    .data('x', i)
+                    .data('y', j)
                     .click(tileClick);
+                
+                try{
+                    var puzz = new PuzzleDefinition(i, j); 
+                }  
+                catch(err){
+                    $levelTile.addClass('noPuzz');
+                    //console.log('no puzz ' + i + '-' + j);
+                }              
 
                 $row.append($levelTile);
                 MenuScene.$levelTiles[i][j] = $levelTile;
@@ -76,7 +84,7 @@ MenuScene.Init = function() {
             var y = $(this).data('y');
 
             MenuScene.$scene.fadeOut();
-            PuzzleScene.ShowPuzzle(x * 10 + y);
+            PuzzleScene.ShowPuzzle(x, y);
         }
     }
 };
@@ -87,19 +95,17 @@ MenuScene.Show = function() {
     $('#puzzle-scene').fadeOut();
 };
 
-MenuScene.Solved = function(id) {
+MenuScene.Solved = function(x, y) {
 
     MenuScene.Show();
 
     setTimeout(function() {
 
-        var x = 8 - (id % 10);
-        var y = 8 - Math.round(id / 10);
-
-        MenuScene.solved[y][x] = 1;
+        
+        MenuScene.solved[x][y] = 1;
         localStorage.setItem('solved', MenuScene.solved);
 
-        var $tile = MenuScene.$levelTiles[y][x];
+        var $tile = MenuScene.$levelTiles[x][y];
         $tile.removeClass('ready').addClass('complete');
         MenuScene.CheckForUnlockableTiles();
 
@@ -108,31 +114,38 @@ MenuScene.Solved = function(id) {
 
 MenuScene.CheckForUnlockableTiles = function() {
 
-    for (var i = 0; i < 8; i++) {
-        for (var j = 0; j < 8; j++) {
+    for (var i = 0; i < 10; i++) {
+        for (var j = 0; j < 10; j++) {
 
             if (MenuScene.solved[i][j] == 1)
                 MenuScene.$levelTiles[i][j].addClass('complete');
+            
+            if (MenuScene.$levelTiles[i][j].hasClass('noPuzz'))
+                continue;
 
-
-            //check x
-            if (
-                (i == 7 || MenuScene.solved[i + 1][j] == 1) &&
-                (j == 7 || MenuScene.solved[i][j + 1] == 1)
-            )
+            if(solvedOrNull(i-1, j) && solvedOrNull(i,j-1))
                 unlock(i, j);
         }
     }
 
     function unlock(x, y) {
 
-        try{
-            var puzz = new PuzzleDefinition((8 - x) * 10 + (8 - y)); 
-            MenuScene.UnlockTile(MenuScene.$levelTiles[x][y]); 
-        }  
-        catch(err){
-            console.log('no puzz');
-        }
+        var puzz = new PuzzleDefinition(x, y); 
+        MenuScene.UnlockTile(MenuScene.$levelTiles[x][y]); 
+    }
+    
+    function solvedOrNull(x, y){
+        
+        if(x < 0 || x > 9 || y < 0 || y > 9)
+            return true;
+        
+        if(MenuScene.$levelTiles[x][y].hasClass('noPuzz'))
+            return true;
+        
+        if(MenuScene.solved[x][y] == 1)
+            return true;
+        
+        return false;
     }
 }
 

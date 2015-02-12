@@ -6,7 +6,8 @@ function Ice($tile, isLeft){
     this.x = $tile.attr('x');
     this.y = $tile.attr('y');
     
-	$tile.attr('tile-type', 'ice');
+	$tile.attr('tile-type', 'ice').css('background-color', '')
+    .find('.icon').attr('tile-type', '');
     
     this.DrawContents();
     this.SetupClicking();

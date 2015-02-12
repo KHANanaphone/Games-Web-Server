@@ -1,9 +1,10 @@
-function PuzzleDefinition(id) {
+function PuzzleDefinition(x, y) {
 
-    this.id = id;
+    this.x = x;
+    this.y = y;
     this.items = []
 
-    this["Puzzle" + id]();
+    this["Puzzle" + x + y]();
 
     this.Setup = function() {
 

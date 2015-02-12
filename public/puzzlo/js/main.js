@@ -11,6 +11,6 @@ $(document).ready(function(){
     
     function adjustHeight(){
     	
-		$('#main').css('width', $(window).height() - 16);
+		$('#main').css('width', $(window).height()/1.75);
     }
 });

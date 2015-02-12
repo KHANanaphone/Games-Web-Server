@@ -6,7 +6,8 @@ function Lightning($tile, isTop){
     this.x = $tile.attr('x');
     this.y = $tile.attr('y');
     
-	$tile.attr('tile-type', 'lightning');
+	$tile.attr('tile-type', 'lightning').css('background-color', '')
+    .find('.icon').attr('tile-type', '');
     
     this.DrawContents();
     this.SetupClicking();
