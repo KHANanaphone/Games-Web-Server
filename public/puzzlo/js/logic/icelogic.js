@@ -60,7 +60,7 @@ IceLogic.ApplyIce = function(tile) {
             return true;
 
         if (tile.value > 0)
-            this.Clear();
+            tile.Clear();
 
         return true;
     } else if (tile.type == 'bomb') {

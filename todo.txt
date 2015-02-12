@@ -98,10 +98,26 @@ http://pastebin.com/yXfQXw8u
 + Make 3-3 (colors/items/blocks/red bombs)
 
 2/11/2015
++ Switch 3-2
++ Make 2-3 (colors/items/blocks)
++ Tile colors get stuck occasionally
 
-- Make 2-3 (colors/items/blocks)
-- Tile colors get stuck occasionally
++ skew fix
++ shot arrows look bad
++ Do 4-1 (colored bombs)
+
 - Upload to server
+- check of leif's phone
+
+- 1-4
+-- implement colors2
+-- make puzzle
+
+- 2-4
+- 3-4
+- 4-2
+- 4-3
+- 4-4
 =====================
 Other:
 - Nice looking index page
@@ -118,8 +134,4 @@ Puzzlo:
 
 - nicer looking shot counter
 
-Bugs: 
 - Shifting on fadeout/fadein for some reason
-
-Style:
-- Animations

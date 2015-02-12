@@ -92,7 +92,7 @@ PuzzleScene.SetupBoard = function(puzzle) {
 
     PuzzleScene.puzzle = puzzle;
 
-    var startX = Math.round((12 - puzzle.width) / 2);
+    var startX = Math.round((13 - puzzle.width) / 2);
     var startY = Math.round((10 - puzzle.height) / 2);
     var width = puzzle.width;
     var height = puzzle.height;

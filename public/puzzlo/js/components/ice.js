@@ -17,7 +17,7 @@ Ice.prototype.DrawContents = function(){
     var $icon = $('.hidden .ice-icon').clone();
     
     if(!this.isLeft)
-        $icon.find('polygon').attr('transform', 'scale(-1,1) translate(-20, 0)');
+        $icon.find('polygon').attr('transform', 'scale(-1,1) translate(-200, 0)');
     
     this.$tile.find('.icon').empty().append($icon);
 }

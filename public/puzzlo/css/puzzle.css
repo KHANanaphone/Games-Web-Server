@@ -301,7 +301,7 @@
 
 .puzzle-tile[tile-type='ice'] polygon {
 
-    stroke-width: 1;
+    stroke-width: 6;
 
     stroke: blue;
 
@@ -341,7 +341,7 @@
 
 .puzzle-tile[tile-type='lightning'] polygon {
 
-    stroke-width: 1;
+    stroke-width: 6;
 
     stroke: rgb(145, 139, 66);
 

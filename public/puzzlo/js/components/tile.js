@@ -147,15 +147,19 @@ Tile.prototype.DrawContents = function() {
 
 Tile.prototype.FlashBackground = function(color) {
 
-    var oldColor = this.$tile.css('background-color');
+    var $tile = this.$tile;
+    var oldColor = $tile.css('background-color');
 
-    TweenMax.fromTo(this.$tile, Timer.interval / 500, {
+    TweenMax.fromTo($tile, Timer.interval / 500, {
         css: {
             backgroundColor: color
         }
     }, {
         css: {
             backgroundColor: oldColor
+        },
+        onComplete: function(){
+            $tile.css('background-color', '');
         }
     });
 }

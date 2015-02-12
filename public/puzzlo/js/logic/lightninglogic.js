@@ -49,14 +49,14 @@ LightningLogic.ApplyLightning = function(tile) {
 
     if (tile.type == 'diamond' && tile.value > 0) {
 
-        if (tile.subtype == 'yellow')
+        if (tile.subtype == 'lightning')
             return true;
 
         tile.value--;
         tile.DrawContents();
     } else if (tile.type == 'block') {
 
-        if (tile.subtype == 'yellow')
+        if (tile.subtype == 'lightning')
             return true;
 
         if (tile.value > 0)

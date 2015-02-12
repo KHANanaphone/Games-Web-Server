@@ -17,9 +17,10 @@ Lightning.prototype.DrawContents = function(){
     var $icon = $('.hidden .lightning-icon').clone();
     
     if(!this.isTop)
-        $icon.find('polygon').attr('transform', 'scale(1, -1) translate(0, -20)');
+        $icon.find('polygon').attr('transform', 'scale(1, -1) translate(0, -200)');
     
     this.$tile.find('.icon').empty().append($icon);
+    
 }
 
 Lightning.prototype.SetupClicking = function(){
