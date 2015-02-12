@@ -2,6 +2,8 @@ var MenuScene = {
     solved: null
 };
 
+var SOLVED_NAME = 's1';
+
 MenuScene.Init = function() {
 
     getSolvedStatus();
@@ -17,7 +19,7 @@ MenuScene.Init = function() {
     
     function getSolvedStatus() {
     
-        var solved = localStorage.getItem('solved');
+        var solved = localStorage.getItem(SOLVED_NAME);
         
         if(solved)
             var solvedArray = solved.split(',');        
@@ -103,7 +105,7 @@ MenuScene.Solved = function(x, y) {
 
         
         MenuScene.solved[x][y] = 1;
-        localStorage.setItem('solved', MenuScene.solved);
+        localStorage.setItem(SOLVED_NAME, MenuScene.solved);
 
         var $tile = MenuScene.$levelTiles[x][y];
         $tile.removeClass('ready').addClass('complete');
