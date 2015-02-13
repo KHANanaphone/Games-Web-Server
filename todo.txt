@@ -106,13 +106,12 @@ http://pastebin.com/yXfQXw8u
 + shot arrows look bad
 + Do 4-1 (colored bombs)
 
-- aspect ratio needs to be changed (skewed more towards height)
++ aspect ratio needs to be changed (skewed more towards height)
 
-- shot arrows too big, too pointy
-- black ice arrow
-
-- Upload to server
-- check of leif's phone
++ shot arrows too big, too pointy
++ black ice arrow
++ Upload to server
++ check of leif's phone
 
 - 1-4
 -- implement colors2
@@ -137,6 +136,6 @@ Puzzlo:
 - Menu Scene
 -- Stagger animations for unlocking
 
-- nicer looking shot counter
+- nicer looking shot counter (it's important information)
 
 - Shifting on fadeout/fadein for some reason
