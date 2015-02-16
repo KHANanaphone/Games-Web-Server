@@ -113,15 +113,32 @@ http://pastebin.com/yXfQXw8u
 + Upload to server
 + check of leif's phone
 
-- 1-4
--- implement colors2
--- make puzzle
+2/14/2015
++ arrows
+++ make short angle an "arc"
 
-- 2-4
-- 3-4
-- 4-2
-- 4-3
-- 4-4
++ replace (level select) and (retry) with icons
+
++ 'moves left' needs to be more obvious because it's very imporant
+
++ turn background green on success, red on failure
+
++ Make 'shots counter' look better
+
++ think about difficulty curve
+
++ width overlap issue
+
+2/15/2015
+
++ make levels for blocks 1 and 2
++ write them to game
+
+- level failed popup
+- disable buttons on success
+- vertical alignment of top text
+- new font
+
 =====================
 Other:
 - Nice looking index page
@@ -129,13 +146,14 @@ Other:
 - Fix my voice messaging / voice message
 
 Puzzlo:
+- make new puzzle grid
 - css transition conflicts
-
-- Moves should "queue up" if used during another animation
+? Moves should "queue up" if used during another animation
 
 - Menu Scene
 -- Stagger animations for unlocking
 
 - nicer looking shot counter (it's important information)
 
-- Shifting on fadeout/fadein for some reason
+? Shifting on fadeout/fadein for some reason
+? skips

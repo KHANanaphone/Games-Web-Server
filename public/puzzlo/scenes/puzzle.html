@@ -1,24 +1,30 @@
+
 <div id="text-area">
     Aaaa
+</div>
+<div id="shots-left-area">
+    Shots <div id="shots-icons"></div>
+</div>
+<div id="item-area">
 </div>
 <div id="tile-area">
     <div id="tiles">
     </div>
 </div>
 <div id="bottom-area">
+    <a id="menu-button" onclick="MenuScene.Show()" title="Level Select">
+        <i class="fa fa-th-large"></i>
+    </a>
+    <a id="retry-button" onclick="PuzzleScene.RetryClicked()" title="Retry">
+        <i class="fa fa-undo"></i>
+    </a>
+</div>
 
-
-    <div id="bottom-item-row">
-    </div>
-
-    <div id="bottom-buttons">
-        <button class="btn btn-default" onclick="MenuScene.Show()">Level Select</button>
-        <button class="btn btn-default" onclick="PuzzleScene.RetryClicked()">Retry</button>
+<!--
         <div id="moves-left-section">
             Shots Left: <span id="moves-left-value"></span>
         </div>
-    </div>
-</div>
+-->
 
 <div id="success-popup">
     Level Complete!
@@ -29,11 +35,11 @@
 <div class="hidden">
 
     <svg class="lightning-icon" viewBox="0 0 200 200">
-        <polygon points="25,25 100,100 175,25 100,175" />
+        <path d="M25,25 A100,100 0 0,0 175,25 L100,175 Z"/>
     </svg>
 
     <svg class="ice-icon" viewBox="0 0 200 200">
-        <polygon points="25,25 175,100 25,175 100,100" />
+        <path d="M25,25 A100,100 0 0,1 25,175 L175,100 Z"/>
     </svg>
 
     <svg class="diamond-icon" viewBox="0 0 200 200">
@@ -51,6 +57,12 @@
         <text text-anchor="middle" x="90" y="145" font-size="100">B</text>
     </svg>
 
+    <div class="dot">
+        <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="80"></circle>
+        </svg>
+    </div>
+    
     <div class="item-tile">
         <div class="inner">
             <div class="icon"></div>

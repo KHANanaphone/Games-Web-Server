@@ -2,7 +2,7 @@ var MenuScene = {
     solved: null
 };
 
-var SOLVED_NAME = 's1';
+var SOLVED_NAME = 's2';
 
 MenuScene.Init = function() {
 
@@ -99,6 +99,7 @@ MenuScene.Show = function() {
 
 MenuScene.Solved = function(x, y) {
 
+    $('#main-content').css('background-color', '');
     MenuScene.Show();
 
     setTimeout(function() {
