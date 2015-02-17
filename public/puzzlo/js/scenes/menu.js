@@ -2,7 +2,7 @@ var MenuScene = {
     solved: null
 };
 
-var SOLVED_NAME = 's2';
+var SOLVED_NAME = 's3';
 
 MenuScene.Init = function() {
 
@@ -16,26 +16,26 @@ MenuScene.Init = function() {
         initializeGrid();
         MenuScene.Show();
     });
-    
-    function getSolvedStatus() {
-    
-        var solved = localStorage.getItem(SOLVED_NAME);
-        
-        if(solved)
-            var solvedArray = solved.split(',');        
 
-        MenuScene.solved = [];        
-            
+    function getSolvedStatus() {
+
+        var solved = localStorage.getItem(SOLVED_NAME);
+
+        if (solved)
+            var solvedArray = solved.split(',');
+
+        MenuScene.solved = [];
+
         for (var i = 0; i < 10; i++) {
 
             MenuScene.solved[i] = [];
 
-            for (var j = 0; j < 10; j++){
-                
-                if(solvedArray)
+            for (var j = 0; j < 10; j++) {
+
+                if (solvedArray)
                     MenuScene.solved[i][j] = solvedArray[i * 10 + j];
                 else
-                    MenuScene.solved[i][j] = 0; 
+                    MenuScene.solved[i][j] = 0;
             }
         }
     }
@@ -60,20 +60,19 @@ MenuScene.Init = function() {
                     .data('x', i)
                     .data('y', j)
                     .click(tileClick);
-                
-                try{
-                    var puzz = new PuzzleDefinition(i, j); 
-                }  
-                catch(err){
+
+                try {
+                    var puzz = new PuzzleDefinition(i, j);
+                } catch (err) {
                     $levelTile.addClass('noPuzz');
                     //console.log('no puzz ' + i + '-' + j);
-                }              
+                }
 
                 $row.append($levelTile);
                 MenuScene.$levelTiles[i][j] = $levelTile;
             }
         }
-        
+
 
         MenuScene.CheckForUnlockableTiles();
     }
@@ -104,7 +103,7 @@ MenuScene.Solved = function(x, y) {
 
     setTimeout(function() {
 
-        
+
         MenuScene.solved[x][y] = 1;
         localStorage.setItem(SOLVED_NAME, MenuScene.solved);
 
@@ -122,32 +121,32 @@ MenuScene.CheckForUnlockableTiles = function() {
 
             if (MenuScene.solved[i][j] == 1)
                 MenuScene.$levelTiles[i][j].addClass('complete');
-            
+
             if (MenuScene.$levelTiles[i][j].hasClass('noPuzz'))
                 continue;
 
-            if(solvedOrNull(i-1, j) && solvedOrNull(i,j-1))
+            if (solvedOrNull(i - 1, j) && solvedOrNull(i, j - 1))
                 unlock(i, j);
         }
     }
 
     function unlock(x, y) {
 
-        var puzz = new PuzzleDefinition(x, y); 
-        MenuScene.UnlockTile(MenuScene.$levelTiles[x][y]); 
+        var puzz = new PuzzleDefinition(x, y);
+        MenuScene.UnlockTile(MenuScene.$levelTiles[x][y]);
     }
-    
-    function solvedOrNull(x, y){
-        
-        if(x < 0 || x > 9 || y < 0 || y > 9)
+
+    function solvedOrNull(x, y) {
+
+        if (x < 0 || x > 9 || y < 0 || y > 9)
             return true;
-        
-        if(MenuScene.$levelTiles[x][y].hasClass('noPuzz'))
+
+        if (MenuScene.$levelTiles[x][y].hasClass('noPuzz'))
             return true;
-        
-        if(MenuScene.solved[x][y] == 1)
+
+        if (MenuScene.solved[x][y] == 1)
             return true;
-        
+
         return false;
     }
 }
@@ -157,8 +156,8 @@ MenuScene.UnlockTile = function($tile, animate, callback) {
     $tile.addClass('ready');
 }
 
-function resetSolvedStatuses(){
-    
+function resetSolvedStatuses() {
+
     localStorage.setItem('solved', null);
     window.reload();
 }

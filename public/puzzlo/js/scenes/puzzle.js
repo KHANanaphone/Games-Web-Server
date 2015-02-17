@@ -52,10 +52,11 @@ PuzzleScene.ShowPuzzle = function(x, y) {
     PuzzleScene.solved = false;
     $('#bottom-buttons .btn').prop('disabled', false);
     $('#success-popup').hide();
+    $('#failure-popup').hide();
 
     var puzzle = new PuzzleDefinition(x,y);
 
-    $('#text-area').text(puzzle.description);
+    $('#text-area .text').text(puzzle.description);
 
     PuzzleScene.puzzleX = x;
     PuzzleScene.puzzleY = y;
@@ -185,6 +186,10 @@ PuzzleScene.SetupBoard = function(puzzle) {
 PuzzleScene.SetupPuzzle = function() {
 
     $('#main-content').css('background-color', '');
+    $('#bottom-area a').fadeIn();
+    $('#success-popup').hide();
+    $('#failure-popup').hide();
+    
     var puzzle = PuzzleScene.puzzle;
 
     puzzle.Setup();
@@ -321,11 +326,12 @@ PuzzleScene.SolutionCheck = function() {
 
     if(solved){
         PuzzleScene.solved = true;
-        $('#bottom-buttons .btn-default').prop('disabled', true);
+        $('#bottom-area a').fadeOut();
         $('#success-popup').fadeIn();
         $('#main-content').css('background-color', 'rgb(149, 218, 149)');
     }
     else if(PuzzleScene.puzzle.movesLeft == 0){
         $('#main-content').css('background-color', 'rgb(241, 170, 170)');
+        $('#failure-popup').fadeIn();
     }
 }

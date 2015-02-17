@@ -1,6 +1,9 @@
 
 <div id="text-area">
-    Aaaa
+    <div class='centerer'>
+        <div class='text'>
+        </div>
+    </div>
 </div>
 <div id="shots-left-area">
     Shots <div id="shots-icons"></div>
@@ -26,10 +29,16 @@
         </div>
 -->
 
-<div id="success-popup">
+<div class="popup" id="success-popup">
     Level Complete!
     <br/>
-    <button id="btn-success" class="btn btn-success" onclick="MenuScene.Solved(PuzzleScene.puzzleX, PuzzleScene.puzzleY)">Continue</button>
+    <button class="btn btn-success" onclick="MenuScene.Solved(PuzzleScene.puzzleX, PuzzleScene.puzzleY)">Continue</button>
+</div>
+
+<div class="popup" id="failure-popup">
+    No Moves Left
+    <br/>
+    <button class="btn btn-danger" onclick="PuzzleScene.RetryClicked()">Retry</button>
 </div>
 
 <div class="hidden">

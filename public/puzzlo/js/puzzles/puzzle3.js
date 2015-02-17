@@ -52,20 +52,36 @@ PuzzleDefinition.prototype.Puzzle32 = function() {
 
 PuzzleDefinition.prototype.Puzzle33 = function() {
 
-    this.height = 8;
-    this.width = 6;
-    this.maxMoves = 0;
+    this.height = 5;
+    this.width = 5;
+    this.maxMoves = 1;
 
-    this.description = "";
+    this.description = "Bombs explode diagonally when hit.";
 
     this.initialContents = [
-        [1000, 1000, 1000, 1000, 1000, 1000],
-        [1000, 1000, 1000, 1000, 1000, 1000],
-        [1000, 1000, 1000, 1000, 1000, 1000],
-        [1000, 1000, 1000, 1000, 1000, 1000],
-        [1000, 1000, 1000, 1000, 1000, 1000],
-        [1000, 1000, 1000, 1000, 1000, 1000],
-        [1000, 1000, 1000, 1000, 1000, 1000],
-        [1000, 1000, 1000, 1000, 1000, 1000]
+        [1101, 1000, 1000, 1000, 1101],
+        [1000, 1101, 1000, 1101, 1000],
+        [1000, 1000, 1331, 1000, 1000],
+        [1000, 1101, 1000, 1101, 1000],
+        [1101, 1000, 1000, 1000, 1101]
+    ];
+};
+
+PuzzleDefinition.prototype.Puzzle34 = function() {
+
+    this.height = 5;
+    this.width = 5;
+    this.maxMoves = 1;
+
+    this.description = "Click on the board to place an item from your item bar.";
+    
+    this.items = [1331];
+
+    this.initialContents = [
+        [1101, 1000, 1000, 1000, 1000],
+        [1101, 1200, 1000, 1000, 1000],
+        [1101, 1000, 1000, 1000, 1000],
+        [1101, 1000, 1000, 1000, 1000],
+        [1331, 1000, 1000, 1000, 1101]
     ];
 };

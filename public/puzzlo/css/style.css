@@ -34,3 +34,14 @@ body{
 .hidden{
     display: none;
 }
+
+
+@font-face {
+    font-family: 'Building';
+    src: url('fonts/Building_Typeface.ttf');
+}
+
+@font-face {
+    font-family: 'Lin';
+    src: url('fonts/LinLibertine_Rah.ttf');
+}
