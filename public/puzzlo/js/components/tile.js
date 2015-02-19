@@ -54,19 +54,23 @@ Tile.prototype.Clicked = function() {
 
     if (!nextItemTile)
         return;
+    else if (nextItemTile.type == 'shifter'){
+        ShifterLogic.DoShift(nextItemTile, this);
+    }
     else if (this.value > 0)
         return;
-
-    this.SetContents(nextItemTile.contents);
-    nextItemTile.SetContents(1000);
-    PuzzleScene.NextItem();
+    else {
+        this.SetContents(nextItemTile.contents);
+        nextItemTile.SetContents(1000);
+        PuzzleScene.NextItem();
+    }
 }
 
 Tile.prototype.SetContents = function(contents) {
 
     this.contents = contents;
     this.type = intToType(Math.round(contents / 100) % 10);
-    this.subtype = intToSubtype(Math.round((contents / 10) % 10));
+    this.subtype = intToSubtype(this.type, Math.round((contents / 10) % 10));
     this.value = Math.round(contents % 10);
 
     this.DrawContents();
@@ -81,9 +85,11 @@ Tile.prototype.SetContents = function(contents) {
             return 'block';
         else if (a == 3)
             return 'bomb';
+        else if (a == 4)
+            return 'shifter';
     }
 
-    function intToSubtype(b) {
+    function intToSubtype(t, b) {
 
         if (b == 0)
             return 'normal';
@@ -107,6 +113,8 @@ Tile.prototype.DrawContents = function() {
         drawBlock(this.value);
     else if (this.type == 'bomb')
         drawBomb();
+    else if (this.type == 'shifter')
+        drawShifter();
 
     if (this.subtype == 'normal')
         $icon.attr('tile-subtype', 'normal');
@@ -125,7 +133,7 @@ Tile.prototype.DrawContents = function() {
             $icon.append($diamond);
             $diamond.find('text').html(value);
         }
-    }
+    };
 
     function drawBlock(value) {
 
@@ -136,13 +144,19 @@ Tile.prototype.DrawContents = function() {
         }
 
         $icon.append($block);
-    }
+    };
 
     function drawBomb(value) {
 
         var $bomb = $('.hidden .bomb-icon').clone();
         $icon.append($bomb);
-    }
+    };
+
+    function drawShifter() {
+
+        var $shifter = $('.hidden .shifter-icon').clone();
+        $icon.append($shifter);
+    };
 }
 
 Tile.prototype.FlashBackground = function(color) {
@@ -158,7 +172,7 @@ Tile.prototype.FlashBackground = function(color) {
         css: {
             backgroundColor: oldColor
         },
-        onComplete: function(){
+        onComplete: function() {
             $tile.css('background-color', '');
         }
     });

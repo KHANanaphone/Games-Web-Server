@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <title>Zelder Map Thing</title>
+
+    <style>
+        #map {
+            cursor: pointer;
+        }
+        
+        #hidden{
+            visibility: hidden;
+        }
+        
+        .box {
+            position: absolute;
+            width: 35px;
+            height: 25px;
+            border: 3px solid red;
+            background-color: white;
+            text-align: center;
+            padding-top: 5px;
+            font-family: monospace;
+            
+            
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .box.clear{
+            
+            background-color: red;
+            border: none;
+            color: white;
+            
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false;">
+    <div id="map">
+        <img src="map.png">
+    </div>
+    <div id='hidden'>
+        
+        <div class='box'>
+            
+        </div>
+        
+    </div>
+</body>
+
+</html>
+
+<script>
+    
+    $('#map img').mousedown(function(e){
+
+        var $clone = $('#hidden .box').clone();
+        $('#map').append($clone);
+        
+        $clone.css({'left': e.offsetX - $clone.width()/2 + 5, 'top': e.offsetY - $clone.height()/2 + 2});
+        
+        if(e.which != 1)
+            setMode($clone, 0);
+        else
+            setMode($clone, 1);
+        
+        $clone.mousedown(boxClicked);
+        
+        e.preventDefault = true;
+    });
+    
+    function boxClicked(e){
+        
+        if(e.which != 1){
+            
+            if(parseInt($(this).attr('val')) == 0){
+                
+                $(this).remove();
+                return;
+                
+            }
+            
+            setMode($(this), 0);
+        }
+        else
+            setMode($(this), parseInt($(this).attr('val')) + 1);
+        
+        e.preventDefault = true;
+    }
+    
+    function setMode($box, val){
+    
+        if(val > 15)
+            val = 1;
+        
+        if(val == 0)
+            $box.text('X').addClass('clear')
+        else
+            $box.removeClass('clear');
+        
+        if(val > 0 && val < 10)
+            $box.text(val);
+        else if(val == 10)
+            $box.text('W S');
+        else if(val == 11)
+            $box.text('M S');
+        else if(val == 12)
+            $box.text('BLU');
+        else if(val == 13)
+            $box.text('BOM');
+        else if(val == 14)
+            $box.text('MED');
+        else if(val == 15)
+            $box.text('ARW');
+        
+        $box.attr('val', val);
+    }
+    
+</script>

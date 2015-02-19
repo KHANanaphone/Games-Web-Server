@@ -53,3 +53,21 @@ PuzzleDefinition.prototype.Puzzle66 = function() {
         [1200, 1000, 1000, 1221, 1200],
     ];
 };
+
+PuzzleDefinition.prototype.Puzzle67 = function() {
+
+    this.height = 5;
+    this.width = 5;
+    this.maxMoves = 2;
+
+    this.items = [1400];
+    this.description = "Shift Happens";
+
+    this.initialContents = [
+        [1101, 1000, 1000, 1000, 1000],
+        [1000, 1101, 1000, 1000, 1000],
+        [1000, 1201, 1000, 1000, 1000],
+        [1200, 1000, 1000, 1000, 1000],
+        [1000, 1000, 1000, 1000, 1000]
+    ];
+};

@@ -141,6 +141,12 @@ http://pastebin.com/yXfQXw8u
 
 + make levels for blocks 2 and 3
 + write them to game
+
+2/18/2015
++ make levels for blocks 4 and 5
+- tile's x & y values are all backwards
+- implement shifters
+- write to game
 =====================
 Other:
 - Nice looking index page

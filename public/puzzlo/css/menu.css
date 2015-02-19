@@ -9,16 +9,16 @@
     z-index: 10;
 
 
-    top: 12%;
+    top: 13%;
 
 
-    left: 3%;
+    left: -5%;
 
 
-    width: 95%;
+    width: 109%;
 
 
-    height: 56%;
+    height: 62%;
 
 
     /*    border: 1px solid black;*/
@@ -96,7 +96,7 @@
 .level-row {
 
 
-    height: 12.5%;
+    height: 10%;
 
 
     width: 100%;
@@ -108,7 +108,7 @@
 .level-tile {
 
 
-    width: 12.5%;
+    width: 10%;
 
 
     height: 100%;
