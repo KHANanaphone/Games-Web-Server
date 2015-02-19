@@ -144,9 +144,17 @@ http://pastebin.com/yXfQXw8u
 
 2/18/2015
 + make levels for blocks 4 and 5
-- tile's x & y values are all backwards
-- implement shifters
-- write to game
+
+2/19/2015
++ tile's x & y values are all backwards
+++ play through again to test for bugs
+
++ implement shifters
+++ rotation
+
++ after being damaged then shifted, the contets got reset
+
++ write to game
 =====================
 Other:
 - Nice looking index page

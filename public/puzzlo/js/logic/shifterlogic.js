@@ -4,11 +4,14 @@ ShifterLogic.DoShift = function(nextItemTile, targetTile) {
 
     var direction = nextItemTile.value;
 
-    if (!canShift(direction, targetTile))
+    if (!shift(direction, targetTile))
         return;
+    
+    nextItemTile.SetContents(1000);
+    PuzzleScene.NextItem();
 
 
-    function canShift(direction, targetTile) {
+    function shift(direction, targetTile) {
 
         //invalid shifts, can't shift a black square or a blank tile
         if (targetTile.type == 'blank' ||
@@ -27,18 +30,23 @@ ShifterLogic.DoShift = function(nextItemTile, targetTile) {
         else if(direction == 3) x--;
         
         try{
-            debugger;
+            
             var nextTile = PuzzleScene.board[y][x];
 
             if(!nextTile)
                 return false;
             else{
 
-                if(nextTile.type == 'blank')
+                if(nextTile.type == 'blank' || 
+                   (nextTile.type != 'block' && nextTile.value == 0) || 
+                   shift(direction, nextTile)){
+                    
+                    nextTile.SetContents(targetTile);
+                    targetTile.SetContents(1000);
                     return true;
-                else
-                    return canShift(direction, nextTile);
-
+                }
+                else 
+                    return false;
             }
         }
         catch(e) {

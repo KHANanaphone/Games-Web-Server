@@ -140,17 +140,18 @@ PuzzleScene.SetupBoard = function(puzzle) {
 
         PuzzleScene.board = [];
 
-        for (var i = 0; i < puzzle.width; i++) {
+        for (var i = 0; i < puzzle.height; i++) {
 
             PuzzleScene.board[i] = [];
 
-            for (var j = 0; j < puzzle.height; j++) {
+            for (var j = 0; j < puzzle.width; j++) {
 
-                var tile = new Tile(PuzzleScene.$tiles[startY + j][startX + i], {
+                var tile = new Tile(PuzzleScene.$tiles[startY + i][startX + j], {
                     isBoardTile: true,
                     x: j,
                     y: i
                 });
+                
                 PuzzleScene.board[i].push(tile);
             }
         }
@@ -220,7 +221,7 @@ PuzzleScene.SetupPuzzle = function() {
         for (var j = 0; j < puzzle.height; j++) {
             for (var i = 0; i < puzzle.width; i++) {
 
-                PuzzleScene.board[i][j].SetContents(puzzle.contents[j][i]);
+                PuzzleScene.board[j][i].SetContents(puzzle.contents[j][i]);
             }
         }
     };

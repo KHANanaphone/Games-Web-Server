@@ -54,6 +54,7 @@ LightningLogic.ApplyLightning = function(tile) {
 
         tile.value--;
         tile.DrawContents();
+        
     } else if (tile.type == 'block') {
 
         if (tile.subtype == 'lightning')

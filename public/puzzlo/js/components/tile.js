@@ -43,10 +43,10 @@ function Tile($tile, properties) {
                 self.Clicked();
             });
     };
-}
+};
 
 Tile.prototype.Clicked = function() {
-
+    
     if (Timer.running)
         return;
 
@@ -60,7 +60,7 @@ Tile.prototype.Clicked = function() {
     else if (this.value > 0)
         return;
     else {
-        this.SetContents(nextItemTile.contents);
+        this.SetContents(nextItemTile);
         nextItemTile.SetContents(1000);
         PuzzleScene.NextItem();
     }
@@ -68,10 +68,17 @@ Tile.prototype.Clicked = function() {
 
 Tile.prototype.SetContents = function(contents) {
 
-    this.contents = contents;
-    this.type = intToType(Math.round(contents / 100) % 10);
-    this.subtype = intToSubtype(this.type, Math.round((contents / 10) % 10));
-    this.value = Math.round(contents % 10);
+    if(typeof contents === 'object'){
+        this.type = contents.type;
+        this.subtype = contents.subtype;
+        this.value = contents.value;
+    }
+    else{
+        this.type = intToType(Math.round(contents / 100) % 10);
+        this.subtype = intToSubtype(this.type, Math.round((contents / 10) % 10));
+        this.value = Math.round(contents % 10);
+    }
+    
 
     this.DrawContents();
 
@@ -103,7 +110,7 @@ Tile.prototype.SetContents = function(contents) {
 }
 
 Tile.prototype.DrawContents = function() {
-
+    
     var $inner = this.$tile.find('.inner').css('background-color', '');
     var $icon = this.$tile.find('.icon').empty().attr('tile-type', this.type);
 
@@ -114,7 +121,7 @@ Tile.prototype.DrawContents = function() {
     else if (this.type == 'bomb')
         drawBomb();
     else if (this.type == 'shifter')
-        drawShifter();
+        drawShifter(this.value);
 
     if (this.subtype == 'normal')
         $icon.attr('tile-subtype', 'normal');
@@ -152,9 +159,14 @@ Tile.prototype.DrawContents = function() {
         $icon.append($bomb);
     };
 
-    function drawShifter() {
+    function drawShifter(value) {
 
         var $shifter = $('.hidden .shifter-icon').clone();
+        
+        
+        
+        $shifter.find('polygon').attr('transform', 'rotate(' + (90 * value) + ',100,75)');
+        
         $icon.append($shifter);
     };
 }
