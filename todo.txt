@@ -168,6 +168,7 @@ http://pastebin.com/yXfQXw8u
 + make puzzles for block 6-7
 + write to game
 + update
+- debug solving
 =====================
 Other:
 - Nice looking index page

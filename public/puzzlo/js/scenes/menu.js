@@ -2,7 +2,7 @@ var MenuScene = {
     solved: null
 };
 
-var SOLVED_NAME = 's4';
+var SOLVED_NAME = 's5';
 
 MenuScene.Init = function() {
 
@@ -79,13 +79,20 @@ MenuScene.Init = function() {
         MenuScene.CheckForUnlockableTiles();
     }
 
-    function tileClick() {
-
+    function tileClick(event) {        
+        
+        
         if ($(this).hasClass('ready') || $(this).hasClass('complete')) {
 
             var x = $(this).data('x');
             var y = $(this).data('y');
-
+            
+            if(DEBUG_CTRL){
+                
+                MenuScene.Solved(x, y, true);
+                return;
+            }
+            
             MenuScene.$scene.fadeOut();
             PuzzleScene.ShowPuzzle(x, y);
         }
@@ -98,22 +105,32 @@ MenuScene.Show = function() {
     $('#puzzle-scene').fadeOut();
 };
 
-MenuScene.Solved = function(x, y) {
+MenuScene.Solved = function(x, y, fast) {
 
+    if(fast){
+        
+        updateSolved(x, y);
+        return;
+    }
+    
     $('#main-content').css('background-color', '');
     MenuScene.Show();
 
     setTimeout(function() {
 
+        updateSolved(x, y);
 
+    }, 500);
+    
+    function updateSolved(x, y){
+        
         MenuScene.solved[x][y] = 1;
         localStorage.setItem(SOLVED_NAME, MenuScene.solved);
 
         var $tile = MenuScene.$levelTiles[x][y];
         $tile.removeClass('ready').addClass('complete');
         MenuScene.CheckForUnlockableTiles();
-
-    }, 500);
+    }
 }
 
 MenuScene.CheckForUnlockableTiles = function() {
