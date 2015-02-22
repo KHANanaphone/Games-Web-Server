@@ -39,11 +39,11 @@ LightningLogic.Step = function() {
 
     //else do action to tile
     var tile = PuzzleScene.board[$tile.attr('board-y')][$tile.attr('board-x')];
-    this.finished = LightningLogic.ApplyLightning(tile);
+    this.finished = LightningLogic.ApplyLightning(this, tile);
 }
 
 //returns whether the lightning gets stopped during the action
-LightningLogic.ApplyLightning = function(tile) {
+LightningLogic.ApplyLightning = function(action, tile) {
 
     tile.FlashBackground('yellow');
 
@@ -70,6 +70,9 @@ LightningLogic.ApplyLightning = function(tile) {
         tile.Clear();
 
         return true;
+    }else if (tile.type == 'mirror'){
+        
+        return MirrorLogic.ApplyLogic(action, tile);
     }
 
     return false;

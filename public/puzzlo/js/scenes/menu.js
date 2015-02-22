@@ -2,7 +2,7 @@ var MenuScene = {
     solved: null
 };
 
-var SOLVED_NAME = 's3';
+var SOLVED_NAME = 's4';
 
 MenuScene.Init = function() {
 
@@ -62,7 +62,9 @@ MenuScene.Init = function() {
                     .click(tileClick);
 
                 try {
+                    
                     var puzz = new PuzzleDefinition(i, j);
+                    $levelTile.data('tier', puzz.tier);
                 } catch (err) {
                     $levelTile.addClass('noPuzz');
                     //console.log('no puzz ' + i + '-' + j);
@@ -116,44 +118,34 @@ MenuScene.Solved = function(x, y) {
 
 MenuScene.CheckForUnlockableTiles = function() {
 
+    var tier = 999;
+    
     for (var i = 0; i < 10; i++) {
         for (var j = 0; j < 10; j++) {
-
-            if (MenuScene.solved[i][j] == 1)
-                MenuScene.$levelTiles[i][j].addClass('complete');
-
-            if (MenuScene.$levelTiles[i][j].hasClass('noPuzz'))
-                continue;
-
-            if (solvedOrNull(i - 1, j) && solvedOrNull(i, j - 1))
-                unlock(i, j);
+            
+            if(MenuScene.solved[i][j] == 0){
+                
+                var levelTier = MenuScene.$levelTiles[i][j].data('tier');
+                
+                if(levelTier !== 'undefined' && levelTier < tier)
+                    tier = levelTier;
+            }
         }
     }
-
-    function unlock(x, y) {
-
-        var puzz = new PuzzleDefinition(x, y);
-        MenuScene.UnlockTile(MenuScene.$levelTiles[x][y]);
+    
+    for (var i = 0; i < 10; i++) {
+        for (var j = 0; j < 10; j++) {
+            
+            var $lt = MenuScene.$levelTiles[i][j];
+            
+            if (MenuScene.solved[i][j] == 1)
+                $lt.addClass('complete');
+            else if($lt.hasClass('noPuzz'))
+                continue;
+            else if($lt.data('tier') == tier)
+                $lt.addClass('ready');
+        }
     }
-
-    function solvedOrNull(x, y) {
-
-        if (x < 0 || x > 9 || y < 0 || y > 9)
-            return true;
-
-        if (MenuScene.$levelTiles[x][y].hasClass('noPuzz'))
-            return true;
-
-        if (MenuScene.solved[x][y] == 1)
-            return true;
-
-        return false;
-    }
-}
-
-MenuScene.UnlockTile = function($tile, animate, callback) {
-
-    $tile.addClass('ready');
 }
 
 function resetSolvedStatuses() {

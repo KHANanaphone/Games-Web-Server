@@ -3,6 +3,7 @@ PuzzleDefinition.prototype.Puzzle77 = function() {
     this.height = 5;
     this.width = 4;
     this.maxMoves = 1;
+    this.tier = 5;
 
     this.description = "Shifters can push entire rows of items if they're next to each other.";
     this.items = [1400];
@@ -21,6 +22,7 @@ PuzzleDefinition.prototype.Puzzle78 = function() {
     this.height = 3;
     this.width = 3;
     this.maxMoves = 2;
+    this.tier = 5;
 
     this.description = "La Bomba";
     this.items = [1311, 1311];
@@ -37,6 +39,7 @@ PuzzleDefinition.prototype.Puzzle79 = function() {
     this.height = 3;
     this.width = 5;
     this.maxMoves = 2;
+    this.tier = 5;
 
     this.description = "Shift Happens";
     this.items = [1331, 1331, 1401, 1401];
@@ -53,6 +56,7 @@ PuzzleDefinition.prototype.Puzzle87 = function() {
     this.height = 7;
     this.width = 5;
     this.maxMoves = 1;
+    this.tier = 5;
 
     this.description = "Whateva";
     this.items = [1321, 1321, 1321, 1321];
@@ -73,6 +77,7 @@ PuzzleDefinition.prototype.Puzzle88 = function() {
     this.height = 4;
     this.width = 4;
     this.maxMoves = 3;
+    this.tier = 5;
 
     this.description = "Shifty";
     this.items = [1403, 1400];
@@ -90,6 +95,7 @@ PuzzleDefinition.prototype.Puzzle89 = function() {
     this.height = 7;
     this.width = 5;
     this.maxMoves = 4;
+    this.tier = 5;
 
     this.description = "Boggity Boo";
     this.items = [1402, 1402, 1401, 1402];
@@ -110,6 +116,7 @@ PuzzleDefinition.prototype.Puzzle97 = function() {
     this.height = 5;
     this.width = 5;
     this.maxMoves = 1;
+    this.tier = 5;
 
     this.description = "Bombo";
     this.items = [1331, 1311, 1311, 1321, 1321];
@@ -128,6 +135,7 @@ PuzzleDefinition.prototype.Puzzle98 = function() {
     this.height = 5;
     this.width = 3;
     this.maxMoves = 2;
+    this.tier = 5;
 
     this.description = "Ooh boy";
     this.items = [1331, 1403, 1403, 1403];
@@ -146,6 +154,7 @@ PuzzleDefinition.prototype.Puzzle99 = function() {
     this.height = 4;
     this.width = 4;
     this.maxMoves = 1;
+    this.tier = 5;
 
     this.description = "Hah";
     this.items = [1311, 1311, 1321, 1331];

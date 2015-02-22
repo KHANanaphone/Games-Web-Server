@@ -3,6 +3,7 @@ PuzzleDefinition.prototype.Puzzle67 = function() {
     this.height = 7;
     this.width = 3;
     this.maxMoves = 2;
+    this.tier = 4;
 
     this.description = "Yellow and blue bombs explode differently.";
 
@@ -22,6 +23,7 @@ PuzzleDefinition.prototype.Puzzle76 = function() {
     this.height = 4;
     this.width = 5;
     this.maxMoves = 1;
+    this.tier = 4;
 
     this.description = "Shifters allow you to move the contents of a tile.";
         

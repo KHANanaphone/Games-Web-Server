@@ -6,6 +6,9 @@ var Timer = {
 
 Timer.Run = function() {
 
+    if(Timer.running)
+        return;
+    
     Timer.running = true;
     Timer.Step();
 };

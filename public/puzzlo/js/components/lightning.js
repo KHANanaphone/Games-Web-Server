@@ -37,8 +37,8 @@ Lightning.prototype.SetupClicking = function(){
             return;
         else if(PuzzleScene.puzzle.movesLeft <= 0)
             return;
-        else if(Timer.running)
-            return;
+//        else if(Timer.running)
+//            return;
         else if(PuzzleScene.solved)
             return;
         

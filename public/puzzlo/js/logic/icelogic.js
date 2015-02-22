@@ -39,11 +39,11 @@ IceLogic.Step = function() {
 
     //else do action to tile
     var tile = PuzzleScene.board[$tile.attr('board-y')][$tile.attr('board-x')];
-    this.finished = IceLogic.ApplyIce(tile);
+    this.finished = IceLogic.ApplyIce(this, tile);
 }
 
 //returns whether the ice gets stopped during the action
-IceLogic.ApplyIce = function(tile) {
+IceLogic.ApplyIce = function(action, tile) {
 
     tile.FlashBackground('blue');
 
@@ -69,6 +69,9 @@ IceLogic.ApplyIce = function(tile) {
         tile.Clear();
 
         return true;
+    }else if (tile.type == 'mirror'){
+        
+        return MirrorLogic.ApplyLogic(action, tile);
     }
 
     return false;

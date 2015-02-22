@@ -47,8 +47,8 @@ function Tile($tile, properties) {
 
 Tile.prototype.Clicked = function() {
     
-    if (Timer.running)
-        return;
+//    if (Timer.running)
+//        return;
 
     var nextItemTile = PuzzleScene.nextItemTile;
 
@@ -57,7 +57,7 @@ Tile.prototype.Clicked = function() {
     else if (nextItemTile.type == 'shifter'){
         ShifterLogic.DoShift(nextItemTile, this);
     }
-    else if (this.value > 0)
+    else if (this.value > 0 || this.type == 'block')
         return;
     else {
         this.SetContents(nextItemTile);
@@ -94,10 +94,20 @@ Tile.prototype.SetContents = function(contents) {
             return 'bomb';
         else if (a == 4)
             return 'shifter';
+        else if (a == 5)
+            return 'mirror';
     }
 
     function intToSubtype(t, b) {
 
+        if(t == 'mirror'){
+            
+            if(b == 0)
+                return 'normal';
+            else
+                return 'splitter';
+        }
+        
         if (b == 0)
             return 'normal';
         else if (b == 1)
@@ -122,15 +132,10 @@ Tile.prototype.DrawContents = function() {
         drawBomb();
     else if (this.type == 'shifter')
         drawShifter(this.value);
+    else if(this.type == 'mirror')
+        drawMirror(this.subtype, this.value);
 
-    if (this.subtype == 'normal')
-        $icon.attr('tile-subtype', 'normal');
-    if (this.subtype == 'ice')
-        $icon.attr('tile-subtype', 'ice');
-    if (this.subtype == 'lightning')
-        $icon.attr('tile-subtype', 'lightning');
-    if (this.subtype == 'fire')
-        $icon.attr('tile-subtype', 'fire');
+    $icon.attr('tile-subtype', this.subtype);
 
     function drawDiamond(value) {
 
@@ -162,13 +167,16 @@ Tile.prototype.DrawContents = function() {
     function drawShifter(value) {
 
         var $shifter = $('.hidden .shifter-icon').clone();
-        
-        
-        
         $shifter.find('polygon').attr('transform', 'rotate(' + (90 * value) + ',100,75)');
-        
         $icon.append($shifter);
     };
+    
+    function drawMirror(subtype, value){
+        
+        var $mirror = $('.hidden .mirror-icon').clone();
+        $mirror.find('polygon').attr('transform', 'rotate(' + (-45 * value) + ',100,100)');
+        $icon.append($mirror);
+    }
 }
 
 Tile.prototype.FlashBackground = function(color) {

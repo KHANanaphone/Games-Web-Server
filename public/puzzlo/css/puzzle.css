@@ -453,3 +453,22 @@
     stroke: black;
 
 }
+
+/* MIRRORS */
+
+.icon[tile-type='mirror'] polygon {
+    
+    stroke-width: 10px;
+}
+
+.icon[tile-type='mirror'][tile-subtype='normal'] polygon {
+    
+    stroke: black;
+    fill: black;
+}
+
+.icon[tile-type='mirror'][tile-subtype='splitter'] polygon {
+    
+    stroke: black;
+    fill: white;
+}

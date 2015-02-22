@@ -4,6 +4,7 @@ PuzzleDefinition.prototype.Puzzle11 = function() {
     this.height = 5;
     this.width = 5;
     this.maxMoves = 2;
+    this.tier = 1;
 
     this.description = "Some diamonds will take more than one shot.";
 
@@ -21,6 +22,7 @@ PuzzleDefinition.prototype.Puzzle12 = function() {
     this.height = 4;
     this.width = 4;
     this.maxMoves = 6;
+    this.tier = 1;
 
     this.description = "Zippity Zoo";
 
@@ -37,6 +39,7 @@ PuzzleDefinition.prototype.Puzzle13 = function() {
     this.height = 7;
     this.width = 1;
     this.maxMoves = 4;
+    this.tier = 1;
 
     this.description = "Beanpole";
 
@@ -56,6 +59,7 @@ PuzzleDefinition.prototype.Puzzle21 = function() {
     this.height = 3;
     this.width = 4;
     this.maxMoves = 4;
+    this.tier = 1;
 
     this.description = "Clever description here";
 
@@ -71,6 +75,7 @@ PuzzleDefinition.prototype.Puzzle22 = function() {
     this.height = 5;
     this.width = 5;
     this.maxMoves = 7;
+    this.tier = 1;
 
     this.description = "Uh oh";
 
@@ -88,6 +93,7 @@ PuzzleDefinition.prototype.Puzzle23 = function() {
     this.height = 4;
     this.width = 4;
     this.maxMoves = 4;
+    this.tier = 1;
 
     this.description = "Shuriken";
 
@@ -104,6 +110,7 @@ PuzzleDefinition.prototype.Puzzle31 = function() {
     this.height = 3;
     this.width = 3;
     this.maxMoves = 5;
+    this.tier = 1;
 
     this.description = "Jail Cell";
 
@@ -119,6 +126,7 @@ PuzzleDefinition.prototype.Puzzle32 = function() {
     this.height = 4;
     this.width = 4;
     this.maxMoves = 4;
+    this.tier = 1;
 
     this.description = "What a Joke";
 

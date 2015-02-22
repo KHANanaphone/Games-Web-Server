@@ -27,11 +27,11 @@ FireLogic.Step = function(){
 
     //else do action to tile
     var tile = PuzzleScene.board[$tile.attr('board-y')][$tile.attr('board-x')];
-    this.finished = FireLogic.ApplyFire(tile);
+    this.finished = FireLogic.ApplyFire(this, tile);
 };
 
 //returns whether the lightning gets stopped during the action
-FireLogic.ApplyFire = function(tile) {
+FireLogic.ApplyFire = function(action, tile) {
 
     tile.FlashBackground('red');
 
@@ -58,6 +58,9 @@ FireLogic.ApplyFire = function(tile) {
         tile.Clear();
 
         return true;
+    } else if (tile.type == 'mirror'){
+        
+        return MirrorLogic.ApplyLogic(action, tile);
     }
 
     return false;
