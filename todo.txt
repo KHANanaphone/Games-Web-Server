@@ -181,11 +181,16 @@ http://pastebin.com/yXfQXw8u
 ++ insert a patch notes link
 
 + test every level
-- different color per tier
-
+++ different color per tier
 
 - implement potions
+++ draw it
+-- logic
+
 - implement jewels
+-- draw it
+-- logic
+
 - make puzzles for block 8-9
 - write to game
 =====================

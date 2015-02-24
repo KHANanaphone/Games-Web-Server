@@ -95,6 +95,8 @@ Tile.prototype.SetContents = function(contents) {
             return 'shifter';
         else if (a == 5)
             return 'mirror';
+        else if (a == 6)
+            return 'potion';
     }
 
     function intToSubtype(t, b) {
@@ -105,6 +107,14 @@ Tile.prototype.SetContents = function(contents) {
                 return 'normal';
             else
                 return 'splitter';
+        }
+        
+        if (t == 'potion'){
+            
+            if (b == 0)
+                return 'potion';
+            else
+                return 'poison';
         }
 
         if (b == 0)
@@ -133,6 +143,8 @@ Tile.prototype.DrawContents = function() {
         drawShifter(this.value);
     else if (this.type == 'mirror')
         drawMirror(this.subtype, this.value);
+    else if(this.type =='potion')
+        drawPotion(this.subtype);
 
     $icon.attr('tile-subtype', this.subtype);
 
@@ -175,6 +187,20 @@ Tile.prototype.DrawContents = function() {
         var $mirror = $('.hidden .mirror-icon').clone();
         $mirror.find('polygon').attr('transform', 'rotate(' + (-45 * value) + ',100,100)');
         $icon.append($mirror);
+    }
+    
+    function drawPotion(subtype){
+        
+        if(subtype == 'potion'){
+            
+            var $potion = $('.hidden .potion-icon').clone();
+            $icon.append($potion);
+        }   
+        else if(subtype == 'poison'){
+            
+            var $potion = $('.hidden .poison-icon').clone();
+            $icon.append($potion);
+        }    
     }
 }
 

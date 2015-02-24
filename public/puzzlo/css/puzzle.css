@@ -469,3 +469,33 @@
     stroke: black;
     fill: white;
 }
+
+/* POTIONS */
+
+.icon[tile-type='potion'] path{
+    
+    stroke-width: 7px;
+    stroke: #777;
+}
+
+.icon[tile-type='potion'] path.top{
+    
+    fill: white;
+}
+
+.icon[tile-type='potion'][tile-subtype='potion'] path.bottom{
+    
+    fill:rgb(142, 214, 255);
+}
+
+.icon[tile-type='potion'][tile-subtype='poison'] path.bottom{
+    
+    fill: rgb(93, 163, 101);
+}
+
+.icon[tile-type='potion'][tile-subtype='poison'] circle{
+    
+    stroke: rgb(0, 70, 0);
+    fill: rgb(41, 246, 41); 
+    stroke-width: 3px;
+}

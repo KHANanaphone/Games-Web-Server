@@ -190,18 +190,18 @@
     background-color: rgb(105, 130, 60);
 }
 
-.level-tile.complete[tier='9'],
-.level-tile.complete[tier='10']{
+.level-tile.complete[tier='8'],
+.level-tile.complete[tier='9']{
     background-color: rgb(140, 95, 80);
 }
 
-.level-tile.complete[tier='11'],
-.level-tile.complete[tier='12']{
+.level-tile.complete[tier='10'],
+.level-tile.complete[tier='11']{
     background-color: rgb(175, 60, 100);
 }
 
-.level-tile.complete[tier='13'],
-.level-tile.complete[tier='14']{
+.level-tile.complete[tier='12'],
+.level-tile.complete[tier='13']{
     background-color: rgb(210, 25, 120);
 }
 

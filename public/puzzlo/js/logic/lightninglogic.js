@@ -77,7 +77,16 @@ LightningLogic.ApplyLightning = function(action, tile) {
     }else if (tile.type == 'mirror'){
         
         return MirrorLogic.ApplyLogic(action, tile);
-    }
+    }else if (tile.type == 'potion'){
+        
+        if(tile.subtype == 'poison')
+            PotionLogic.ApplyPoison();
+        else
+            PotionLogic.ApplyPotion();
+        
+        tile.Clear();
+        return true;
+    } 
 
     return false;
 }
