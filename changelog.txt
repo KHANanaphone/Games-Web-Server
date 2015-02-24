@@ -1,0 +1,12 @@
+SECRET NOTES:
+- You can ctrl-click a puzzle to solve it immediately if your save data gets replaced or something.
+
+2/23/2015
+
+- Added a changelog (this, lol)
+- Fixed a bug where you could overwrite a horizontal mirror with an item
+- Added a naming/id scheme to each puzzle to make them easier for me to identify
+- 6-B had 10 shots when it should have had 1
+- 7-C was missing a black space
+- Added a diamond to 7-I to skirt an unintended solution
+- 7-E was changed significantly

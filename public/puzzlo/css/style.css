@@ -45,3 +45,12 @@ body{
     font-family: 'Lin';
     src: url('fonts/LinLibertine_Rah.ttf');
 }
+
+#change-link {
+    
+position: absolute;
+right: 1vh;
+top: 1vh;
+font-size: 4vh;
+color: rgb(151, 161, 194);
+}

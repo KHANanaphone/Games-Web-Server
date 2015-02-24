@@ -3,8 +3,10 @@ PuzzleDefinition.prototype.Puzzle02 = function() {
     this.height = 6;
     this.width = 5;
     this.maxMoves = 5;
+    
     this.tier = 6;
-
+    this.textID = '6-A';
+    this.name = 'Mirrors';
     this.description = "Mirrors reflect shots. They can be destroyed by hitting them on the side.";
 
     this.initialContents = [
@@ -26,9 +28,11 @@ PuzzleDefinition.prototype.Puzzle03 = function() {
 
     this.height = 6;
     this.width = 6;
-    this.maxMoves = 10;
-    this.tier = 6;
-
+    this.maxMoves = 1;
+        
+    this.tier = 6.1;
+    this.textID = '6-B';
+    this.name = 'Splitters'
     this.description = "Splitters are like mirrors, but the initial shot continues through.";
 
     this.initialContents = [

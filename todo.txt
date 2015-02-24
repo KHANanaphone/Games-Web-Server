@@ -164,11 +164,29 @@ http://pastebin.com/yXfQXw8u
 
 + implement mirrors & splitters
 
-2/21/2015
+2/22/2015
 + make puzzles for block 6-7
 + write to game
 + update
-- debug solving
++ debug solving
+
+2/23/2015
++ fix overwriting of flat mirrors (because their value is 0)
+++ can't add any item now
+
++ add a level id indicator
+++ give each puzzle a name + letter;
+
++ do a "patch notes" thing
+-- insert a patch notes link
+
++ test every level
+
+
+- implement potions
+- implement jewels
+- make puzzles for block 8-9
+- write to game
 =====================
 Other:
 - Nice looking index page
@@ -176,15 +194,9 @@ Other:
 - Fix my voice messaging / voice message
 
 Puzzlo:
+- more work on fonts/text sizing
 - shifting animation
-
-- css transition conflicts
-? Moves should "queue up" if used during another animation
-
-- Menu Scene
--- Stagger animations for unlocking
-
-- nicer looking shot counter (it's important information)
-
-? Shifting on fadeout/fadein for some reason
-? skips
+- nicer looking shot counter 
+- nicer looking everything
+- skips?
+- tutorial stuff

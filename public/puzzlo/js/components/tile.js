@@ -46,18 +46,18 @@ function Tile($tile, properties) {
 };
 
 Tile.prototype.Clicked = function() {
-    
-//    if (Timer.running)
-//        return;
+
+    //    if (Timer.running)
+    //        return;
 
     var nextItemTile = PuzzleScene.nextItemTile;
 
+    
     if (!nextItemTile)
         return;
-    else if (nextItemTile.type == 'shifter'){
+    else if (nextItemTile.type == 'shifter') {
         ShifterLogic.DoShift(nextItemTile, this);
-    }
-    else if (this.value > 0 || this.type == 'block')
+    } else if (this.type != 'blank')
         return;
     else {
         this.SetContents(nextItemTile);
@@ -68,17 +68,16 @@ Tile.prototype.Clicked = function() {
 
 Tile.prototype.SetContents = function(contents) {
 
-    if(typeof contents === 'object'){
+    if (typeof contents === 'object') {
         this.type = contents.type;
         this.subtype = contents.subtype;
         this.value = contents.value;
+    } else {
+        this.type = intToType(Math.floor(contents / 100) % 10);
+        this.subtype = intToSubtype(this.type, Math.floor((contents / 10) % 10));
+        this.value = Math.floor(contents % 10);
     }
-    else{
-        this.type = intToType(Math.round(contents / 100) % 10);
-        this.subtype = intToSubtype(this.type, Math.round((contents / 10) % 10));
-        this.value = Math.round(contents % 10);
-    }
-    
+
 
     this.DrawContents();
 
@@ -100,14 +99,14 @@ Tile.prototype.SetContents = function(contents) {
 
     function intToSubtype(t, b) {
 
-        if(t == 'mirror'){
-            
-            if(b == 0)
+        if (t == 'mirror') {
+
+            if (b == 0)
                 return 'normal';
             else
                 return 'splitter';
         }
-        
+
         if (b == 0)
             return 'normal';
         else if (b == 1)
@@ -120,7 +119,7 @@ Tile.prototype.SetContents = function(contents) {
 }
 
 Tile.prototype.DrawContents = function() {
-    
+
     var $inner = this.$tile.find('.inner').css('background-color', '');
     var $icon = this.$tile.find('.icon').empty().attr('tile-type', this.type);
 
@@ -132,7 +131,7 @@ Tile.prototype.DrawContents = function() {
         drawBomb();
     else if (this.type == 'shifter')
         drawShifter(this.value);
-    else if(this.type == 'mirror')
+    else if (this.type == 'mirror')
         drawMirror(this.subtype, this.value);
 
     $icon.attr('tile-subtype', this.subtype);
@@ -170,9 +169,9 @@ Tile.prototype.DrawContents = function() {
         $shifter.find('polygon').attr('transform', 'rotate(' + (90 * value) + ',100,75)');
         $icon.append($shifter);
     };
-    
-    function drawMirror(subtype, value){
-        
+
+    function drawMirror(subtype, value) {
+
         var $mirror = $('.hidden .mirror-icon').clone();
         $mirror.find('polygon').attr('transform', 'rotate(' + (-45 * value) + ',100,100)');
         $icon.append($mirror);

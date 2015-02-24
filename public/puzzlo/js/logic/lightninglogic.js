@@ -53,6 +53,10 @@ LightningLogic.ApplyLightning = function(action, tile) {
             return true;
 
         tile.value--;
+        
+        if(tile.value == 0)
+            tile.Clear();
+        
         tile.DrawContents();
         
     } else if (tile.type == 'block') {

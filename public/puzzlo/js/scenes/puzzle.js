@@ -56,7 +56,9 @@ PuzzleScene.ShowPuzzle = function(x, y) {
 
     var puzzle = new PuzzleDefinition(x,y);
 
-    $('#text-area .text').text(puzzle.description);
+    $('#text-area #puzzle-id').text(puzzle.textID);
+    $('#text-area #puzzle-name').text(puzzle.name);
+    $('#text-area #puzzle-description').text(puzzle.description ? puzzle.description : '');
 
     PuzzleScene.puzzleX = x;
     PuzzleScene.puzzleY = y;
