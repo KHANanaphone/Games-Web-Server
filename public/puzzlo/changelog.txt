@@ -1,6 +1,12 @@
 SECRET NOTES:
 - You can ctrl-click a puzzle to solve it immediately if your save data gets replaced or something.
 
+2/24/2015 
+
+- Implemented & drew potions/poisons
+- Tutorial puzzles made
+- Added 'difficulty rating' buttons after each puzzle. This isn't a permanent thing or anything. It does nothing right now.
+
 2/23/2015
 
 - Added a changelog (this, lol)
@@ -11,8 +17,3 @@ SECRET NOTES:
 - 7-I changed significantly
 - 7-E changed significantly
 - Added colors for tiers thing
-
-2/24/2015 
-
-- Implemented & drew potions/poisons
-- Tutorial puzzles made

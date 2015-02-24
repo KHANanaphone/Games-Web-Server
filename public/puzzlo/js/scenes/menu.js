@@ -92,7 +92,7 @@ MenuScene.Init = function() {
             
             if(DEBUG_CTRL){
                 
-                MenuScene.Solved(x, y, true);
+                MenuScene.Solved(x, y, '', true);
                 return;
             }
             
@@ -108,13 +108,15 @@ MenuScene.Show = function() {
     $('#puzzle-scene').fadeOut();
 };
 
-MenuScene.Solved = function(x, y, fast) {
+MenuScene.Solved = function(x, y, rating, fast) {
 
     if(fast){
         
         updateSolved(x, y);
         return;
     }
+    
+    sendRating(x, y, rating);
     
     $('#main-content').css('background-color', '');
     MenuScene.Show();
@@ -133,6 +135,18 @@ MenuScene.Solved = function(x, y, fast) {
         var $tile = MenuScene.$levelTiles[x][y];
         $tile.removeClass('ready').addClass('complete');
         MenuScene.CheckForUnlockableTiles();
+    }
+    
+    function sendRating(x, y, rating){
+        
+//        $.post('/ratings', {
+//            Rating: {
+//                puzzle_id: x + '-' + y,
+//                value: rating
+//            }
+//        }, function(a){
+//            
+//        });
     }
 }
 

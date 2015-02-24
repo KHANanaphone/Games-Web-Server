@@ -29,6 +29,14 @@
     border: 1px solid #CCC;
 }
 
+.popup .difficulty{
+    
+    display: block;
+    font-family: sans-serif;
+    font-size: 2vh;
+    line-height: 0vh;
+}
+
 .popup .btn {
 
     font-size: 4vh;

@@ -1,0 +1,18 @@
+<ul class="breadcrumb">
+    <li><a href="/">Home</a> <span class="divider">/</span></li>
+    <li><a href="<%- pathTo.ratings() %>">ratings</a> <span class="divider">/</span></li>
+    <li class="active"><a href="#">Edit rating</a></li>
+</ul>
+
+<div class="page-header">
+    <h1>Edit rating</h1>
+</div>
+
+<% var form = formFor(rating, {action: pathTo.rating(rating), method: 'PUT', id: "rating-form", class: 'form-horizontal'}) %>
+<%- form.begin() %>
+<%- include _form %>
+<div class="form-actions">
+    <%- form.submit('<i class="icon-ok icon-white"></i> Update rating', {class: 'btn btn-primary'}) %> or
+    <%- linkTo('Cancel', pathTo.rating(rating), {class: 'btn'}) %>
+</div>
+<%- form.end() %>

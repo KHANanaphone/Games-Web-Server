@@ -32,7 +32,10 @@
 <div class="popup" id="success-popup">
     Level Complete!
     <br/>
-    <button class="btn btn-success" onclick="MenuScene.Solved(PuzzleScene.puzzleX, PuzzleScene.puzzleY)">Continue</button>
+    <span class='difficulty'>Rate the difficulty:</span>
+    <button class="btn btn-success" onclick="MenuScene.Solved(PuzzleScene.puzzleX, PuzzleScene.puzzleY, 'easy')">Easy</button>
+    <button class="btn btn-warning" onclick="MenuScene.Solved(PuzzleScene.puzzleX, PuzzleScene.puzzleY, 'medium')">Medium</button>
+    <button class="btn btn-danger" onclick="MenuScene.Solved(PuzzleScene.puzzleX, PuzzleScene.puzzleY, 'hard')">Hard</button>
 </div>
 
 <div class="popup" id="failure-popup">

@@ -183,13 +183,19 @@ http://pastebin.com/yXfQXw8u
 + test every level
 ++ different color per tier
 
-- implement potions
+2/24/2015
++ implement potions
 ++ draw it
--- logic
+++ logic
 
-- implement jewels
--- draw it
--- logic
++ implement jewels
+++ draw it
+++ logic
+
+- make a 'difficulty rater'
+- make rater not show up for tutorial levels or for puzzles the person has solved already
+
+- setup mongodb
 
 - make puzzles for block 8-9
 - write to game
