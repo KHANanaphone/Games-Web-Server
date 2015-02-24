@@ -178,9 +178,10 @@ http://pastebin.com/yXfQXw8u
 ++ give each puzzle a name + letter;
 
 + do a "patch notes" thing
--- insert a patch notes link
+++ insert a patch notes link
 
 + test every level
+- different color per tier
 
 
 - implement potions

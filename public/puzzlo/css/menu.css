@@ -167,9 +167,43 @@
 
     cursor: pointer;
 
-
 }
 
+.level-tile.complete[tier='0'],
+.level-tile.complete[tier='1']
+{
+    background-color: rgb(0, 255, 0);
+}
+
+.level-tile.complete[tier='2'],
+.level-tile.complete[tier='3']{
+    background-color: rgb(35, 200, 20);
+}
+
+.level-tile.complete[tier='4'],
+.level-tile.complete[tier='5']{
+    background-color: rgb(70, 165, 40);
+}
+
+.level-tile.complete[tier='6'],
+.level-tile.complete[tier='7']{
+    background-color: rgb(105, 130, 60);
+}
+
+.level-tile.complete[tier='9'],
+.level-tile.complete[tier='10']{
+    background-color: rgb(140, 95, 80);
+}
+
+.level-tile.complete[tier='11'],
+.level-tile.complete[tier='12']{
+    background-color: rgb(175, 60, 100);
+}
+
+.level-tile.complete[tier='13'],
+.level-tile.complete[tier='14']{
+    background-color: rgb(210, 25, 120);
+}
 
 .level-tile.ready:hover,
 

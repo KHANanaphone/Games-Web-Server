@@ -10,3 +10,4 @@ SECRET NOTES:
 - 7-C was missing a black space
 - 7-I changed significantly
 - 7-E changed significantly
+- Added colors for tiers thing

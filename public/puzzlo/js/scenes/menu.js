@@ -65,6 +65,9 @@ MenuScene.Init = function() {
                     
                     var puzz = new PuzzleDefinition(i, j);
                     $levelTile.data('tier', puzz.tier);
+                    $levelTile.attr('tier', Math.round(puzz.tier));
+                    $levelTile.attr('title', puzz.textID);
+                    
                 } catch (err) {
                     $levelTile.addClass('noPuzz');
                     //console.log('no puzz ' + i + '-' + j);
