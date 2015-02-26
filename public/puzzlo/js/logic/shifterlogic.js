@@ -38,7 +38,6 @@ ShifterLogic.DoShift = function(nextItemTile, targetTile) {
             else{
 
                 if(nextTile.type == 'blank' || 
-                   (nextTile.type != 'block' && nextTile.value == 0) || 
                    shift(direction, nextTile)){
                     
                     nextTile.SetContents(targetTile);

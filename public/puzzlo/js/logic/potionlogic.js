@@ -1,13 +1,19 @@
 var PotionLogic = {};
 
-PotionLogic.ApplyPotion = function(){
-  
-    PuzzleScene.puzzle.movesLeft = PuzzleScene.puzzle.maxMoves;
+PotionLogic.ApplyPotion = function() {
+
+    if (PuzzleScene.puzzle.movesLeft == PuzzleScene.puzzle.maxMoves)
+        return;
+
+    PuzzleScene.puzzle.movesLeft++;
     PuzzleScene.UpdateMovesLeft();
 };
 
-PotionLogic.ApplyPoison = function(){
-    
-    PuzzleScene.puzzle.movesLeft = 0;
+PotionLogic.ApplyPoison = function() {
+
+    if (PuzzleScene.puzzle.movesLeft == 0)
+        return;
+
+    PuzzleScene.puzzle.movesLeft--;
     PuzzleScene.UpdateMovesLeft();
 }

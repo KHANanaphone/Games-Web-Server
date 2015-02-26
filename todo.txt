@@ -192,13 +192,21 @@ http://pastebin.com/yXfQXw8u
 ++ draw it
 ++ logic
 
+2/25-26/2015
+- change ps/pt to -1/+1
+
++ make puzzles for block 8-9
++ write to game
++ poison shifting issue
++ disable difficulty rater for now
++ update
+- shower + ramen
+
 - make a 'difficulty rater'
 - make rater not show up for tutorial levels or for puzzles the person has solved already
 
 - setup mongodb
 
-- make puzzles for block 8-9
-- write to game
 =====================
 Other:
 - Nice looking index page

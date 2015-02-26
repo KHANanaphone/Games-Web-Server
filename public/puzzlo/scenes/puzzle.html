@@ -1,6 +1,6 @@
 <div id="text-area">
     <div id='puzzle-name-section'>
-        <span id='puzzle-id'></span> <span id='puzzle-name'></span>
+        <span id='puzzle-id'></span>  <span id='puzzle-name'></span>
     </div>
     <div id='puzzle-description'></div>
 </div>
@@ -32,10 +32,12 @@
 <div class="popup" id="success-popup">
     Level Complete!
     <br/>
-    <span class='difficulty'>Rate the difficulty:</span>
-    <button class="btn btn-success" onclick="MenuScene.Solved(PuzzleScene.puzzleX, PuzzleScene.puzzleY, 'easy')">Easy</button>
+    <!--    <span class='difficulty'>Rate the difficulty:</span>-->
+    <button class="btn btn-success" onclick="MenuScene.Solved(PuzzleScene.puzzleX, PuzzleScene.puzzleY, 'easy')">Continue</button>
+    <!--
     <button class="btn btn-warning" onclick="MenuScene.Solved(PuzzleScene.puzzleX, PuzzleScene.puzzleY, 'medium')">Medium</button>
     <button class="btn btn-danger" onclick="MenuScene.Solved(PuzzleScene.puzzleX, PuzzleScene.puzzleY, 'hard')">Hard</button>
+-->
 </div>
 
 <div class="popup" id="failure-popup">
@@ -72,16 +74,16 @@
     <svg class="shifter-icon" viewBox="0 0 200 150">
         <polygon points="100,25 175,100 150,125 100,75 50,125 25,100"></polygon>
     </svg>
-    
+
     <svg class="mirror-icon" viewBox="0 0 200 200">
         <polygon points="10,85 190,85 190,115 10,115"></polygon>
     </svg>
-    
+
     <svg class='potion-icon' viewBox='0 0 200 200'>
         <path class='bottom' d='M25,175 L45,195 L155,195 L175,175 L120,120 L120,90 L80,90 L80,120 Z'></path>
         <path class='top' d='M120,90 L120,25 L80,25 L80,90'></path>
     </svg>
-    
+
     <svg class='poison-icon' viewBox='0 0 200 200'>
         <path class='bottom' d='M25,175 L45,195 L155,195 L175,175 L120,120 L120,90 L80,90 L80,120 Z'></path>
         <path class='top' d='M120,90 L120,25 L80,25 L80,90'></path>
