@@ -1,6 +1,12 @@
 SECRET NOTES:
 - You can ctrl-click a puzzle to solve it immediately if your save data gets replaced or something.
 
+2/26/2015
+
+- Made puzzles for block 9 (some are already bugged lol)
+- Fixed an issue with potions/shifters
+- Setting up a thing where you rate a puzzle's difficulty so I can like know what puzzles are 2 ez/hard
+
 2/24/2015 
 
 - Implemented & drew potions/poisons

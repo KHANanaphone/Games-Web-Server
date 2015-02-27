@@ -202,6 +202,11 @@ http://pastebin.com/yXfQXw8u
 + update
 - shower + ramen
 
+- fix bingo bongo
+- fix bouncy
+- fix other
+- kaboom bug
+- improve colors for different blocks
 - make a 'difficulty rater'
 - make rater not show up for tutorial levels or for puzzles the person has solved already
 
