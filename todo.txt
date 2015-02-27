@@ -200,18 +200,18 @@ http://pastebin.com/yXfQXw8u
 + poison shifting issue
 + disable difficulty rater for now
 + update
-- shower + ramen
++ shower + ramen
 
-- fix bingo bongo
-- fix bouncy
-- fix other
+2/27/2015
++ fix bingo bongo
++ fix bouncy
++ fix mirrorz
 - kaboom bug
+
 - improve colors for different blocks
-- make a 'difficulty rater'
-- make rater not show up for tutorial levels or for puzzles the person has solved already
 
 - setup mongodb
-
+- have it upload data if a puzzle is beaten with items/shots left
 =====================
 Other:
 - Nice looking index page

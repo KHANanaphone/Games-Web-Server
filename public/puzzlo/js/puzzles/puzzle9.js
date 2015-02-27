@@ -2,7 +2,7 @@ PuzzleDefinition.prototype.Puzzle37 = function() {
 
     this.height = 5;
     this.width = 4;
-    this.maxMoves = 2;
+    this.maxMoves = 1;
     this.items = [1501, 1501]
 
     this.tier = 9;
@@ -76,7 +76,7 @@ PuzzleDefinition.prototype.Puzzle48 = function() {
 
         [1000, 1000, 1000, 1000, 1000, 1000],
 
-        [1111, 1111, 1111, 1111, 1101, 1101],
+        [1111, 1111, 1111, 1111, 1121, 1121],
     ];
 };
 
@@ -180,7 +180,7 @@ PuzzleDefinition.prototype.Puzzle59 = function() {
         
         [1000, 1000, 1000, 1000, 1000],
         
-        [1200, 1610, 1200, 1000, 1000],
+        [1200, 1221, 1200, 1000, 1000],
         
         [1200, 1101, 1200, 1000, 1502],
         

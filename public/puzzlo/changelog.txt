@@ -1,6 +1,13 @@
 SECRET NOTES:
 - You can ctrl-click a puzzle to solve it immediately if your save data gets replaced or something.
 
+2/27/2016
+
+- Bingo Bongo (9-A) was supposed to have 1 shot, not 2.
+- Bouncy (9-D) had two dimaonds changed from black to yellow.
+- Mirrorz (9-H) has poison changed to yellow block. (Now it's in the wrong section
+- Fixed a bug with potions shot at close range.
+
 2/26/2015
 
 - Made puzzles for block 9 (some are already bugged lol)
