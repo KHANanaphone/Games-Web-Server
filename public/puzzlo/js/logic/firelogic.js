@@ -74,7 +74,11 @@ FireLogic.ApplyFire = function(action, tile) {
         
         tile.Clear();
         return true;
-    } 
+    } else if(tile.type == 'teleporter'){
+        
+        return TeleporterLogic.ApplyLogic(action, tile);
+    }
+
 
     return false;
 }

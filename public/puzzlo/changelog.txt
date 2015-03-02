@@ -1,7 +1,11 @@
 SECRET NOTES:
 - You can ctrl-click a puzzle to solve it immediately if your save data gets replaced or something.
 
-2/27/2016
+3/1/2015
+
+- Implemented teleporters
+
+2/27/2015
 
 - Bingo Bongo (9-A) was supposed to have 1 shot, not 2.
 - Bouncy (9-D) had two dimaonds changed from black to yellow.

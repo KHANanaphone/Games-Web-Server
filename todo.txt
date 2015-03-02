@@ -206,12 +206,16 @@ http://pastebin.com/yXfQXw8u
 + fix bingo bongo
 + fix bouncy
 + fix mirrorz
-- kaboom bug
++ kaboom bug
 
-- improve colors for different blocks
+3/1/2015
++ improve colors for different blocks
 
-- setup mongodb
-- have it upload data if a puzzle is beaten with items/shots left
++ implement teleporters
+++ draw
+++ don't animate if only 1 teleporter
+++ logic
+
 =====================
 Other:
 - Nice looking index page
@@ -221,6 +225,7 @@ Other:
 Puzzlo:
 - more work on fonts/text sizing
 - shifting animation
+- more animations
 - nicer looking shot counter 
 - nicer looking everything
 - skips?

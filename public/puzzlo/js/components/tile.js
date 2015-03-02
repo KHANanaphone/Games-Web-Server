@@ -52,7 +52,6 @@ Tile.prototype.Clicked = function() {
 
     var nextItemTile = PuzzleScene.nextItemTile;
 
-    
     if (!nextItemTile)
         return;
     else if (nextItemTile.type == 'shifter') {
@@ -60,7 +59,12 @@ Tile.prototype.Clicked = function() {
     } else if (this.type != 'blank')
         return;
     else {
+        
         this.SetContents(nextItemTile);
+        
+        if(nextItemTile.type == 'teleporter')
+            TeleporterLogic.CheckTeleporters();
+        
         nextItemTile.SetContents(1000);
         PuzzleScene.NextItem();
     }
@@ -97,6 +101,8 @@ Tile.prototype.SetContents = function(contents) {
             return 'mirror';
         else if (a == 6)
             return 'potion';
+        else if(a == 7)
+            return 'teleporter';
     }
 
     function intToSubtype(t, b) {
@@ -115,6 +121,18 @@ Tile.prototype.SetContents = function(contents) {
                 return 'potion';
             else
                 return 'poison';
+        }
+        
+        if (t == 'teleporter'){
+            
+            if(b == 0)
+                return 't0';
+            else if(b == 1)
+                return 't1';
+            else if(b == 2)
+                return 't2';
+            else if(b == 3)
+                return 't3';            
         }
 
         if (b == 0)
@@ -145,6 +163,8 @@ Tile.prototype.DrawContents = function() {
         drawMirror(this.subtype, this.value);
     else if(this.type =='potion')
         drawPotion(this.subtype);
+    else if(this.type == 'teleporter')
+        drawTeleporter(this.subtype);
 
     $icon.attr('tile-subtype', this.subtype);
 
@@ -201,6 +221,22 @@ Tile.prototype.DrawContents = function() {
             var $potion = $('.hidden .poison-icon').clone();
             $icon.append($potion);
         }    
+    }
+    
+    function drawTeleporter(subtype){
+        
+        var $teleporter = $('.hidden .teleporter-icon').clone().addClass(subtype);
+        
+        if(subtype == 't0')
+            $teleporter.find('text').text('\u2660');
+        else if(subtype == 't1')
+            $teleporter.find('text').text('\u2663');
+        else if(subtype == 't2')
+            $teleporter.find('text').text('\u2665');
+        else if(subtype == 't3')
+            $teleporter.find('text').text('\u2666');
+                
+        $icon.append($teleporter).removeClass('active');
     }
 }
 

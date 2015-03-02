@@ -172,37 +172,37 @@
 .level-tile.complete[tier='0'],
 .level-tile.complete[tier='1']
 {
-    background-color: rgb(0, 255, 0);
+    background-color: #8F8;
 }
 
 .level-tile.complete[tier='2'],
 .level-tile.complete[tier='3']{
-    background-color: rgb(35, 200, 20);
+    background-color: #0F0;
 }
 
 .level-tile.complete[tier='4'],
 .level-tile.complete[tier='5']{
-    background-color: rgb(70, 165, 40);
+    background-color: #0A0;
 }
 
 .level-tile.complete[tier='6'],
 .level-tile.complete[tier='7']{
-    background-color: rgb(105, 130, 60);
+    background-color: #FF6;
 }
 
 .level-tile.complete[tier='8'],
 .level-tile.complete[tier='9']{
-    background-color: rgb(140, 95, 80);
+    background-color: #E4E43D;
 }
 
 .level-tile.complete[tier='10'],
 .level-tile.complete[tier='11']{
-    background-color: rgb(175, 60, 100);
+    background-color: #F00;
 }
 
 .level-tile.complete[tier='12'],
 .level-tile.complete[tier='13']{
-    background-color: rgb(210, 25, 120);
+    background-color: #800;
 }
 
 .level-tile.ready:hover,

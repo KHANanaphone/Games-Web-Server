@@ -157,6 +157,7 @@ PuzzleScene.SetupBoard = function(puzzle) {
                 PuzzleScene.board[i].push(tile);
             }
         }
+        
     };
 
     function setMovesMeter(){
@@ -226,6 +227,8 @@ PuzzleScene.SetupPuzzle = function() {
                 PuzzleScene.board[j][i].SetContents(puzzle.contents[j][i]);
             }
         }
+        
+        TeleporterLogic.CheckTeleporters();
     };
 
     function setupItems() {

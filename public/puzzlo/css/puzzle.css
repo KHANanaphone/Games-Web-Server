@@ -507,3 +507,62 @@
     fill: rgb(41, 246, 41); 
     stroke-width: 3px;
 }
+
+/* TELEPORTERS */
+
+.icon[tile-type='teleporter'] .spiral{
+    stroke-width: 10px;
+    stroke: white;
+    visibility: hidden;
+}
+
+.icon[tile-type='teleporter'].active .spiral{
+    
+    visibility: visible;
+}
+
+.icon[tile-type='teleporter'] circle{
+    stroke-width: 10px;
+}
+
+.icon[tile-type='teleporter'][tile-subtype='t0'] circle{
+    fill: red;
+    stroke: rgb(146, 75, 75);
+}
+
+
+.icon[tile-type='teleporter'][tile-subtype='t1'] circle{
+    fill: rgb(80, 80, 238);
+    stroke: rgb(51, 51, 105);
+}
+
+
+.icon[tile-type='teleporter'][tile-subtype='t2'] circle{
+    fill: rgb(111, 192, 111);
+    stroke: rgb(62, 116, 62);
+}
+
+
+.icon[tile-type='teleporter'][tile-subtype='t3'] circle{
+    fill: rgb(211, 211, 108);
+    stroke: rgb(87, 90, 23);
+}
+
+.icon[tile-type='teleporter'][tile-subtype='t0'] text{
+    fill: rgb(146, 75, 75);
+}
+
+
+.icon[tile-type='teleporter'][tile-subtype='t1'] text{
+    fill: rgb(51, 51, 105);
+}
+
+
+.icon[tile-type='teleporter'][tile-subtype='t2'] text{
+    fill: rgb(62, 116, 62);
+}
+
+
+.icon[tile-type='teleporter'][tile-subtype='t3'] text{
+    fill: rgb(87, 90, 23);
+}
