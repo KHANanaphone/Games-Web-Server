@@ -71,6 +71,7 @@
     text-align: center;
     font-family: 'Lin';
     font-size: 2.2vh;
+    line-height: 1.5em;
 }
 
 #tile-area {
@@ -549,20 +550,20 @@
 }
 
 .icon[tile-type='teleporter'][tile-subtype='t0'] text{
-    fill: rgb(146, 75, 75);
+    fill: rgb(213, 0, 0);
 }
 
 
 .icon[tile-type='teleporter'][tile-subtype='t1'] text{
-    fill: rgb(51, 51, 105);
+    fill: rgb(45, 45, 231);
 }
 
 
 .icon[tile-type='teleporter'][tile-subtype='t2'] text{
-    fill: rgb(62, 116, 62);
+    fill: rgb(59, 148, 59);
 }
 
 
 .icon[tile-type='teleporter'][tile-subtype='t3'] text{
-    fill: rgb(87, 90, 23);
+    fill: rgb(143, 148, 35);
 }

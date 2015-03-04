@@ -216,6 +216,18 @@ http://pastebin.com/yXfQXw8u
 ++ don't animate if only 1 teleporter
 ++ logic
 
+3/2-3/2015
+
++ fix a 'line height' issue with the description text
++ shifter and teleporter bug
+
++ make puzzles for blocks 10 & 11
+++ 10
+++ 11
+
++ changelog
++ update
+
 =====================
 Other:
 - Nice looking index page
@@ -223,6 +235,7 @@ Other:
 - Fix my voice messaging / voice message
 
 Puzzlo:
+- compress files
 - more work on fonts/text sizing
 - shifting animation
 - more animations

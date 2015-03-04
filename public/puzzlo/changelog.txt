@@ -1,6 +1,11 @@
 SECRET NOTES:
 - You can ctrl-click a puzzle to solve it immediately if your save data gets replaced or something.
 
+3/3/2015
+
+- Line height issue with descriptions fixed
+- Block 11 puzzles made
+
 3/1/2015
 
 - Implemented teleporters

@@ -42,6 +42,7 @@ ShifterLogic.DoShift = function(nextItemTile, targetTile) {
                     
                     nextTile.SetContents(targetTile);
                     targetTile.SetContents(1000);
+                    TeleporterLogic.CheckTeleporters();
                     return true;
                 }
                 else 
