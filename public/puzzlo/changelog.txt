@@ -5,6 +5,7 @@ SECRET NOTES:
 
 - Line height issue with descriptions fixed
 - Block 11 puzzles made
+- Changed a bunch of the colors on the level select
 
 3/1/2015
 
