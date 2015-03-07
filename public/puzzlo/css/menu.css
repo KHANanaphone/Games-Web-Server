@@ -169,58 +169,89 @@
 
 }
 
-.level-tile.complete[tier='0'],
 .level-tile.complete[tier='1']
 {
-    background-color: #8F8;
+    background-color: #E7B6EE;
 }
 
-.level-tile.complete[tier='2'],
+.level-tile.complete[tier='2']{
+    background-color: #B0D8EE;
+}
+
 .level-tile.complete[tier='3']{
-    background-color: #0F0;
+    background-color: #BAFFFC;
 }
 
-.level-tile.complete[tier='4'],
+.level-tile.complete[tier='4']{
+    background-color: #A6FF9E;
+}
+
 .level-tile.complete[tier='5']{
-    background-color: #0A0;
+    background-color: #F5F592;
 }
 
-.level-tile.complete[tier='6'],
+.level-tile.complete[tier='6']{
+    background-color: #F8C466;
+}
+
 .level-tile.complete[tier='7']{
-    background-color: #FF6;
+    background-color: #F77;
 }
 
-.level-tile.complete[tier='8'],
-.level-tile.complete[tier='9']{
-    background-color: #E4E43D;
+#diamond-menu.all-clear .level-tile{
+    background-color: gold;
 }
 
-.level-tile.complete[tier='10'],
-.level-tile.complete[tier='11']{
-    background-color: #F66;
+.level-tile.ready[tier='1']:hover,
+.level-tile.complete[tier='1']:hover,
+#diamond-menu.all-clear .level-tile[tier='1']:hover{
+
+    background-color: #B16ADA;
 }
 
-.level-tile.complete[tier='12'],
-.level-tile.complete[tier='13']{
-    background-color: #800;
+.level-tile.ready[tier='2']:hover,
+.level-tile.complete[tier='2']:hover,
+#diamond-menu.all-clear .level-tile[tier='2']:hover{
+
+    background-color: #389CD3;
 }
 
-.level-tile.ready:hover,
+.level-tile.ready[tier='3']:hover,
+.level-tile.complete[tier='3']:hover,
+#diamond-menu.all-clear .level-tile[tier='3']:hover{
 
-
-.level-tile.complete:hover {
-
-
-    background-color: #DD88FF;
-
-
+    background-color: #39BEB9;
 }
 
+.level-tile.ready[tier='4']:hover,
+.level-tile.complete[tier='4']:hover,
+#diamond-menu.all-clear .level-tile[tier='4']:hover{
+
+    background-color: #4EEB40;
+}
+
+.level-tile.ready[tier='5']:hover,
+.level-tile.complete[tier='5']:hover,
+#diamond-menu.all-clear .level-tile[tier='5']:hover{
+
+    background-color: #FAEC47;
+}
+
+.level-tile.ready[tier='6']:hover,
+.level-tile.complete[tier='6']:hover,
+#diamond-menu.all-clear .level-tile[tier='6']:hover{
+
+    background-color: #F79F00;
+}
+
+.level-tile.ready[tier='7']:hover,
+.level-tile.complete[tier='7']:hover,
+#diamond-menu.all-clear .level-tile[tier='7']:hover{
+
+    background-color: #F00;
+}
 
 .noPuzz {
 
-
     visibility: hidden;
-
-
 }

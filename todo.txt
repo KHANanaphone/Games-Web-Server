@@ -228,6 +228,17 @@ http://pastebin.com/yXfQXw8u
 + changelog
 + update
 
+3/4-5/2015
+
++ make puzzles for blocks 12 & 13
+
+3/6/2015
+
++ background color transitions should be to "inner", not the background color. this should reduce conflicts.
+- consolidate blocks
+- victory thing
+- puzzle colors again
+
 =====================
 Other:
 - Nice looking index page
@@ -235,11 +246,10 @@ Other:
 - Fix my voice messaging / voice message
 
 Puzzlo:
-- compress files
+- music
 - more work on fonts/text sizing
 - shifting animation
 - more animations
+- compress files
 - nicer looking shot counter 
 - nicer looking everything
-- skips?
-- tutorial stuff

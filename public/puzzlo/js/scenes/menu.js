@@ -2,7 +2,7 @@ var MenuScene = {
     solved: null
 };
 
-var SOLVED_NAME = 's5';
+var SOLVED_NAME = 's7';
 
 MenuScene.Init = function() {
 
@@ -116,7 +116,7 @@ MenuScene.Solved = function(x, y, rating, fast) {
         return;
     }
     
-    sendRating(x, y, rating);
+    //sendRating(x, y, rating);
     
     $('#main-content').css('background-color', '');
     MenuScene.Show();
@@ -139,14 +139,14 @@ MenuScene.Solved = function(x, y, rating, fast) {
     
     function sendRating(x, y, rating){
         
-//        $.post('/ratings', {
-//            Rating: {
-//                puzzle_id: x + '-' + y,
-//                value: rating
-//            }
-//        }, function(a){
-//            
-//        });
+        $.post('/ratings', {
+            Rating: {
+                puzzle_id: x + '-' + y,
+                value: rating
+            }
+        }, function(a){
+            
+        });
     }
 }
 
@@ -179,6 +179,13 @@ MenuScene.CheckForUnlockableTiles = function() {
             else if($lt.data('tier') == tier)
                 $lt.addClass('ready');
         }
+    }
+    
+    if(tier == 999 && !MenuScene.allClear){
+        
+        MenuScene.allClear = true;
+        $('#diamond-menu').addClass('all-clear');
+        $('#bottom-section').text('All Clear!');
     }
 }
 

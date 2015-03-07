@@ -242,16 +242,15 @@ Tile.prototype.DrawContents = function() {
 
 Tile.prototype.FlashBackground = function(color) {
 
-    var $tile = this.$tile;
-    var oldColor = $tile.css('background-color');
+    var $tile = this.$tile.find('.inner');
 
-    TweenMax.fromTo($tile, Timer.interval / 500, {
+    TweenMax.fromTo($tile, Timer.interval / 400, {
         css: {
             backgroundColor: color
         }
     }, {
         css: {
-            backgroundColor: oldColor
+            backgroundColor: 'transparent'
         },
         onComplete: function() {
             $tile.css('background-color', '');
