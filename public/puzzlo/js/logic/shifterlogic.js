@@ -20,7 +20,6 @@ ShifterLogic.DoShift = function(nextItemTile, targetTile) {
             return;
         };
         
-        
         var x = targetTile.x;
         var y = targetTile.y;
         
@@ -40,7 +39,7 @@ ShifterLogic.DoShift = function(nextItemTile, targetTile) {
                 if(nextTile.type == 'blank' || 
                    shift(direction, nextTile)){
                     
-                    nextTile.SetContents(targetTile);
+                    animateShift(nextTile, targetTile, direction);
                     targetTile.SetContents(1000);
                     TeleporterLogic.CheckTeleporters();
                     return true;
@@ -52,5 +51,18 @@ ShifterLogic.DoShift = function(nextItemTile, targetTile) {
         catch(e) {
             return false;
         }
+    }
+    
+    function animateShift(target, contents, direction){
+        
+        target.SetContents(contents);
+        
+        var property = ['bottom', 'left', 'top', 'right'][direction];
+        var obj1 = {};
+        obj1[property] = '-200%';
+        var obj2 = {};
+        obj2[property] = '0%';
+        
+        target.$tile.find('.inner').css(obj1).animate(obj2, 200);
     }
 }

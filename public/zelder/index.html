@@ -6,6 +6,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="jquery.mousewheel.min.js"></script>
     <title>Zelder Map Thing</title>
 
     <style>
@@ -48,7 +49,9 @@
 
 <body oncontextmenu="return false;">
     <div id="map">
-        <img src="map.png">
+        <button class="btn btn-default" onclick='loadMap("map.png")'>Map</button>
+        <button class="btn btn-default" onclick='loadMap("level9.png")'>Level 9</button><br/>
+        <img id='image'>
     </div>
     <div id='hidden'>
         
@@ -63,19 +66,30 @@
 
 <script>
     
+    function loadMap(file){
+        
+        $('#map .box').remove();
+        $('#image').attr('src', file);
+    }
+    
     $('#map img').mousedown(function(e){
 
         var $clone = $('#hidden .box').clone();
         $('#map').append($clone);
         
-        $clone.css({'left': e.offsetX - $clone.width()/2 + 5, 'top': e.offsetY - $clone.height()/2 + 2});
+        $clone.css({'left': e.offsetX - $clone.width()/2 + 5, 'top': e.offsetY - $clone.height()/2 + 20});
         
         if(e.which != 1)
-            setMode($clone, 0);
+            setMode($clone, -1);
         else
             setMode($clone, 1);
         
         $clone.mousedown(boxClicked);
+        $clone.on('mousewheel', function(event){
+            
+            setMode($(this), parseInt($(this).attr('val')) + event.deltaY);
+            event.preventDefault = true;
+        });
         
         e.preventDefault = true;
     });
@@ -84,14 +98,14 @@
         
         if(e.which != 1){
             
-            if(parseInt($(this).attr('val')) == 0){
+            if(parseInt($(this).attr('val')) == -1){
                 
                 $(this).remove();
                 return;
                 
             }
             
-            setMode($(this), 0);
+            setMode($(this), -1);
         }
         else
             setMode($(this), parseInt($(this).attr('val')) + 1);
@@ -103,8 +117,10 @@
     
         if(val > 15)
             val = 1;
+        else if (val == 0)
+            val = 15;
         
-        if(val == 0)
+        if(val == -1)
             $box.text('X').addClass('clear')
         else
             $box.removeClass('clear');

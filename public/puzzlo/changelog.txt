@@ -1,6 +1,10 @@
 SECRET NOTES:
 - You can ctrl-click a puzzle to solve it immediately if your save data gets replaced or something.
 
+3/8/2015
+
+- New "shifting" animation
+
 3/6/2015
 
 - Final block of puzzles done.

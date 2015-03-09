@@ -165,12 +165,12 @@
     transition: fill 0.2s;
 }
 
-.do.filled{
+.dot.filled{
     fill: #AAA;
 }
 
 .dot.hollow{
-    fill: white;
+    fill: transparent;
 }
 
 #bottom-area a {
@@ -298,6 +298,7 @@
 
     left: 0;
 
+    z-index: 10;
 }
 
 .icon {

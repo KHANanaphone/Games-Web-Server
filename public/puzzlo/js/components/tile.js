@@ -81,8 +81,7 @@ Tile.prototype.SetContents = function(contents) {
         this.subtype = intToSubtype(this.type, Math.floor((contents / 10) % 10));
         this.value = Math.floor(contents % 10);
     }
-
-
+    
     this.DrawContents();
 
     function intToType(a) {
