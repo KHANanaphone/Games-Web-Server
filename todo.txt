@@ -241,19 +241,26 @@ http://pastebin.com/yXfQXw8u
 
 3/7/2015
 + shifting animation
-- irc bot
-- time clicker
+
+3/9/2015
++ irc bot
++ time clicker
+
+3/10/2015
+- mongodb bot connection
+- botslots
+
+
 =====================
 Other:
+- resume
 - Nice looking index page
 - Fill out linkedin
 - Fix my voice messaging / voice message
 
 Puzzlo:
 - music
-- music
 - more animations
 - nicer looking everything
-- compress files
 - more work on fonts/text sizing
 - nicer looking shot counter 
