@@ -2,7 +2,10 @@ load('application');
 
 action('index', function(){
    
-    console.log('LOL')
-    render({title: 'Adan Page'});
+    console.log('app: ');
     
+    render({
+        title: 'Adan Page',
+        posts: {}
+           });
 });

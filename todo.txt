@@ -247,16 +247,55 @@ http://pastebin.com/yXfQXw8u
 + time clicker
 
 3/10/2015
-- mongodb bot connection
-- botslots
++ mongodb bot connection
++ botslots
 
+3/12/2015
++ easel.js
 
+3/15/2015
++ dash detect
++ dash motion
++ dash cooldown
++ diagonal dash detect
++ diagonal dash motion
+
+3/16/2015
++ reorg
++ change to dash button
++ dash cooldown meter
++ dash 'ghost'
++ diagonal speed penalty
++ 'facing' indicator + implementation
++ strafing 
+
+3/17/2015
++ reorg
++ simple enemy
+
++ shooting
+++ beam component
+
++ oops i was zoomed out, scale everything up
+
+3/18/2015
+- Setup website for putting blog update things
+- Mongodb
+- Update layout
+- Links
+- security
+
+- define playing area/hud area
+- wall boundary collision detection
 =====================
 Other:
 - resume
 - Nice looking index page
 - Fill out linkedin
 - Fix my voice messaging / voice message
+
+Shootorama:
+- Caching
 
 Puzzlo:
 - music

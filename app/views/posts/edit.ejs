@@ -1,0 +1,17 @@
+<input type="text" id="post-title" value="Title">
+<textarea id='article-area'>
+    Content
+</textarea>
+<button class="btn btn-defaut" onclick="Posts.savePost()">Save</button>
+
+<script>
+    window.onload = function() {
+        
+        $('#article-area').summernote();
+        
+        var post = <%- post ? JSON.stringify(post) : 'null' %>;
+        
+        if(post)
+            Posts.setup(post);
+    };
+</script>

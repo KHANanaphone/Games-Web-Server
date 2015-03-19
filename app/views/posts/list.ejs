@@ -1,0 +1,21 @@
+<div>
+    <button class='btn btn-default' onclick='window.location="/posts/edit"'>Create New</button>
+</div>
+
+<div id='post-list'></div>
+
+<div id='hidden'>
+
+    <div class='post-row'>
+        <a></a>
+    </div>
+    
+</div>
+
+<script>
+
+    $.post('/posts/get', {count: 'all'}, function(data){
+        
+        Posts.list(data);
+    });
+</script>

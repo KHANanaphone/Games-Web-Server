@@ -27,9 +27,13 @@ var Rating = describe('Rating', function () {
     set('restPath', pathTo.ratings);
 });
 
-var Rating = describe('Rating', function () {
-    property('puzzle_id', String);
-    property('value', String);
-    set('restPath', pathTo.ratings);
+var Post = describe('Post', function () {
+    
+    property('title', String);
+    property('content', String);
+    property('date', Date);
+    property('number', Number);
+    
+    set('restPath', pathTo.posts);
 });
 
