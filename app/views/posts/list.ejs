@@ -16,6 +16,6 @@
 
     $.post('/posts/get', {count: 'all'}, function(data){
         
-        Posts.list(data);
+        Posts.list(data.posts);
     });
 </script>

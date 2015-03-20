@@ -1,1 +1,26 @@
-Hey
+
+<div class='col-xs-8'>
+    <div id='posts-list'></div>
+    <div id='posts-nav'>
+        <a class='left'><i class='fa fa-long-arrow-left'></i> Older</a>
+        <a class='right'>Newer <i class='fa fa-long-arrow-right'></i></a>
+    </div>
+</div>
+<div id='hidden'>
+
+    <div class='single-post'>
+        
+        <h2 class='title'></h2>
+        <div class='subtitle'>By <span class='author'></span> on <span class='date'></span></div>
+        
+        <div class='content'></div>
+            
+    </div>
+    
+</div>
+
+<script>
+    
+    Home.showPosts(<%- page %>);
+    
+</script>

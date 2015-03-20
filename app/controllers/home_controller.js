@@ -1,11 +1,12 @@
 load('application');
 
 action('index', function(){
-   
-    console.log('app: ');
+    
+    
+    var page = req.param('id') ? req.param('id') : 0;
     
     render({
         title: 'Adan Page',
-        posts: {}
+        page: page
            });
 });

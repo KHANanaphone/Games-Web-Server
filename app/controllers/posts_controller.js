@@ -67,9 +67,28 @@ action('list', function(){
 
 action('get', function(){
    
-    Post.all({order: 'number DESC'}, function(err, posts){
+    var count = req.param('count');
+    var page = req.param('page') ? req.param('page') : 0;
+    
+    if(count == 'all'){
+        Post.all({order: 'number DESC'}, function(err, posts){
+
+            getTotalThenSend(posts);
+        });        
+    }    
+    else{
+        Post.all({order: 'number DESC', limit: parseInt(count), skip: page * count}, function(err, posts){
+
+            getTotalThenSend(posts);
+        });     
+    }
+    
+    function getTotalThenSend(posts){
         
-        console.log(posts);
-        send(posts);
-    });
+        Post.count(function(err, count){
+           
+            console.log(posts);
+            send({posts: posts, count: count});
+        });
+    }
 });
