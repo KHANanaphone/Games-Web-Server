@@ -279,10 +279,14 @@ http://pastebin.com/yXfQXw8u
 + oops i was zoomed out, scale everything up
 
 3/18/2015
-- Setup website for putting blog update things
-- Mongodb
-- Update layout
-- Links
++ Setup website for putting blog update things
++ Mongodb
+- mongodb on server
+- show on front page
+- paging
+- delete post
+- update layout
+- links
 - security
 
 - define playing area/hud area
