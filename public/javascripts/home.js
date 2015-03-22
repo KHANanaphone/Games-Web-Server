@@ -1,5 +1,5 @@
 var Home = {
-    POSTS_PER_PAGE: 2
+    POSTS_PER_PAGE: 5
 };
 
 Home.showPosts = function(page){
@@ -10,20 +10,32 @@ Home.showPosts = function(page){
         
         for(var i = 0; i < data.posts.length; i++){
             
-            showPost(data.posts[i]);
+            var post = data.posts[i];
+            var $post = $('#hidden .single-post').clone();
+            Home.showSinglePost($post, post);
+            setupCommentsLink($post, post.number);
+            $('#posts-list').append($post);
+            
         }    
+        
+//        importDisqus();
     });  
     
-    showPost = function(post){
+    function setupCommentsLink($target, number){
         
-        var $post = $('#hidden .single-post').clone();
+        var $link = $target.find('.comments-link')
+            .attr('href', '/post?id=' + number);
         
-        $post.find('.title').text(post.title);
-        $post.find('.author').text('Adan');
-        $post.find('.date').text(post.date);
-        $post.find('.content').html(post.content);
+        $link.find('span').attr('data-disqus-identifier', number);
+    }
+    
+    function importDisqus(){
         
-        $('#posts-list').append($post);
+        var s = document.createElement('script'); 
+        s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//adanferguson.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }
 };
 
@@ -39,3 +51,25 @@ Home.setupNav = function(page, count){
     else
         $('#posts-nav .right').attr('href', '/page?id=' + (page + 1));    
 };
+
+Home.showSinglePost = function($post, post){
+    
+    var date = new Date(post.date);
+
+    $post.find('.title').text(post.title).attr('href', '/post?id=' + post.number);
+    $post.find('.author').text('Adan');
+    $post.find('.date').text(date.format('mmmm d, yyyy'));
+    $post.find('.content').html(post.content);
+}
+
+Home.showComments = function($target, number){
+    
+    var disqus_shortname = 'adanferguson';
+    var disqus_identifier = number;
+
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}

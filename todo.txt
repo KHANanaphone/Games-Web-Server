@@ -278,26 +278,46 @@ http://pastebin.com/yXfQXw8u
 
 + oops i was zoomed out, scale everything up
 
-3/18/2015
+3/18-20/2015
 + Setup website for putting blog update things
 + Mongodb
 + mongodb on server
 + show on front page
-- paging
-- delete post
-- update layout
-- date
-- links
-- security
++ paging
++ delete post
++ update layout, create tabs
++ date formatting
++ links
+
+3/21/2015 +1:30
++ security
++ title link back to index
++ posts link to single posts
++ single posts
++ disqus
++ comments link on posts
+- comments link doesn't show correct number
+
+- twitter link
+
+- write a post
+
+- games page
+-- upload MMA
+-- links to ludum dare stuff
+
+- about page
+-- ??
+
+- Fill out linkedin completely
+
+- Fix my voice messaging / voice message
 
 - define playing area/hud area
 - wall boundary collision detection
 =====================
 Other:
 - resume
-- Nice looking index page
-- Fill out linkedin
-- Fix my voice messaging / voice message
 
 Shootorama:
 - Caching

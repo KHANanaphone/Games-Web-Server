@@ -1,5 +1,13 @@
 load('application');
 
+before('check authorization', function(c){
+   
+    if(!req.session.authed)        
+        redirect('/login');
+    else
+        c.next();
+}, {except: ['get', 'single']});
+
 action('edit', function(){
     
     var number = req.param('number');
@@ -58,10 +66,31 @@ action('save', function(){
     
 });
 
+action('delete', function(){
+    
+    Post.findOne({number: req.param('number')}, function(err, post){
+       
+        console.log("DESTROYED!");
+        post.destroy();
+    });
+});
+
 action('list', function(){
     
     render({
         title: 'Post List'
+    });
+});
+
+action('single', function(){
+    
+    console.log('SINGLE');
+    Post.findOne({number: req.param('number')}, function(err, post){
+       
+        render({
+            title: 'adanferguson.com: ' + post.title,
+            post: post
+        });
     });
 });
 

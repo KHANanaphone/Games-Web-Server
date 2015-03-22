@@ -1,0 +1,17 @@
+<div class='single-post'>
+
+    <h2><a class='title'></a></h2>
+    <div class='subtitle'>By <span class='author'></span> on <span class='date'></span></div>
+
+    <div class='content'></div>
+    <div id="disqus_thread"></div>
+
+</div>
+
+<script>
+    
+    var post = <%- post ? JSON.stringify(post) : 'null' %>;
+    Home.showSinglePost($('.single-post'), post);
+    Home.showComments($('.comments'), post.number);
+    
+</script>

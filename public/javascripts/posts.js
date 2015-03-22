@@ -29,7 +29,12 @@ Posts.list = function(posts){
         var post = posts[i];
         var $row = $('#hidden .post-row').clone();
         
-        $row.find('a').text(post.title).attr('href', '/posts/edit?number=' + post.number);
+        $row.find('a.link').text(post.title).attr('href', '/posts/edit?number=' + post.number);
+        $row.find('a.delete').on('dblclick', function(){
+            
+            $.post('/posts/delete', {number: post.number});
+            $(this).parent().remove();
+        });
         
         $('#post-list').append($row);
     }

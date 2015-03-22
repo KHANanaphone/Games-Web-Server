@@ -1,3 +1,46 @@
 #hidden{
     display: none;
 }
+
+
+.navbar {
+    
+  padding: 10px 0px;
+  background-color: #EEF;
+  border-bottom: 1px solid #AAA;
+}
+
+.navbar li{
+    font-size: 1.5em;
+    font-family:monospace;
+    margin-right: 15px;
+}
+
+.navbar li a:hover{
+    background-color: #BED1E0;
+    color: blue;
+}
+
+#pills{
+    float: right;
+}
+
+.page-title{
+    
+  font-size: 2em;
+  font-family: monospace;
+  display: inline-block;
+  padding-top: 5px;
+  color: black;   
+}
+
+.page-title:hover{
+    text-decoration: none;
+}
+.bat {
+    
+  position: fixed;
+  bottom: 0px;
+  left: 10px;
+  width: 70px;
+}

@@ -8,6 +8,11 @@ exports.routes = function (map) {
     
     map.get('/', 'home#index');
     map.get('/page', 'home#index');
+    map.get('/games', 'home#games');
+    map.get('/about', 'home#about');
+    map.get('/login', 'home#login');
+    
+    map.get('/post', 'posts#single');    
     map.get('/posts', 'posts#list');
     
 };

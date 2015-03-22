@@ -18,11 +18,20 @@ input#post-title{
 
 .single-post .title{
     margin-bottom: 0px;
+    text-decoration: none;
+    color: rgb(52, 52, 52);
+}
+
+.single-post .title:hover{
+    
+    color: cornflowerblue;
 }
 
 .single-post .subtitle{
-    color: #AAA;
+    color: #999;
     font-size: 1.1em;
+    padding-left: 15px;
+    padding-top: 6px;
 }
 
 .single-post .content{
@@ -49,4 +58,13 @@ input#post-title{
 #posts-nav a.right{
     
     float: right;
+}
+
+.post-row .delete{
+    color: red;
+}
+
+.subtitle .author,
+.subtitle .date{
+    font-weight: bold;
 }
