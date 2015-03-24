@@ -8,6 +8,7 @@
     'common', 
     '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css',
     'summernote',
+    'games',
     'posts') %>
         
         <%- javascriptIncludeTag(
@@ -26,18 +27,7 @@
     
     <body>
         
-        <div class="navbar">
-            <div class="navbar-inner col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-                
-                <a href='/' class='page-title'>Adan Ferguson's Way Cool Page</a>
-                
-                <ul id="pills" class="nav nav-pills">
-                    <li role="presentation" class="active"><a href="/">Home</a></li>
-                    <li role="presentation"><a href="/games">Games</a></li>
-                    <li role="presentation"><a href="/about">About</a></li>
-                </ul>
-            </div>
-        </div>
+        <%- include _navbar %>
 
         <div class='col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
             <%- body %>
@@ -46,4 +36,5 @@
         <img class='bat' src='images/bat.jpg'>
     </body>
 </html>
+
 <%- contentFor('javascripts') %>

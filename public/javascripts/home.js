@@ -18,7 +18,7 @@ Home.showPosts = function(page){
             
         }    
         
-//        importDisqus();
+        importDisqus();
     });  
     
     function setupCommentsLink($target, number){

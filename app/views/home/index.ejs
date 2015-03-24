@@ -12,12 +12,13 @@
         <div class='subtitle'>By <span class='author'></span> on <span class='date'></span></div>
         
         <div class='content'></div>
-<!--
-        <a class='comments-link'>
-            <span class='disqus-comment-count'></span>
-            <i class='fa fa-comments'></i>
-        </a>
--->
+        
+        <div class='post-footer'>
+            <a class='comments-link'>
+                <span class='disqus-comment-count'></span>
+                <i class='fa fa-comments'></i>
+            </a>
+        </div>
             
     </div>
     
@@ -26,5 +27,6 @@
 <script>
     
     Home.showPosts(<%- page %>);
+    NavBar.setPage('home');
     
 </script>

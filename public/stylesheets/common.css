@@ -6,7 +6,7 @@
 .navbar {
     
   padding: 10px 0px;
-  background-color: #EEF;
+  background-color: #EEEEF4;
   border-bottom: 1px solid #AAA;
 }
 
@@ -43,4 +43,12 @@
   bottom: 0px;
   left: 10px;
   width: 70px;
+}
+
+#pills a{
+    color: black;
+}
+
+#pills .active a{
+    color: white;
 }

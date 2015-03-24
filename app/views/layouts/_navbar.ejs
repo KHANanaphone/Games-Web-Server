@@ -1,0 +1,23 @@
+<div class="navbar">
+    <div class="navbar-inner col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+
+        <a href='/' class='page-title'>Adan Ferguson's Way Cool Page</a>
+
+        <ul id="pills" class="nav nav-pills">
+            <li role="presentation" class='home'><a href="/">Home</a></li>
+            <li role="presentation" class='games'><a href="/games">Games</a></li>
+            <li role="presentation" class='about'><a href="/about">About</a></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+
+    var NavBar = {};
+    
+    NavBar.setPage = function(name){   
+        
+        $('#pills .' + name).addClass('active');
+    }
+    
+</script>

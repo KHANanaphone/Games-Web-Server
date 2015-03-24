@@ -43,7 +43,7 @@ input#post-title{
     
     border-bottom: 1px solid #EEE;
     margin-bottom: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
 }
 
 #posts-nav a{
@@ -67,4 +67,8 @@ input#post-title{
 .subtitle .author,
 .subtitle .date{
     font-weight: bold;
+}
+
+.post-footer{
+    padding-top: 12px;
 }

@@ -289,38 +289,61 @@ http://pastebin.com/yXfQXw8u
 + date formatting
 + links
 
-3/21/2015 +1:30
+3/21/2015 1:30 of 3:30
+Website:
 + security
 + title link back to index
 + posts link to single posts
 + single posts
 + disqus
 + comments link on posts
-- comments link doesn't show correct number
 
+3/22/2015 1:12 of 4:00 (-2:48)
+Shootorama:
++ define playing area/hud area
+/ enemy/player collision detection
+
+Puzzlo Android:
++ Get software
+/ Read tutorials
+
+3:23/2015 1:12 of 4:48 (-3:36)
+Penalty: 96/168 
+Puzzlo Android
++ Debug installation
++ Move installation to F:
++ Make disk space
++ Get emulator working
+
+Website:
++ fix pills
 - twitter link
+- write a post on website
 
-- write a post
-
-- games page
--- upload MMA
--- links to ludum dare stuff
++ games 
+++ Puzzlo
+--- get an image
+++ Shootorama
+--- get an image
+-- MMA
+--- get an image
+-- ludum dare page
+--- get an image
 
 - about page
 -- ??
-
-- Fill out linkedin completely
-
-- Fix my voice messaging / voice message
-
-- define playing area/hud area
-- wall boundary collision detection
 =====================
 Other:
 - resume
+- Fill out linkedin completely
+- Fix my voice messaging / voice message
 
 Shootorama:
+- shooting 'line' has to move with parent
 - Caching
+
+Website:
+- comments link doesn't show correct number
 
 Puzzlo:
 - music
@@ -328,3 +351,7 @@ Puzzlo:
 - nicer looking everything
 - more work on fonts/text sizing
 - nicer looking shot counter 
+
+Puzzlo Android:
+- Read tutorials
+- Get software
