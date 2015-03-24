@@ -10,11 +10,11 @@ before('check authorization', function(c){
 
 action('edit', function(){
     
-    var number = req.param('number');
+    var slug = req.param('slug');
     
-    if(number){
+    if(slug){
         
-        Post.findOne({where: {number: number}}, function(err, post){ 
+        Post.findOne({slug: slug}, function(err, post){ 
             
             render({
                 title: 'title',
@@ -33,34 +33,59 @@ action('edit', function(){
 action('save', function(){
    
     var post = req.param('post');
-    console.log(post);
     
     if(!post.date)
         post.date = new Date();
     
-    if(!post.number)
-        getPostNumber(post);
-    else
+    if(!post.slug)
         create(post);
-    
-    function getPostNumber(post){
-        
-        Post.findOne({order: 'number DESC'}, function(err, newestPost){
-            
-            if(!newestPost)
-                post.number = 1;
-            else
-                post.number = newestPost.number + 1;
-            
-            create(post);
-        });
-    }
+    else
+        save(post);
     
     function create(post){
         
-        Post.create(post, function(err, p){
+        makeSlug(post.title, 0, function(slug){
             
-            send({post: p});
+            post.slug = slug;
+            Post.create(post, function(err, obj){
+                send({post: obj});
+            });
+        });
+        
+        function makeSlug(title, i, callback){
+            
+            var slug = title.toLowerCase()
+            .replace(/ /g,'-')
+            .replace(/[^\w-]+/g,'')
+            ;
+            
+            if(i)
+                slug += i;
+            
+            console.log(slug);
+                    
+            Post.findOne({slug: slug}, function(err, postObj){
+                
+                if(postObj.slug == slug)
+                    makeSlug(title, i+1, callback);
+                else
+                    callback(slug);
+            });
+        } 
+    };
+    
+    function save(post){
+        
+        Post.findOne({slug: post.slug}, function(err, postObj){
+            
+            if(!postObj)
+                send({error: 'No Post Found'});
+            else{
+                postObj.title = post.title;
+                postObj.content = post.content;
+                postObj.save();
+                send({post: postObj});
+            }                
         });
     }
     
@@ -68,7 +93,7 @@ action('save', function(){
 
 action('delete', function(){
     
-    Post.findOne({number: req.param('number')}, function(err, post){
+    Post.findOne({slug: req.param('slug')}, function(err, post){
        
         console.log("DESTROYED!");
         post.destroy();
@@ -85,7 +110,8 @@ action('list', function(){
 action('single', function(){
     
     console.log('SINGLE');
-    Post.findOne({number: req.param('number')}, function(err, post){
+    
+    Post.findOne({slug: req.param('id')}, function(err, post){
        
         render({
             title: 'adanferguson.com: ' + post.title,
@@ -100,13 +126,13 @@ action('get', function(){
     var page = req.param('page') ? req.param('page') : 0;
     
     if(count == 'all'){
-        Post.all({order: 'number DESC'}, function(err, posts){
+        Post.all({order: 'date DESC'}, function(err, posts){
 
             getTotalThenSend(posts);
         });        
     }    
     else{
-        Post.all({order: 'number DESC', limit: parseInt(count), skip: page * count}, function(err, posts){
+        Post.all({order: 'date DESC', limit: parseInt(count), skip: page * count}, function(err, posts){
 
             getTotalThenSend(posts);
         });     

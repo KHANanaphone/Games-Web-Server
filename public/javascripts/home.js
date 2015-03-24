@@ -13,20 +13,19 @@ Home.showPosts = function(page){
             var post = data.posts[i];
             var $post = $('#hidden .single-post').clone();
             Home.showSinglePost($post, post);
-            setupCommentsLink($post, post.number);
+            setupCommentsLink($post, post.slug);
             $('#posts-list').append($post);
-            
         }    
         
         importDisqus();
     });  
     
-    function setupCommentsLink($target, number){
+    function setupCommentsLink($target, slug){
         
         var $link = $target.find('.comments-link')
-            .attr('href', '/post?id=' + number);
+            .attr('href', '/posts/single/' + slug);
         
-        $link.find('span').attr('data-disqus-identifier', number);
+        $link.find('span').attr('data-disqus-identifier', slug);
     }
     
     function importDisqus(){
@@ -56,16 +55,16 @@ Home.showSinglePost = function($post, post){
     
     var date = new Date(post.date);
 
-    $post.find('.title').text(post.title).attr('href', '/post?id=' + post.number);
+    $post.find('.title').text(post.title).attr('href', '/posts/single/' + post.slug);
     $post.find('.author').text('Adan');
     $post.find('.date').text(date.format('mmmm d, yyyy'));
     $post.find('.content').html(post.content);
 }
 
-Home.showComments = function($target, number){
+Home.showComments = function($target, slug){
     
     var disqus_shortname = 'adanferguson';
-    var disqus_identifier = number;
+    var disqus_identifier = slug;
 
     var dsq = document.createElement('script'); 
     dsq.type = 'text/javascript'; 

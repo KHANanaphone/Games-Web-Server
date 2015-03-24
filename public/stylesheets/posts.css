@@ -6,7 +6,7 @@ input#post-title{
 }
 
 .note-editable{
-    height: 600px;
+    height: 400px;
 }
 
 .post-row{
@@ -37,6 +37,7 @@ input#post-title{
 .single-post .content{
     
     padding-top: 18px;
+    padding-bottom: 10px;
 }
 
 .single-post {

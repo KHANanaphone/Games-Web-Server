@@ -307,8 +307,8 @@ Puzzlo Android:
 + Get software
 / Read tutorials
 
-3:23/2015 1:12 of 4:48 (-3:36)
-Penalty: 96/168 
+3/23/2015 2:14 of 4:48 (-2:34)
+Penalty: 168/168 
 Puzzlo Android
 + Debug installation
 + Move installation to F:
@@ -317,18 +317,29 @@ Puzzlo Android
 
 Website:
 + fix pills
-- twitter link
-- write a post on website
 
 + games 
 ++ Puzzlo
---- get an image
 ++ Shootorama
---- get an image
+
+3/24/2015 0:00 of 4:34
+Penalty: 40/154
+
+Website:
++ fix bat
++ editing doesn't work
++ padding between post and comments
++ slugs
+- disqus has to be different between server/local
+- comments link doesn't show correct number
+- icon
+
+- write a post on website
+
+- games
 -- MMA
---- get an image
--- ludum dare page
---- get an image
+-- ludum
+-- images for all
 
 - about page
 -- ??
@@ -343,7 +354,6 @@ Shootorama:
 - Caching
 
 Website:
-- comments link doesn't show correct number
 
 Puzzlo:
 - music

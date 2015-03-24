@@ -2,11 +2,14 @@
 <textarea id='article-area'>
     Content
 </textarea>
+<div id="error" class="alert alert-danger" role="alert"></div>
 <button class="btn btn-defaut" onclick="Posts.savePost()">Save</button>
 
 <script>
+    
     window.onload = function() {
         
+        $('#error').hide();
         $('#article-area').summernote();
         
         var post = <%- post ? JSON.stringify(post) : 'null' %>;
@@ -14,4 +17,5 @@
         if(post)
             Posts.setup(post);
     };
+    
 </script>

@@ -12,7 +12,6 @@ exports.routes = function (map) {
     map.get('/about', 'home#about');
     map.get('/login', 'home#login');
     
-    map.get('/post', 'posts#single');    
     map.get('/posts', 'posts#list');
     
 };

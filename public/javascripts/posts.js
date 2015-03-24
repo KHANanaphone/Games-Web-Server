@@ -2,6 +2,7 @@ var Posts = {};
 
 Posts.savePost = function(){
     
+    debugger;
     var currentPost = Posts.currentPost ? Posts.currentPost : {};
     
     currentPost.title = $('#post-title').val();
@@ -9,13 +10,19 @@ Posts.savePost = function(){
     
     $.post('/posts/save', {post: currentPost}, function(data){
         
-        Posts.currentPost = data.post;
-        window.location = "/posts";
+        if(data.error){
+            $('#error').show().text(data.error);
+        }
+        else{
+            window.location = "/";
+        }
+        
     });
 }
 
 Posts.setup = function(post){
     
+    debugger;
     Posts.currentPost = post;
     
     $('#post-title').val(post.title);
@@ -29,10 +36,10 @@ Posts.list = function(posts){
         var post = posts[i];
         var $row = $('#hidden .post-row').clone();
         
-        $row.find('a.link').text(post.title).attr('href', '/posts/edit?number=' + post.number);
+        $row.find('a.link').text(post.title).attr('href', '/posts/edit?slug=' + post.slug);
         $row.find('a.delete').on('dblclick', function(){
             
-            $.post('/posts/delete', {number: post.number});
+            $.post('/posts/delete', {slug: post.slug});
             $(this).parent().remove();
         });
         
