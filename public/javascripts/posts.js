@@ -2,7 +2,6 @@ var Posts = {};
 
 Posts.savePost = function(){
     
-    debugger;
     var currentPost = Posts.currentPost ? Posts.currentPost : {};
     
     currentPost.title = $('#post-title').val();
@@ -22,7 +21,6 @@ Posts.savePost = function(){
 
 Posts.setup = function(post){
     
-    debugger;
     Posts.currentPost = post;
     
     $('#post-title').val(post.title);

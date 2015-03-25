@@ -66,7 +66,7 @@ action('save', function(){
                     
             Post.findOne({where: {slug: slug}}, function(err, postObj){
                 
-                if(postObj.slug == slug)
+                if(postObj && postObj.slug == slug)
                     makeSlug(title, i+1, callback);
                 else
                     callback(slug);
@@ -93,9 +93,13 @@ action('save', function(){
 
 action('delete', function(){
     
+    console.log("DESTROYED! " + req.param('slug'));
+    
     Post.findOne({where: {slug: req.param('slug')}}, function(err, post){
        
-        console.log("DESTROYED!");
+        if(!post)
+            return;
+        
         post.destroy();
     });
 });
