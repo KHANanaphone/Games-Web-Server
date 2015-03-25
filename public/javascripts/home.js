@@ -20,7 +20,7 @@ Home.showPosts = function(page){
     
     function setupCommentsLink($target, slug){
         
-        var url = 'http://' + location.href + 'posts/single/' + slug;
+        var url = location.href + 'posts/single/' + slug;
             
         var $link = $target.find('.comments-link')
             .attr('href', url);
