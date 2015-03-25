@@ -322,7 +322,7 @@ Website:
 ++ Puzzlo
 ++ Shootorama
 
-3/24/2015 0:42 of 4:34
+3/24/2015 1:50 of 4:34 (2:44 left)
 Penalty: 74/154
 
 Website:
@@ -332,18 +332,35 @@ Website:
 + slugs
 + disqus has to be different between server/local
 ? comments link doesn't show correct number
+?? might just be slow
 + icon
 + 'single' has wrong article
 
 + write a post on website
 
-- games
--- MMA
--- ludum
+3/25/2015
+0:34  of 4:44
+Penalty: 1/164
+Penalty Penalty: 80/80
+
+Website:
++ Post counts! Ugh!
+
++ games
+++ MMA
+++ ludum
 -- images for all
 
-- about page
--- ??
++ background
++ transparent bat
+
+- write another post
+
+Shootorama:
+- shooting 'line' has to move with parent
+- collision: player * enemy
+- make walls
+- collision: player + walls
 =====================
 Other:
 - resume
@@ -355,6 +372,8 @@ Shootorama:
 - Caching
 
 Website:
+- about page
+-- ??
 
 Puzzlo:
 - music

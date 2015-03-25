@@ -2,6 +2,9 @@
     display: none;
 }
 
+body{
+    background-image: url('/images/confectionary.png');
+}
 
 .navbar {
     
