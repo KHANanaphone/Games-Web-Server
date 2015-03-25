@@ -12,6 +12,6 @@
     
     var post = <%- post ? JSON.stringify(post) : 'null' %>;
     Home.showSinglePost($('.single-post'), post);
-    Home.showComments($('.comments'), post.number);
+    Home.showComments($('.comments'), post);
     
 </script>

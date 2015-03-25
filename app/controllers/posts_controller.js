@@ -14,7 +14,7 @@ action('edit', function(){
     
     if(slug){
         
-        Post.findOne({slug: slug}, function(err, post){ 
+        Post.findOne({where: {slug: slug}}, function(err, post){ 
             
             render({
                 title: 'title',
@@ -64,7 +64,7 @@ action('save', function(){
             
             console.log(slug);
                     
-            Post.findOne({slug: slug}, function(err, postObj){
+            Post.findOne({where: {slug: slug}}, function(err, postObj){
                 
                 if(postObj.slug == slug)
                     makeSlug(title, i+1, callback);
@@ -76,7 +76,7 @@ action('save', function(){
     
     function save(post){
         
-        Post.findOne({slug: post.slug}, function(err, postObj){
+        Post.findOne({where: {slug: post.slug}}, function(err, postObj){
             
             if(!postObj)
                 send({error: 'No Post Found'});
@@ -93,7 +93,7 @@ action('save', function(){
 
 action('delete', function(){
     
-    Post.findOne({slug: req.param('slug')}, function(err, post){
+    Post.findOne({where: {slug: req.param('slug')}}, function(err, post){
        
         console.log("DESTROYED!");
         post.destroy();
@@ -109,10 +109,9 @@ action('list', function(){
 
 action('single', function(){
     
-    console.log('SINGLE');
     
-    Post.findOne({slug: req.param('id')}, function(err, post){
-       
+    Post.findOne({where: {slug: req.param('id')}}, function(err, post){
+        
         render({
             title: 'adanferguson.com: ' + post.title,
             post: post

@@ -4,6 +4,7 @@
     <a class='right'>Newer <i class='fa fa-long-arrow-right'></i></a>
 </div>
 
+
 <div id='hidden'>
 
     <div class='single-post'>
@@ -15,8 +16,8 @@
         
         <div class='post-footer'>
             <a class='comments-link'>
-                <span class='disqus-comment-count'></span>
                 <i class='fa fa-comments'></i>
+                <span class='disqus-comment-count'></span>
             </a>
         </div>
             
@@ -29,4 +30,13 @@
     Home.showPosts(<%- page %>);
     NavBar.setPage('home');
     
+    var disqus_shortname = 'adanferguson'; // required: replace example with your forum shortname
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
 </script>
+

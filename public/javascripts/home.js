@@ -16,25 +16,16 @@ Home.showPosts = function(page){
             setupCommentsLink($post, post.slug);
             $('#posts-list').append($post);
         }    
-        
-        importDisqus();
     });  
     
     function setupCommentsLink($target, slug){
         
+        var url = 'http://localhost:8080/posts/single/' + slug;
+            
         var $link = $target.find('.comments-link')
-            .attr('href', '/posts/single/' + slug);
+            .attr('href', url);
         
-        $link.find('span').attr('data-disqus-identifier', slug);
-    }
-    
-    function importDisqus(){
-        
-        var s = document.createElement('script'); 
-        s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//adanferguson.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        $link.find('span').attr('data-disqus-url', url);
     }
 };
 
@@ -61,10 +52,11 @@ Home.showSinglePost = function($post, post){
     $post.find('.content').html(post.content);
 }
 
-Home.showComments = function($target, slug){
+Home.showComments = function($target, post){
     
     var disqus_shortname = 'adanferguson';
-    var disqus_identifier = slug;
+    var disqus_identifier = post.slug;
+    var disqus_title = post.title;
 
     var dsq = document.createElement('script'); 
     dsq.type = 'text/javascript'; 
