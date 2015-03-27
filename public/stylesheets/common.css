@@ -75,5 +75,6 @@ body{
 }
 
 #body-bg{
-    background-color: white;
+	background-color: whitesmoke;
+	padding: 20px;
 }

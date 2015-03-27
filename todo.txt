@@ -364,7 +364,7 @@ Shootorama:
 + Ghost alignment
 
 3/26/2015
-0:26 of 3:00
+2:29 of 3:00 (-0:31)
 Penalty: 79/199
 
 Website:
@@ -383,6 +383,15 @@ Puzzlo Android:
 + Read tutorials
 + Fuck it, try something else?
 + Yeah! Install phonegap!
+
+3/27/2015
+0:00 of 2:31
+Penalty: 39/151
+
+Website:
++ metadata
+
+Puzzlo Android:
 - Phonegap conversion
 =====================
 Other:
@@ -396,5 +405,7 @@ Shootorama:
 - Caching
 
 Website:
+- metadata
+
 - about page
 -- ??
