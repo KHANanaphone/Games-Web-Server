@@ -339,9 +339,8 @@ Website:
 + write a post on website
 
 3/25/2015
-0:34  of 4:44
-Penalty: 1/164
-Penalty Penalty: 80/80
+3:44 of 4:44 (-1:00)
+Penalty: 105/244 (-139)
 
 Website:
 + Post counts! Ugh!
@@ -349,18 +348,42 @@ Website:
 + games
 ++ MMA
 ++ ludum
--- images for all
 
 + background
 + transparent bat
 
-- write another post
++ write another post
 
 Shootorama:
-- shooting 'line' has to move with parent
-- collision: player * enemy
-- make walls
-- collision: player + walls
++ Circles -> rectangles
++ some sort of collision all-encompassing system (lookingFor?)
++ shooting 'line' has to look better
++ entity/entity collisions
++ collision: player * enemy
++ shooting and dashing broke again
++ Ghost alignment
+
+3/26/2015
+0:26 of 3:00
+Penalty: 79/199
+
+Website:
++ wrong post got deleted holy crap adan pls
+++ client-side problem this time! (lol)
+
++ double post also happened
++ fonts are different on chrome
+++ keep truckin'
++ white background for text area
+
++ games
+++ images
+
+Puzzlo Android:
++ Read tutorials
++ Fuck it, try something else?
++ Yeah! Install phonegap!
+- Phonegap conversion
 =====================
 Other:
 - resume
@@ -368,20 +391,10 @@ Other:
 - Fix my voice messaging / voice message
 
 Shootorama:
-- shooting 'line' has to move with parent
+- make walls
+- collision: player + walls
 - Caching
 
 Website:
 - about page
 -- ??
-
-Puzzlo:
-- music
-- more animations
-- nicer looking everything
-- more work on fonts/text sizing
-- nicer looking shot counter 
-
-Puzzlo Android:
-- Read tutorials
-- Get software

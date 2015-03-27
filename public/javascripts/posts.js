@@ -2,6 +2,8 @@ var Posts = {};
 
 Posts.savePost = function(){
     
+    $('#save').attr('disabled', true);
+    
     var currentPost = Posts.currentPost ? Posts.currentPost : {};
     
     currentPost.title = $('#post-title').val();
@@ -32,13 +34,24 @@ Posts.list = function(posts){
     for(var i = 0; i < posts.length; i++){
 
         var post = posts[i];
-        var $row = $('#hidden .post-row').clone();
+        var $row = $('#hidden .post-row').clone()
+            .data('post', post);
         
-        $row.find('a.link').text(post.title).attr('href', '/posts/edit?slug=' + post.slug);
+        $row.find('a.link')
+            .text(post.title)
+            .attr('href', '/posts/edit?slug=' + post.slug);
+        
         $row.find('a.delete').on('dblclick', function(){
             
-            $.post('/posts/delete', {slug: post.slug});
-            $(this).parent().remove();
+            var slug = $(this).parents('.post-row').data('post').slug;
+            
+            $.post('/posts/delete', {slug: slug}, function(resp){
+                
+                if(!resp.error)
+                    $(this).parent().remove();
+                else
+                    console.log(resp.error);
+            });
         });
         
         $('#post-list').append($row);

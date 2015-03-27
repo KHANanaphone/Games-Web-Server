@@ -93,14 +93,16 @@ action('save', function(){
 
 action('delete', function(){
     
-    console.log("DESTROYED! " + req.param('slug'));
-    
     Post.findOne({where: {slug: req.param('slug')}}, function(err, post){
        
-        if(!post)
-            return;
+        console.log("DESTROYED! " + req.param('slug') + ' ' + post.slug);
         
-        post.destroy();
+        if(post.slug != req.param('slug'))
+            send({error: 'post not found'});
+        else{
+            post.destroy();
+            send({});
+        }
     });
 });
 
