@@ -390,8 +390,11 @@ Penalty: 39/151
 
 Website:
 + metadata
+- make a script to build and pull puzzlo/shootorama
 
 Puzzlo Android:
++ switch puzzlo to its own repository
+- origin 'null'?
 - Phonegap conversion
 =====================
 Other:
