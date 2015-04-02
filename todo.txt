@@ -385,22 +385,79 @@ Puzzlo Android:
 + Yeah! Install phonegap!
 
 3/27/2015
-0:00 of 2:31
-Penalty: 39/151
+1:29 of 2:31 (-1:02)
+Penalty: 45/151
 
-Website:
-+ metadata
-- make a script to build and pull puzzlo/shootorama
+3/28-29/2015
+1:19 or 3:02 (-1:43)
+Penalty: 77/168
 
 Puzzlo Android:
 + switch puzzlo to its own repository
-- origin 'null'?
-- Phonegap conversion
++ Phonegap conversion
++ have to reinstall, it screwed
++ cordova
+
+Website:
++ metadata
+
+3/30/2015
+3:16 of 3:43 (-0:27)
+Penalty: 72/194
+
+Taxes:
++ Figure them out
+
+Puzzlo Android:
++ Solid black squares are breakable
++ fix layout and stuff
+++ scrolling
+++ no borders
+
+3/31/2015
+1:59 of 2:27 (-0:28)
+Penalty: 37/145
+
+4/1/2015
+0:38 of 2:28
+Penalty: 60/136
+
++ Pay Rent
++ Garbage
++ Vacuum
++ Pizza Dough
++ Shower
+
+Puzzlo Android:
++ menu screen
+++ remake the level select tree so it won't scroll horizontally
+++ font
+++ 0/80 thing on the bottom
+++ redo the pattern to be more zany
+++ make 'ready' stuff animate
+
+- puzzle screen
+-- black blocks are getting highlighted
+++ fancy-up top
+-- fancy-up playing area
+-- move a 'description' to a popup when you select a level
+-- text sizes for "success" popups
+
++ last puzzle
+
+Website:
+- make a script to build and pull puzzlo/shootorama
+- about page
+-- ??
+
 =====================
 Other:
 - resume
 - Fill out linkedin completely
 - Fix my voice messaging / voice message
+
+Puzzlo Website: 
+- Solid black squares are breakable due to 'flashbackground' function
 
 Shootorama:
 - make walls
@@ -408,7 +465,3 @@ Shootorama:
 - Caching
 
 Website:
-- metadata
-
-- about page
--- ??
