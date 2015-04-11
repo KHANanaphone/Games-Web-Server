@@ -79,3 +79,13 @@ body{
 	padding: 20px;
 border: 1px solid #CCC;
 }
+
+.links a{
+    
+    font-size: 1.4em;
+}
+
+#about{
+    font-size: 1.1em;
+    padding-top: 1.5em;
+}
