@@ -19,13 +19,13 @@ body{
 .navbar {
     
   padding: 10px 0px;
-  background-color: #EEEEF4;
+  background-color: white;
   border-bottom: 1px solid #AAA;
 }
 
 .navbar li{
     font-size: 1.8em;
-    font-family: Joe;
+    font-family: 'Arial';
     margin-right: 15px;
 }
 
@@ -75,7 +75,7 @@ body{
 }
 
 #body-bg{
-	background-color: whitesmoke;
+	background-color: white;
 	padding: 20px;
 border: 1px solid #CCC;
 }
