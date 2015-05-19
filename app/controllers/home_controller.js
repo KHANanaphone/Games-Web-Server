@@ -5,7 +5,7 @@ action('index', function(){
     var page = req.param('id') ? req.param('id') : 0;
     
     render({
-        title: "Adan's Cool Page",
+        title: "Adan's Game Design",
         page: page
            });
 });
@@ -13,14 +13,14 @@ action('index', function(){
 action('games', function(){
     
     render({
-        title: "Adan's Cool Page - Games"
+        title: "Adan's Game Design - Games"
            });
 });
 
 action('about', function(){
     
     render({
-        title: "Adan's Cool Page - About"
+        title: "Adan's Game Design - About"
            });
 });
 
@@ -35,6 +35,6 @@ action('login', function(){
     }
     
     render({
-        title: "Adan's Cool Page - About"
+        title: "Adan's Game Design - About"
            }); 
 });
