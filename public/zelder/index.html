@@ -10,137 +10,316 @@
     <title>Zelder Map Thing</title>
 
     <style>
-        #map {
-            cursor: pointer;
+        
+        .map {
+            position: relative;
+            margin-top: 10px;
+        }
+        
+        #world-map{
+            width: 100%;
+        }
+        
+        #level-9-map{
+            width: 50%;
+        }
+        
+        .map img{
+            width: 100%;
+        }
+        
+        .map .grid{
+            
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 1;
         }
         
         #hidden{
-            visibility: hidden;
+            display: none;
         }
         
-        .box {
-            position: absolute;
-            width: 35px;
-            height: 25px;
-            border: 3px solid red;
-            background-color: white;
-            text-align: center;
-            padding-top: 5px;
-            font-family: monospace;
-            
-            
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+        .cell {
+            height: 100%;
+            display: inline-block;
+            cursor: pointer;
+            opacity: 0.7;
         }
         
-        .box.clear{
+        .cell:hover{
             
-            background-color: red;
-            border: none;
-            color: white;
+            opacity: 1;
+        }
+        
+        .cell[status='none']{
+            background-color: rgba(1, 1, 0, 0.7);
+        }
+        
+        .cell[status='clear']{
+            opacity: 1;
+            background-color: black;
+        }       
+        
+        .cell[status='clear'] text{
+            display: none;
+        }
+        
+        .cell[status='dunno']{
             
+            background-color: transparent;
+        }        
+        
+        .cell[status='dungeon']{
+            
+            background-color: darkorange;
+        }
+                
+        .cell[status='road']{
+            
+            background-color: dodgerblue
+        }        
+                
+        .cell[status='shop']{
+            
+            background-color: blueviolet;
+        }
+                
+        .cell[status='sword']{
+            
+            background-color: hotpink;
+        }        
+        
+        @keyframes selected {
+            0%   {opacity: 0.5;}
+            50%  {opacity: 1;}
+            100% {opacity: 0.5;}
+        }
+        
+        @-webkit-keyframes selected {
+            0%   {opacity: 0.5;}
+            50%  {opacity: 1;}
+            100% {opacity: 0.5;}
+        }
+        
+        .cell[select='true']{            
+            -webkit-animation: selected 2s infinite;
+            outline: 2px solid blue;
         }
     </style>
 </head>
 
 <body oncontextmenu="return false;">
-    <div id="map">
-        <button class="btn btn-default" onclick='loadMap("map.png")'>Map</button>
-        <button class="btn btn-default" onclick='loadMap("level9.png")'>Level 9</button><br/>
-        <img id='image'>
+    
+    <span>Right-click to 'cross out' a cell. Left-click then type 1-9 for dungeon, 'R1' to 'R4' for roads, 'WS' or 'MS' for swords, anything else for shop</span><br />
+    <button class='quest-select' onclick="Map.init(1)">1st Quest</button>
+    <button class='quest-select' onclick="Map.init(2)">2nd Quest</button>
+    
+    <div id="world-map" class='map'>
+        <img>
+        <div class='grid'></div>
+    </div>    
+    <div id="level-9-map" class='map'>
+        <img>
+        <div class='grid'></div>
     </div>
-    <div id='hidden'>
-        
-        <div class='box'>
-            
+    
+    <div id='hidden' oncontextmenu="return false;">      
+        <div class='cell' status='none' tabindex='1'>
+            <svg viewBox="0 0 200 100">
+                <text text-anchor="middle" x="100" y="75" font-size="75" stroke="white" fill="black"></text>
+            </svg>
         </div>
-        
     </div>
 </body>
 
 </html>
 
-<script>
+<script>    
     
-    function loadMap(file){
-        
-        $('#map .box').remove();
-        $('#image').attr('src', file);
-    }
+var Map = {};
     
-    $('#map img').mousedown(function(e){
-
-        var $clone = $('#hidden .box').clone();
-        $('#map').append($clone);
-        
-        $clone.css({'left': e.offsetX - $clone.width()/2 + 5, 'top': e.offsetY - $clone.height()/2 + 20});
-        
-        if(e.which != 1)
-            setMode($clone, -1);
-        else
-            setMode($clone, 1);
-        
-        $clone.mousedown(boxClicked);
-        $clone.on('mousewheel', function(event){
-            
-            setMode($(this), parseInt($(this).attr('val')) + event.deltaY);
-            event.preventDefault = true;
-        });
-        
-        e.preventDefault = true;
+Map.init = function(quest){
+    
+    $('.quest-select').remove();
+    
+    $(document).on("keydown", function (e) {
+        if (e.which === 8 && !$(e.target).is("input, textarea")) {
+            e.preventDefault();
+        }
     });
     
-    function boxClicked(e){
+    $('#world-map img').attr('src', 'map' + quest + '.png');
+    $('#level-9-map img').attr('src', 'level9' + quest + '.png');
+    
+    var $world = $('#world-map .grid');
+    var $level9 = $('#level-9-map .grid');
+    
+    makeGrid($world, 16, 8);
+    makeGrid($level9, 8, 8);
+    
+    setupCaves(quest);
+    
+    function makeGrid($target, width, height){
         
-        if(e.which != 1){
+        for(var y = 0; y < height; y++){
             
-            if(parseInt($(this).attr('val')) == -1){
-                
-                $(this).remove();
-                return;
-                
-            }
+            var $row = $('<div></div>')
+            .css('height', (100 / height) + '%');
+            $target.append($row);
             
-            setMode($(this), -1);
+            for(var x = 0; x < width; x++){
+                
+                var $cell = $('#hidden .cell').clone()
+                .css('width', (100 / width) + '%')
+                .on('mousedown', cellClicked)
+                .on('keypress', keypress)
+                .on('keydown', keydown)
+                .data('x', x).data('y', y);
+                
+                updateCellBg($cell);
+                
+                $row.append($cell);
+            };            
+        };
+    };
+    
+    function cellClicked(event){
+        
+        
+        if($(this).attr('status') == 'clear')
+            return;
+        
+        if(event.which == 3)
+            rightClicked($(this));
+        else if(event.which == 1)
+            leftClicked($(this));
+    };
+    
+    function leftClicked($cell){
+        
+        clearAllSelected();
+        
+        $cell
+            .attr('select', 'true')
+            .focus().find('text');
+    };
+    
+    function keydown(event){
+        
+        if(event.keyCode == 8){
+            
+            var txt = $(this).find('text').text();
+            
+            if(txt.length > 0)
+                txt = txt.substring(0, txt.length - 1);
+            
+            $(this).find('text').text(txt);
+            updateCellBg($(this));
+        }   
+    }
+    
+    function keypress(event){
+         
+        if(event.keyCode < 49){
+            return;
+        }        
+        
+        if($(this).attr('status') == 'dunno')
+            $(this).find('text').text('');
+        
+        var key = String.fromCharCode(event.keyCode).toUpperCase();  
+        var txt = $(this).find('text').append(key).text();
+
+        updateCellBg($(this));
+    };
+    
+    function updateCellBg($cell){
+        
+        var txt = $cell.find('text').text();
+        
+        if(txt[0] == 'X')
+            $cell.attr('status', 'none');
+        else if(txt == '$%')
+            $cell.attr('status', 'clear');
+        else if(!isNaN(txt[0]))
+            $cell.attr('status', 'dungeon');
+        else if(txt == 'WS' || txt == 'MS')
+            $cell.attr('status', 'sword');
+        else if(txt[0] == 'R')
+            $cell.attr('status', 'road');
+        else if(txt.length == 0)
+            $cell.attr('status', 'dunno');
+        else 
+            $cell.attr('status', 'shop');
+    };
+    
+    function clearAllSelected(){
+        $('.cell[select="true"]').attr('select', 'false');
+    };
+    
+    function rightClicked($cell){
+        
+        clearAllSelected();
+        
+        if($cell.find('text').text() == '')
+            $cell.find('text').text('X');
+        else
+            $cell.find('text').text('');
+        
+        updateCellBg($cell);
+    };
+    
+    function setupCaves(quest){
+        
+        var mapSkip, level9skip;
+        
+        if(quest == 1){
+            mapSkip = [
+                [3, 7 ], [2, 7 ], [0, 6 ], [0, 5 ], [0, 4 ], [0, 3 ], [0, 2 ], [1, 3 ],
+                [1, 4 ], [2, 3 ], [5, 3 ], [6, 3 ], [7, 5 ], [8, 5 ], [9, 5 ], [9, 3 ],
+                [3, 4 ], [0, 0 ], [1, 1 ], [2, 0 ], [6, 0 ], [8, 0 ], [9, 0 ], [9, 1 ],
+                [8, 1 ], [7, 1 ], [9, 2 ], [10, 2], [10, 3], [11, 3], [11, 2], [12, 6],
+                [12, 5], [14, 7], [15, 7], [14, 6], [15, 3], [15, 4], [14, 3], [14, 2],
+                [10, 7], [10, 5], [4, 5 ], [3, 5 ], [2, 5 ], [1, 6 ], [5, 6 ], [5, 5 ],
+                [5, 1 ], [11, 1], [13, 5], [9, 6 ], [12, 4], [8, 3 ]
+            ];
+            level9Skip = [
+                [0, 0], [0,6], [0, 7], [2,7], [5,7], [7,6], [7,7]                
+            ];
         }
-        else
-            setMode($(this), parseInt($(this).attr('val')) + 1);
+        else{
+            mapSkip = [
+                [5,0],[8,0],[11,0],[7,1],[1,2],[7,2],[10,2],[12,2],[14,2],[1,3],[2,3],
+                [5,3],[6,3],[8,3],[11,3],[14,3],[15,3],[0,4],[1,4],[2,4],[3,4],[7,4],
+                [12,4],[15,4],[0,5],[2,5],[4,5],[5,5],[7,5],[9,5],[10,5],[12,5],[13,5],
+                [1,6],[2,6],[5,6],[7,6],[9,6],[11,6],[13,6],[1,7],[3,7],[10,7],[11,7],
+                [14,7],[15,7]];
+            level9Skip = [[2,0],[3,0],[4,0],[5,0],[0,2],[1,2],[6,2],[7,2],[0,3],
+                          [7,3],[0,6],[7,6],[0,7],[1,7],[2,7],[5,7],[6,7],[7,7]];
+        };
         
-        e.preventDefault = true;
-    }
+        for(var i = 0; i < mapSkip.length; i++){
+            
+            var x = mapSkip[i][0];
+            var y = mapSkip[i][1];
+            
+            var $cell = $world.children().eq(y).children().eq(x);
+            $cell.find('text').text('X');
+            updateCellBg($cell);
+        };
+        for(var i = 0; i < level9Skip.length; i++){
+            
+            var x = level9Skip[i][0];
+            var y = level9Skip[i][1];
+            
+            var $cell = $level9.children().eq(y).children().eq(x);
+            $cell.find('text').text('$%');
+            updateCellBg($cell);
+        };
+    };
     
-    function setMode($box, val){
-    
-        if(val > 15)
-            val = 1;
-        else if (val == 0)
-            val = 15;
-        
-        if(val == -1)
-            $box.text('X').addClass('clear')
-        else
-            $box.removeClass('clear');
-        
-        if(val > 0 && val < 10)
-            $box.text(val);
-        else if(val == 10)
-            $box.text('W S');
-        else if(val == 11)
-            $box.text('M S');
-        else if(val == 12)
-            $box.text('BLU');
-        else if(val == 13)
-            $box.text('BOM');
-        else if(val == 14)
-            $box.text('MED');
-        else if(val == 15)
-            $box.text('ARW');
-        
-        $box.attr('val', val);
-    }
-    
+};    
 </script>
