@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script src="https://code.createjs.com/easeljs-0.8.0.min.js"></script>            <script src="https://code.createjs.com/preloadjs-0.6.0.min.js"></script>   
+
+        <script src="js/game.js"></script>
+        <script src="js/spriteManager.js"></script>
+        <script src="js/collisionManager.js"></script>
+
+        <script src="js/components/water.js"></script>
+        <script src="js/components/pants.js"></script>
+            
+        <style>
+            @font-face {
+                font-family: bitrod;
+                src: url(bitrod.ttf);
+            }
+            
+            body {
+                text-align: center;
+                background-color: black;
+            }
+
+            canvas {
+                width: 100vw;
+                height: 75vw;
+                max-width: 133.33vh;
+                max-height: 100vh;
+                margin: auto;
+                position: absolute;
+                top:0;bottom:0;
+                left:0;right:0;
+                background-color: white;
+            }
+        </style>
+
+        <title>Firepants Game</title>
+    </head>
+
+    <body onload="Game.load();">
+        <canvas id="gameCanvas" width="1200" height="900"></canvas><br />
+        <div id='playArea' class='hideCursor'></div>
+    </body>
+</html>
