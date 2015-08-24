@@ -19,6 +19,7 @@ Game.load = function(){
     var cursor = new createjs.Shape();
     cursor.graphics.beginFill('#00d').drawCircle(0, 0, 5);
     stage.addChild(cursor);
+    Game.cursor = cursor;
 
     var scoreText = new createjs.Text();
     scoreText.x = 50;
@@ -42,7 +43,12 @@ Game.load = function(){
 
 	stage.on('stagemousedown', function(e){
 
-		Game.shoot(e.stageX, e.stageY);
+		Game.mousedown = true;
+	});
+
+	stage.on('stagemouseup', function(e){
+
+		Game.mousedown = false;
 	});
 
 	Game.stage = stage;
@@ -82,43 +88,35 @@ Game.start = function(){
 
 	function makeFireman(){
 
-		var fireman = SpriteManager.makeSprite('fireman');
-		fireman.x = 600;
-		fireman.y = 800;
-		Game.playingArea.addChild(fireman);
-
-		Game.shootingPoint = {x: 632, y: 762};
+		Game.fireman = new Fireman({
+			x: 600,
+			y: 800
+		});
+		Game.playingArea.addChild(Game.fireman);
 	};
 };
 
 Game.shoot = function(x, y){
 
-	if(!Game.shootingPoint)
+	if(!Game.fireman)
 		return;
 
 	if(y > 700)
 		return;
 
-	var trajX = x- Game.shootingPoint.x;
-	var trajY = y - Game.shootingPoint.y;
-	var norm = Math.sqrt(trajX * trajX + trajY * trajY);
-
-	var water = new Water({
-		x: Game.shootingPoint.x,
-		y: Game.shootingPoint.y,
-		vector: {x: trajX / norm, y: trajY / norm}
-	});
-
-	Game.playingArea.addChild(water);
+	Game.fireman.shoot(x, y);
 };
 
 Game.tick = function(){
 
 	Game.ticks++;
-	if(Game.ticks % 80 == 0)
+	if(Game.ticks % 130 == 0)
 		makePants();
 
 	CollisionManager.detectCollisions(Game.playingArea);
+
+    if(Game.mousedown)
+    	Game.shoot(Game.cursor.x, Game.cursor.y);
 
 	function makePants(){
 
@@ -132,6 +130,7 @@ Game.tick = function(){
 			movement: left ? 'right' : 'left',
 			on_fire: Math.random() > 0.25 ? true : false
 		});
+
 		Game.playingArea.addChild(pants);
 	};
 };

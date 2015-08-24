@@ -13,7 +13,7 @@ function Water(vars){
         this.x = vars.x;
         this.y = vars.y;
         this.vector = vars.vector;
-        this.speed = 25;
+        this.speed = 18;
         
         this.hitbox = {
             type: 'water',
@@ -27,8 +27,11 @@ function Water(vars){
     
     function setupComponents(){
 
+        var rand = Math.floor(Math.random() * 3);
+        var color = rand == 0 ? '#88F' : (rand == 1 ? '#DDF' : '#AAF');
+
         var shape = new createjs.Shape();
-        shape.graphics.beginFill('#88F').drawCircle(0, 0, 10);
+        shape.graphics.beginFill(color).drawCircle(0, 0, 10);
         this.addChild(shape);
     };
 };

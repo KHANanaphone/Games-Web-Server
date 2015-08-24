@@ -7,13 +7,12 @@ function Pants(vars){
     
     function setupVars(){
         
-        this.source = vars.source;
-        
         this.x = vars.x;
         this.y = vars.y;
         this.movement = vars.movement;
-        this.on_fire = vars.on_fire;
-        this.speed = 3;
+        this.maxHealth = 80;
+        this.health = vars.on_fire ? this.maxHealth : -1;
+        this.speed = 1.3;
         
         this.hitbox = {
             type: 'target',
@@ -27,9 +26,7 @@ function Pants(vars){
     
     function setupComponents(){
 
-        var frame = this.on_fire ? 'on_fire' : 'initial';
         this.pants = SpriteManager.makeSprite('pants'); 
-        this.pants.gotoAndStop(frame);
         this.addChild(this.pants);
 
         var text = new createjs.Text();
@@ -58,24 +55,41 @@ function Pants(vars){
 
         if(this.text.alpha > 0)
             this.text.alpha -= 0.015;
+
+        var frame;
+        if(this.health > this.maxHealth * 0.75)
+            frame = 'fire100';
+        else if(this.health > this.maxHealth * 0.50)
+            frame = 'fire75';
+        else if(this.health > this.maxHealth * 0.25)
+            frame = 'fire50';
+        else if (this.health > 0)
+            frame = 'fire25';
+        else
+            frame = 'out';
+
+        this.pants.gotoAndStop(frame);
     };
     
     prototype.handleCollision = function(obj){
       
-        if(this.on_fire){
-            Game.addScore(5);
-            this.on_fire = false;
-            this.pants.gotoAndStop('initial');
+        if(this.health > 0){
 
-            this.text.text = '+5';
-            this.text.color = '#0F0';
-            this.text.y = -50;
-            this.text.alpha = 0.8;
+            this.health -= 1;
+            if(this.health == 0){
+
+                Game.addScore(100);
+
+                this.text.text = '+100';
+                this.text.color = '#0F0';
+                this.text.y = -50;
+                this.text.alpha = 0.8;
+            }
         }
-        else{
-            Game.addScore(-5);
+        else if(this.health < 0){
+            Game.addScore(-1);
 
-            this.text.text = '-5';
+            this.text.text = '-1';
             this.text.color = '#F00';
             this.text.y = -50;
             this.text.alpha = 0.8;
