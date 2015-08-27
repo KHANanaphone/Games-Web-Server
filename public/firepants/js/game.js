@@ -16,19 +16,13 @@ Game.load = function(){
 	var playingArea = makePlayingArea();
 	stage.addChild(playingArea);
 
+    var hud = new Hud({x: 0, y: 700});
+    stage.addChild(hud);   
+
     var cursor = new createjs.Shape();
     cursor.graphics.beginFill('#00d').drawCircle(0, 0, 5);
     stage.addChild(cursor);
     Game.cursor = cursor;
-
-    var scoreText = new createjs.Text();
-    scoreText.x = 50;
-    scoreText.y = 820;
-    scoreText.font = '30px bitrod';
-    scoreText.color = '#000';   
-    scoreText.textAlign = 'left';
-    Game.scoreText = scoreText;
-    stage.addChild(scoreText);    
 
 	stage.on('stagemousemove', function(e){
 		
@@ -43,6 +37,13 @@ Game.load = function(){
 
 	stage.on('stagemousedown', function(e){
 
+		if(Game.message){
+			Game.setLevel(Game.nextLevel);
+			Game.stage.removeChild(Game.message);
+			Game.paused = false;
+			Game.message = null;
+		};
+
 		Game.mousedown = true;
 	});
 
@@ -53,6 +54,7 @@ Game.load = function(){
 
 	Game.stage = stage;
 	Game.playingArea = playingArea;
+	Game.hud = hud;
     Game.start();
 
     function makePlayingArea(){
@@ -76,9 +78,7 @@ Game.load = function(){
 
 Game.start = function(){
 
-	Game.ticks = 0;
-	Game.score = 0;
-	Game.updateScore();
+	Game.setLevel(1);
 
 	var stage = Game.stage;
 	var playingArea = Game.playingArea;
@@ -92,8 +92,26 @@ Game.start = function(){
 			x: 600,
 			y: 800
 		});
-		Game.playingArea.addChild(Game.fireman);
+		Game.stage.addChild(Game.fireman);
 	};
+};
+
+Game.setLevel = function(val){
+
+	var level = {
+		val: val,
+		scoreRequired: 250 + val * 150,
+		waterLeft: 700 + val * 100,
+		waterMax: 700 + val * 100
+	};
+
+	Game.ticks = 0;
+	Game.score = 0;
+	Game.level = level;
+	Game.hud.updateLevel(val);
+	Game.hud.updateWater(level.waterLeft, level.waterMax);
+
+	Game.addScore(0);
 };
 
 Game.shoot = function(x, y){
@@ -105,13 +123,99 @@ Game.shoot = function(x, y){
 		return;
 
 	Game.fireman.shoot(x, y);
+	Game.reduceWater(1);
+};
+
+Game.reduceWater = function(amt){
+
+	Game.level.waterLeft -= amt;
+
+	if(Game.level.waterLeft <= 0){
+
+		if(Game.score >= Game.level.scoreRequired)
+			Game.levelPassed();
+		else
+			Game.levelFailed();
+
+		Game.paused = true;
+		return;
+	};
+	Game.hud.updateWater(Game.level.waterLeft, Game.level.waterMax);
+};
+
+Game.levelFailed = function(){
+
+	var msg = new createjs.Container();
+	msg.x = 600;
+	msg.y = 400;
+
+	var t1 = new createjs.Text();
+	t1.x = 0;
+	t1.y = 0;
+	t1.text = 'Level Failed';
+	t1.textAlign = 'center';
+	t1.font = '50px Arial';
+	t1.color = 'red';
+	msg.addChild(t1);
+	Game.nextLevel = 1;
+
+	var t2 = new createjs.Text();
+	t2.x = 0;
+	t2.y = 60;
+	t2.text = 'Click to retry';
+	t2.textAlign = 'center';
+	t2.font = '20px Arial';
+	t2.color = 'black';
+	msg.addChild(t2);
+
+	Game.nextLevel = 1;
+	Game.message = msg;
+	Game.stage.addChild(msg);
+	Game.playingArea.removeAllChildren();
+};
+
+Game.levelPassed = function(){
+
+
+	var msg = new createjs.Container();
+	msg.x = 600;
+	msg.y = 400;
+
+	var t1 = new createjs.Text();
+	t1.x = 0;
+	t1.y = 0;
+	t1.text = 'Level Passed';
+	t1.textAlign = 'center';
+	t1.font = '50px Arial';
+	t1.color = 'green';
+	msg.addChild(t1);
+	Game.nextLevel = 1;
+
+	var t2 = new createjs.Text();
+	t2.x = 0;
+	t2.y = 60;
+	t2.text = 'Click to continue';
+	t2.textAlign = 'center';
+	t2.font = '20px Arial';
+	t2.color = 'black';
+	msg.addChild(t2);
+	
+	Game.nextLevel = Game.level.val + 1;
+	Game.message = msg;
+	Game.stage.addChild(msg);
+	Game.playingArea.removeAllChildren();
 };
 
 Game.tick = function(){
 
+	if(Game.paused)
+		return;
+
 	Game.ticks++;
 	if(Game.ticks % 130 == 0)
 		makePants();
+	if(Game.ticks % 60 == 0)
+		Game.reduceWater(5);
 
 	CollisionManager.detectCollisions(Game.playingArea);
 
@@ -135,12 +239,8 @@ Game.tick = function(){
 	};
 };
 
-Game.addScore = function(amt){	
+Game.addScore = function(amt){
+
 	Game.score += amt;
-	Game.updateScore();
+	Game.hud.updateScore(Game.score, Game.level.scoreRequired);
 };
-
-Game.updateScore = function(){
-
-	Game.scoreText.text = "Score: " + Game.score;
-}
