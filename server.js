@@ -10,11 +10,12 @@ var app = module.exports = function getServerInstance(params) {
     params = params || {};
     // specify current dir as default root of server
     params.root = params.root || __dirname;
+console.log('params: ' + JSON.stringify(params));
     return require('compound').createServer(params);
 };
 
 if (!module.parent || module.parent.isApplicationLoader) {
-    var port = process.env.PORT || 80;
+    var port = process.env.PORT || 8080;
     var host = process.env.HOST || '0.0.0.0';
 
     var server = app();
