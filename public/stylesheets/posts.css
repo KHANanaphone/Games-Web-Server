@@ -1,5 +1,5 @@
 input#post-title{
-    
+
     font-size: 20px;
     padding: 10px;
     width: 98%;
@@ -10,7 +10,7 @@ input#post-title{
 }
 
 .post-row{
-    
+
     padding-top: 18px;
     padding-left: 10px;
     font-size: 1.3em;
@@ -19,45 +19,45 @@ input#post-title{
 .single-post .title{
     margin-bottom: 0px;
     text-decoration: none;
-    color: rgb(52, 52, 52);
+    color: black;
 }
 
 .single-post .title:hover{
-    
+
     color: cornflowerblue;
 }
 
 .single-post .subtitle{
-    color: #999;
+    color: #666;
     font-size: 1.1em;
     padding-left: 15px;
     padding-top: 6px;
 }
 
 .single-post .content{
-    
+
     padding-top: 18px;
     padding-bottom: 10px;
 }
 
 .single-post {
-    
+
     border-bottom: 1px solid #AAA;
     margin-bottom: 20px;
     padding-bottom: 5px;
 }
 
 #posts-nav a{
-    
+
 }
 
 #posts-nav a.left{
-    
+
     float: left;
 }
 
 #posts-nav a.right{
-    
+
     float: right;
 }
 
@@ -76,8 +76,8 @@ input#post-title{
 }
 
 .post-footer a{
-    color: #999;
-    
+    color: #666;
+
     -webkit-transition: color 0.5s;
     transition: color 0.5s;
 }

@@ -1,14 +1,47 @@
-#games-list{
-    
+#games-list h1{
+
+    text-align: center;
 }
 
 #games-list .game {
+
+    display: inline-block;
     padding-bottom: 10px;
-    border-bottom: 1px solid #DDD;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 400px;
+    width: 280px;
+    padding: 12px;
+    margin: 8px;
+
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    vertical-align: top;
 }
 
-.game h1{
+#games-list a.game:hover{
+
+    background-color: #88C788;
+}
+
+#games-list img {
+    width: 100%;
+    height: 50%;
+}
+
+#games-list .name{
     text-align: center;
+    font-size: 1.4em;
+    font-family: 'Fredoka One', sans-serif;
+}
+
+#games-list .platform{
+    text-align: center;
+    font-size: 1.1em;
+    color: #777;
+    font-family: 'Fredoka One', sans-serif;
+    padding-bottom: 10px;
 }
 
 .game img{

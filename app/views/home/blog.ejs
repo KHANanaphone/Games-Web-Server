@@ -1,43 +1,42 @@
 <div id='posts-list'></div>
 <div id='posts-nav'>
-    <a class='left'><i class='fa fa-long-arrow-left'></i> Older</a>
-    <a class='right'>Newer <i class='fa fa-long-arrow-right'></i></a>
+    <a class='left'><i class='fa fa-long-arrow-left'></i> Newer</a>
+    <a class='right'>Older <i class='fa fa-long-arrow-right'></i></a>
 </div>
 
 
 <div id='hidden'>
 
     <div class='single-post'>
-        
+
         <h2><a class='title'></a></h2>
         <div class='subtitle'>By <span class='author'></span> on <span class='date'></span></div>
-        
+
         <div class='content'></div>
-        
+
         <div class='post-footer'>
             <a class='comments-link'>
                 <i class='fa fa-comments'></i>
                 <span class='disqus-comment-count'>0</span>
             </a>
         </div>
-            
+
     </div>
-    
+
 </div>
 
 <script>
-    
+
     Home.showPosts(<%- page %>);
     NavBar.setPage('home');
-    
+
     var disqus_shortname = 'adanferguson'; // required: replace example with your forum shortname
-    
+
     (function () {
         var s = document.createElement('script'); s.async = true;
         s.type = 'text/javascript';
         s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
-    
-</script>
 
+</script>

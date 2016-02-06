@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
     <head>
         <title><%= title %></title>
         <%- stylesheetLinkTag(
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css", 
-    'common', 
+    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css",
+    'common',
     '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css',
     'summernote',
     'games',
     'posts') %>
-        
+
         <%- javascriptIncludeTag(
-    'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js', 
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js", 
+    'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
+    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js",
     'date.format',
     'application',
     'summernote',
@@ -21,27 +21,29 @@
     'home'
 ) %>
         <%- csrfMetaTag() %>
-        
+
         <meta charset="utf8">
         <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-        
+
         <meta name="description" content="Adan's thoughts and projects related to programming and game design." />
-        
+
         <meta property="og:title" content="Adan's Game Design"/>
         <meta property="og:image" content="/images/bat.png"/>
         <meta property="og:description" content="Adan's thoughts and projects related to programming and game design."/>
         <meta property="og:url" content="http://www.adanferguson.com" />
-        
+
     </head>
-    
+
     <body>
-        
+
         <%- include _navbar %>
 
-        <div id='body-bg' class='col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
-            <%- body %>
+        <div id='body-bg' class='container'>
+            <div class='col-xs-12'>
+                <%- body %>
+            </div>
         </div>
-            
+
         <img class='bat' src='/images/bat.png'>
     </body>
 </html>

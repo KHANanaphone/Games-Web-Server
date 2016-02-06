@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Fredoka+One);
+
 @font-face {
     font-family: John;
     src: url('fonts/BIG JOHN.otf');
@@ -8,19 +10,23 @@
     src: url('fonts/Slim Joe.otf');
 }
 
+
+
 #hidden{
     display: none;
 }
 
 body{
-    background-image: url('/images/confectionary.png');
+    background-image: url('/images/gplay.png');
+    background-color: #222;
 }
 
 .navbar {
-    
-  padding: 10px 0px;
-  background-color: white;
-  border-bottom: 1px solid #AAA;
+
+    padding: 10px 0px;
+    background-color: #0E0E0E;
+    border-bottom: 2px solid #D0D0D0;
+    color: white;
 }
 
 .navbar li{
@@ -29,45 +35,59 @@ body{
     margin-right: 15px;
 }
 
+.navbar li a{
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    font-family: 'Fredoka One', sans-serif;
+}
+
 .navbar li a:hover{
-    background-color: #BED1E0;
+    background-color: #448;
     color: blue;
 }
 
-/*
-#pills{
-    float: right;
-}
-*/
-
 .page-title{
-    
+
   font-size: 2.7em;
   font-family: John;
   display: inline-block;
-  color: black;   
+  color: white;
   margin-top: -15px;
   margin-bottom: 10px;
+  transition: color 0.3s ease;
 }
 
 .page-title:hover{
     text-decoration: none;
+    color: black;
+    text-shadow:
+     -1px -1px 0 #FFF,
+      1px -1px 0 #FFF,
+      -1px 1px 0 #FFF,
+       1px 1px 0 #FFF;
+
 }
 .bat {
-    
+
   position: fixed;
-  bottom: 0px;
+  top: 0px;
   left: 10px;
   width: 70px;
 }
 
+#pills{
+
+    display: inline-block;
+}
+
 #pills a{
-    color: black;
+    color: white;
     padding: 7px 15px;
 }
 
 #pills .active a{
-    color: white;
+    color: black;
+    background-color: white;
 }
 
 .navbar {
@@ -75,17 +95,26 @@ body{
 }
 
 #body-bg{
-	background-color: white;
-	padding: 20px;
-border: 1px solid #CCC;
+
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 20px;
+    margin: 20px auto;
 }
 
 .links a{
-    
+
     font-size: 1.4em;
 }
 
 #about{
     font-size: 1.1em;
     padding-top: 1.5em;
+}
+
+@media (max-width:767px) {
+
+    .navbar li{
+
+        width: 100%;
+    }
 }
